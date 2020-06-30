@@ -15,6 +15,16 @@
 		E0A8A51C24AA41F400DA145C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A51B24AA41F400DA145C /* Assets.xcassets */; };
 		E0A8A51F24AA41F400DA145C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A51D24AA41F400DA145C /* LaunchScreen.storyboard */; };
 		E0A8A52A24AA41F500DA145C /* UltimateTravellerToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A52924AA41F500DA145C /* UltimateTravellerToolTests.swift */; };
+		E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A53824AA42A600DA145C /* HTTPRequest.swift */; };
+		E0A8A53B24AA42AE00DA145C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A53A24AA42AE00DA145C /* HTTPClient.swift */; };
+		E0A8A53E24AA463200DA145C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A53D24AA463200DA145C /* NetworkError.swift */; };
+		E0A8A54024AA4AF600DA145C /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A53F24AA4AF600DA145C /* ApiConfig.swift */; };
+		E0A8A54424AA4BF400DA145C /* CurrenciesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A54324AA4BF400DA145C /* CurrenciesResult.swift */; };
+		E0A8A54624AA4BFD00DA145C /* CurrenciesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A54524AA4BFD00DA145C /* CurrenciesHandler.swift */; };
+		E0A8A54924AA535D00DA145C /* FakeUrlSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A54824AA535D00DA145C /* FakeUrlSession.swift */; };
+		E0A8A54E24AA55D800DA145C /* CurrenciesFakeData.json in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A54D24AA55D800DA145C /* CurrenciesFakeData.json */; };
+		E0A8A55024AA562200DA145C /* CurrenciesFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A54F24AA562200DA145C /* CurrenciesFakeResponse.swift */; };
+		E0A8A55224AA58D000DA145C /* CurrenciesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A55124AA58D000DA145C /* CurrenciesTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +50,16 @@
 		E0A8A52524AA41F500DA145C /* UltimateTravellerToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimateTravellerToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8A52924AA41F500DA145C /* UltimateTravellerToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimateTravellerToolTests.swift; sourceTree = "<group>"; };
 		E0A8A52B24AA41F500DA145C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0A8A53824AA42A600DA145C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		E0A8A53A24AA42AE00DA145C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		E0A8A53D24AA463200DA145C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		E0A8A53F24AA4AF600DA145C /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
+		E0A8A54324AA4BF400DA145C /* CurrenciesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesResult.swift; sourceTree = "<group>"; };
+		E0A8A54524AA4BFD00DA145C /* CurrenciesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesHandler.swift; sourceTree = "<group>"; };
+		E0A8A54824AA535D00DA145C /* FakeUrlSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUrlSession.swift; sourceTree = "<group>"; };
+		E0A8A54D24AA55D800DA145C /* CurrenciesFakeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrenciesFakeData.json; sourceTree = "<group>"; };
+		E0A8A54F24AA562200DA145C /* CurrenciesFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesFakeResponse.swift; sourceTree = "<group>"; };
+		E0A8A55124AA58D000DA145C /* CurrenciesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,12 +101,12 @@
 		E0A8A50E24AA41F400DA145C /* UltimateTravellerTool */ = {
 			isa = PBXGroup;
 			children = (
+				E0A8A53524AA427400DA145C /* Controller */,
+				E0A8A53424AA426D00DA145C /* View */,
+				E0A8A53624AA428600DA145C /* Model */,
 				E0A8A50F24AA41F400DA145C /* AppDelegate.swift */,
 				E0A8A51124AA41F400DA145C /* SceneDelegate.swift */,
-				E0A8A51324AA41F400DA145C /* ViewController.swift */,
-				E0A8A51524AA41F400DA145C /* Main.storyboard */,
 				E0A8A51B24AA41F400DA145C /* Assets.xcassets */,
-				E0A8A51D24AA41F400DA145C /* LaunchScreen.storyboard */,
 				E0A8A52024AA41F400DA145C /* Info.plist */,
 				E0A8A51824AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld */,
 			);
@@ -96,10 +116,84 @@
 		E0A8A52824AA41F500DA145C /* UltimateTravellerToolTests */ = {
 			isa = PBXGroup;
 			children = (
+				E0A8A54724AA533700DA145C /* Network */,
 				E0A8A52924AA41F500DA145C /* UltimateTravellerToolTests.swift */,
 				E0A8A52B24AA41F500DA145C /* Info.plist */,
 			);
 			path = UltimateTravellerToolTests;
+			sourceTree = "<group>";
+		};
+		E0A8A53424AA426D00DA145C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A51524AA41F400DA145C /* Main.storyboard */,
+				E0A8A51D24AA41F400DA145C /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E0A8A53524AA427400DA145C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A51324AA41F400DA145C /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E0A8A53624AA428600DA145C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A53724AA428E00DA145C /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0A8A53724AA428E00DA145C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A53D24AA463200DA145C /* NetworkError.swift */,
+				E0A8A53824AA42A600DA145C /* HTTPRequest.swift */,
+				E0A8A53A24AA42AE00DA145C /* HTTPClient.swift */,
+				E0A8A53C24AA42F700DA145C /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E0A8A53C24AA42F700DA145C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A54124AA4BDB00DA145C /* CurrenciesApi */,
+				E0A8A53F24AA4AF600DA145C /* ApiConfig.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E0A8A54124AA4BDB00DA145C /* CurrenciesApi */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A54524AA4BFD00DA145C /* CurrenciesHandler.swift */,
+				E0A8A54324AA4BF400DA145C /* CurrenciesResult.swift */,
+			);
+			path = CurrenciesApi;
+			sourceTree = "<group>";
+		};
+		E0A8A54724AA533700DA145C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A54824AA535D00DA145C /* FakeUrlSession.swift */,
+				E0A8A54A24AA557C00DA145C /* CurrenciesApi */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E0A8A54A24AA557C00DA145C /* CurrenciesApi */ = {
+			isa = PBXGroup;
+			children = (
+				E0A8A54D24AA55D800DA145C /* CurrenciesFakeData.json */,
+				E0A8A54F24AA562200DA145C /* CurrenciesFakeResponse.swift */,
+				E0A8A55124AA58D000DA145C /* CurrenciesTest.swift */,
+			);
+			path = CurrenciesApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0A8A54E24AA55D800DA145C /* CurrenciesFakeData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,9 +299,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A8A51424AA41F400DA145C /* ViewController.swift in Sources */,
+				E0A8A53E24AA463200DA145C /* NetworkError.swift in Sources */,
+				E0A8A54024AA4AF600DA145C /* ApiConfig.swift in Sources */,
 				E0A8A51024AA41F400DA145C /* AppDelegate.swift in Sources */,
+				E0A8A53B24AA42AE00DA145C /* HTTPClient.swift in Sources */,
+				E0A8A54424AA4BF400DA145C /* CurrenciesResult.swift in Sources */,
+				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E0A8A51A24AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld in Sources */,
 				E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */,
+				E0A8A54624AA4BFD00DA145C /* CurrenciesHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A8A52A24AA41F500DA145C /* UltimateTravellerToolTests.swift in Sources */,
+				E0A8A55024AA562200DA145C /* CurrenciesFakeResponse.swift in Sources */,
+				E0A8A55224AA58D000DA145C /* CurrenciesTest.swift in Sources */,
+				E0A8A54924AA535D00DA145C /* FakeUrlSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -352,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
