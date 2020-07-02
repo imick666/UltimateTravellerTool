@@ -8,29 +8,41 @@
 
 import Foundation
 
+/**
+ Make a generic Http Request
+ */
 final class HTTPRequest {
     
     typealias httpResponse = (Data?, HTTPURLResponse?, Error?) -> Void
     
     private let session: URLSession
-//    private var task: URLSessionDataTask?
+    private var task: URLSessionDataTask?
     
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
     
+    // MARK : - Methodes
+
+    /**
+    - Parameters:
+        - baseUrl: Base URL without query items.
+        - parameters: Query items in tuple with (key, value).
+        - callback: A CALLBACK.
+     */
     func request(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping httpResponse) {
-        let url = encodeUrl(baseUrl: baseUrl, parameters: parameters)
         
-//        task?.cancel()
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let url = encodeUrl(baseUrl: baseUrl, parameters: parameters)
+        Logger(url: url).show()
+        task?.cancel()
+        task = session.dataTask(with: url) { (data, response, error) in
             guard let response = response as? HTTPURLResponse else {
                 callback(data, nil, error)
                 return
             }
             callback(data, response, error)
         }
-        task.resume()
+        task?.resume()
     }
     
     private func encodeUrl(baseUrl: URL, parameters: [(String, Any)]?) -> URL {

@@ -9,9 +9,8 @@
 import Foundation
 
 final class CurrenciesFakeResponseData {
-    private let url = URL(string: "test")!
-    static let goodResponse = HTTPURLResponse(url: URL(string: "test")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-    static let badResponse = HTTPURLResponse(url: URL(string: "test")!, statusCode: 500, httpVersion: nil, headerFields: nil)
+    static let goodResponse = HTTPURLResponse(url: URL(string: "https://google.fr")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+    static let badResponse = HTTPURLResponse(url: URL(string: "https://google.fr")!, statusCode: 500, httpVersion: nil, headerFields: nil)
     
     class FakeError: Error { }
     static let fakeError = FakeError()

@@ -9,7 +9,7 @@
 import Foundation
 
 enum NetworkError: Error, CustomStringConvertible {
-    case noData, badResponse, dataUndecodable
+    case noData, badResponse, dataUndecodable, badUrl
     
     var description: String {
         switch self {
@@ -19,6 +19,8 @@ enum NetworkError: Error, CustomStringConvertible {
             return "No data"
         case .dataUndecodable:
             return "Data undecodable"
+        case .badUrl:
+            return "bad URL"
         }
     }
 }

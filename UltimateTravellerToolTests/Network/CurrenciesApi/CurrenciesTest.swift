@@ -11,21 +11,21 @@ import XCTest
 
 class CurrenciesTest: XCTestCase {
     
-    func testBadUrlResponse() {
+    func testBadHttpResponse() {
         
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrenciesFakeResponseData.badResponse, fakeError: nil)
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
-        let currencies = CurrenciesHandler(httpClient: client)
+        let currencies = CurrenciesService(httpClient: client)
         let expectation = XCTestExpectation(description: "Wait For Queu Change")
         
         currencies.getCurrencies { (result) in
             guard case .failure(let error) = result else {
-                XCTFail("testBadUrlResponse FAILED")
+                XCTFail("testBadHttpResponse FAILED")
                 return
             }
             expectation.fulfill()
-            XCTAssertNotNil(error)
+            XCTAssertEqual(error, NetworkError.badResponse)
         }
         
         wait(for: [expectation], timeout: 0.01)
@@ -35,7 +35,7 @@ class CurrenciesTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrenciesFakeResponseData.goodResponse, fakeError: CurrenciesFakeResponseData.fakeError)
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
-        let currencies = CurrenciesHandler(httpClient: client)
+        let currencies = CurrenciesService(httpClient: client)
         let expectation = XCTestExpectation(description: "Wait For Queu Change")
         
         currencies.getCurrencies { (result) in
@@ -44,7 +44,7 @@ class CurrenciesTest: XCTestCase {
                 return
             }
             expectation.fulfill()
-            XCTAssertNotNil(error)
+            XCTAssertEqual(error, NetworkError.noData)
         }
         
         wait(for: [expectation], timeout: 0.01)
@@ -54,7 +54,7 @@ class CurrenciesTest: XCTestCase {
         let session = FakeUrlSession(fakeData: CurrenciesFakeResponseData.incorrectData, fakeResponse: CurrenciesFakeResponseData.goodResponse, fakeError: nil)
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
-        let currencies = CurrenciesHandler(httpClient: client)
+        let currencies = CurrenciesService(httpClient: client)
         let expectation = XCTestExpectation(description: "Wait For Queu Change")
         
         currencies.getCurrencies { (result) in
@@ -63,7 +63,7 @@ class CurrenciesTest: XCTestCase {
                 return
             }
             expectation.fulfill()
-            XCTAssertNotNil(error)
+            XCTAssertEqual(error, NetworkError.dataUndecodable)
         }
         
         wait(for: [expectation], timeout: 0.01)
@@ -73,7 +73,7 @@ class CurrenciesTest: XCTestCase {
         let session = FakeUrlSession(fakeData: CurrenciesFakeResponseData.correctData, fakeResponse: CurrenciesFakeResponseData.goodResponse, fakeError: nil)
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
-        let currencies = CurrenciesHandler(httpClient: client)
+        let currencies = CurrenciesService(httpClient: client)
         let expectation = XCTestExpectation(description: "Wait For Queu Change")
         
         currencies.getCurrencies { (result) in
