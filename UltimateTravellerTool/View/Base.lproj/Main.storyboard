@@ -1,24 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F83-4S-Qgz">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
+        <scene sceneID="ndg-yj-pp6">
+            <objects>
+                <navigationController id="F83-4S-Qgz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Ms9-rb-GGE"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e74-PX-WhI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uWS-Sp-FXp" kind="relationship" relationship="rootViewController" id="Ufq-8t-vUd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Lf-c2-bCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1771" y="139"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="gmo-5L-wdz">
+            <objects>
+                <tabBarController id="uWS-Sp-FXp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yMd-2Z-SzU"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Opw-Fa-bP1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Gph-C6-9qA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="25j-yK-vg4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-778" y="139"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CurrencyViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Sy-Ot-yrG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5R-kl-r83" userLabel="CurrencyViewOne">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="357.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Am5-Nc-Lf2" userLabel="SelectAndChange" customClass="SelectAndChangeView" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                                <rect key="frame" x="129.5" y="100.5" width="155.5" height="157"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0,00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N6r-oO-CTw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="81.5"/>
+                                                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <action selector="amountTextField:" destination="YaH-az-JZS" eventType="valueChanged" id="jah-NM-wtw"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGd-T8-5XI" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                                        <rect key="frame" x="2.5" y="97" width="150" height="60"/>
+                                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="51I-N5-TBQ"/>
+                                                            <constraint firstAttribute="width" constant="150" id="MVG-uP-glr"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="currencyButtonDidTap" destination="YaH-az-JZS" eventType="touchUpInside" id="OaW-mn-7ur"/>
+                                                            <action selector="currencyButtonDidTap" destination="Am5-Nc-Lf2" eventType="touchUpInside" id="Yjs-oH-49s"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="CGd-T8-5XI" firstAttribute="centerX" secondItem="Am5-Nc-Lf2" secondAttribute="centerX" id="2p2-3z-TAM"/>
+                                                    <constraint firstItem="N6r-oO-CTw" firstAttribute="width" secondItem="Am5-Nc-Lf2" secondAttribute="width" id="8rJ-tf-cRD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="CGd-T8-5XI" secondAttribute="bottom" id="FyW-Dn-vEp"/>
+                                                    <constraint firstAttribute="height" constant="157" id="NFd-zq-HGa"/>
+                                                    <constraint firstItem="N6r-oO-CTw" firstAttribute="top" secondItem="Am5-Nc-Lf2" secondAttribute="top" id="QFh-mJ-GDS"/>
+                                                    <constraint firstItem="N6r-oO-CTw" firstAttribute="centerX" secondItem="Am5-Nc-Lf2" secondAttribute="centerX" id="tNU-eH-n0z"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="amountTextField" destination="N6r-oO-CTw" id="Je9-DD-BxR"/>
+                                                    <outlet property="currencyButton" destination="CGd-T8-5XI" id="dDh-M6-qNU"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Am5-Nc-Lf2" firstAttribute="centerX" secondItem="E5R-kl-r83" secondAttribute="centerX" id="w9e-Uj-1Oq"/>
+                                            <constraint firstItem="Am5-Nc-Lf2" firstAttribute="centerY" secondItem="E5R-kl-r83" secondAttribute="centerY" id="ybh-HN-l8A"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHc-Gk-97X" userLabel="CurrencyViewOnTwo">
+                                        <rect key="frame" x="0.0" y="367.5" width="414" height="357.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7b-ci-ffs" userLabel="SelectAndChange" customClass="SelectAndChangeView" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                                <rect key="frame" x="129.5" y="100.5" width="155.5" height="157"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0,00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lss-UF-tbp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="81.5"/>
+                                                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <action selector="amountDidChange" destination="b7b-ci-ffs" eventType="editingDidEnd" id="ASM-i7-awp"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-g2-RpT" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                                        <rect key="frame" x="2.5" y="97" width="150" height="60"/>
+                                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="WLZ-An-K6U"/>
+                                                            <constraint firstAttribute="width" constant="150" id="Yli-fe-y75"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="currencyButtonDidTap" destination="b7b-ci-ffs" eventType="touchUpInside" id="SDz-nO-dcO"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="UVM-g2-RpT" firstAttribute="centerX" secondItem="b7b-ci-ffs" secondAttribute="centerX" id="B5z-BD-BC9"/>
+                                                    <constraint firstItem="lss-UF-tbp" firstAttribute="top" secondItem="b7b-ci-ffs" secondAttribute="top" id="T29-aR-OHd"/>
+                                                    <constraint firstItem="lss-UF-tbp" firstAttribute="width" secondItem="b7b-ci-ffs" secondAttribute="width" id="ddZ-1j-3Jn"/>
+                                                    <constraint firstAttribute="height" constant="157" id="hHJ-wI-nfI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="UVM-g2-RpT" secondAttribute="bottom" id="i0v-s6-g4s"/>
+                                                    <constraint firstItem="lss-UF-tbp" firstAttribute="centerX" secondItem="b7b-ci-ffs" secondAttribute="centerX" id="y6x-W4-ueE"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="amountTextField" destination="lss-UF-tbp" id="L85-4m-AZa"/>
+                                                    <outlet property="currencyButton" destination="UVM-g2-RpT" id="jI2-Xa-Tby"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="b7b-ci-ffs" firstAttribute="centerX" secondItem="hHc-Gk-97X" secondAttribute="centerX" id="Dad-3r-Sec"/>
+                                            <constraint firstItem="b7b-ci-ffs" firstAttribute="centerY" secondItem="hHc-Gk-97X" secondAttribute="centerY" id="IA5-QS-kT1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2Sy-Ot-yrG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mos-Vk-PPx"/>
+                            <constraint firstItem="2Sy-Ot-yrG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U5p-8o-qlv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Sy-Ot-yrG" secondAttribute="bottom" id="ZR3-lM-0HC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Sy-Ot-yrG" secondAttribute="trailing" id="aMl-RT-DLq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="fAR-fA-9W5"/>
+                    <navigationItem key="navigationItem" id="fra-Md-gxa"/>
+                    <connections>
+                        <outlet property="currencyOneView" destination="Am5-Nc-Lf2" id="exh-c7-g43"/>
+                        <outlet property="currencyTwoView" destination="b7b-ci-ffs" id="7i5-5e-r8B"/>
+                        <segue destination="lMU-2a-HO8" kind="show" identifier="SelectCurrency" id="fL2-m4-jG4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="YaH-az-JZS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Select Currency Table View Controller-->
+        <scene sceneID="6xU-n8-aDp">
+            <objects>
+                <tableViewController id="lMU-2a-HO8" customClass="SelectCurrencyTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h91-n2-IQD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iOM-zJ-kdY">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iOM-zJ-kdY" id="IS8-AN-zFN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lMU-2a-HO8" id="QN6-tC-h9c"/>
+                            <outlet property="delegate" destination="lMU-2a-HO8" id="7hr-lj-Olv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Og9-hy-izj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kc5-dG-ntI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="139"/>
         </scene>
     </scenes>
 </document>
