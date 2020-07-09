@@ -86,3 +86,6 @@ fastlane/test_output
 iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/swift
+
+# ApiKey
+UltimateTravellerTool/Model/Network/API/ApiConfig.swift

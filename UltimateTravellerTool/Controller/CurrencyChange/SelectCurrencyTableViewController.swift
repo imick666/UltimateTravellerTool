@@ -8,19 +8,22 @@
 
 import UIKit
 
+
 class SelectCurrencyTableViewController: UITableViewController {
 
+    var passSelectedCurrencyDelegate: PassSelectedCurrency?
     var rates: CurrenciesResult?
+    var buttonTag: Int?
     
-    var ratesList: [(name:String, code: String, rate: Double)] {
-        guard let list = rates?.rates else { return [(String, String, Double)]() }
-        var tuple = [(name: String, code: String, rate: Double)]()
-        for (key, value) in list {
-            let name = Locale.current.localizedString(forCurrencyCode: key) ?? "N/C"
-            let currency = (name: name, code: key, rate: value)
+    var ratesList: [(name:String, code: String)] {
+        guard let list = rates?.rates else { return [(String, String)]() }
+        var tuple = [(name: String, code: String)]()
+        for (key, _) in list {
+            guard let name = Locale.current.localizedString(forCurrencyCode: key) else { continue }
+            let currency = (name: name, code: key)
             tuple.append(currency)
         }
-        return tuple.sorted(by: {$0.name < $1.name})
+        return tuple.sorted { $0.name < $1.name }
     }
     
     override func viewDidLoad() {
@@ -55,6 +58,14 @@ class SelectCurrencyTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedIso = ratesList[indexPath.row].code
+        guard let selectCurrency = rates?.rates[selectedIso] else { return }
+        let dataToPass = (code: selectedIso, rate: selectCurrency)
+        passSelectedCurrencyDelegate?.passCurrency(dataToPass, forButton: buttonTag)
+        navigationController?.popViewController(animated: true)
     }
 
     /*

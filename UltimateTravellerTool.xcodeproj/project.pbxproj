@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0888647424AE322B00866612 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888647324AE322B00866612 /* Logger.swift */; };
+		E0591D7E24B1E16900988CDE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0591D7D24B1E16900988CDE /* Alert.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
-		E089E0F624B0780E0023909A /* SelectAndChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F524B0780E0023909A /* SelectAndChangeView.swift */; };
 		E089E0F924B09B240023909A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* RoundedButton.swift */; };
 		E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */; };
 		E0A8A51024AA41F400DA145C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A50F24AA41F400DA145C /* AppDelegate.swift */; };
 		E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A51124AA41F400DA145C /* SceneDelegate.swift */; };
 		E0A8A51424AA41F400DA145C /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A51324AA41F400DA145C /* CurrencyViewController.swift */; };
-		E0A8A51724AA41F400DA145C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A51524AA41F400DA145C /* Main.storyboard */; };
+		E0A8A51724AA41F400DA145C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A51524AA41F400DA145C /* Main.storyboard */; settings = {ASSET_TAGS = (0, ); }; };
 		E0A8A51A24AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A51824AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld */; };
 		E0A8A51C24AA41F400DA145C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A51B24AA41F400DA145C /* Assets.xcassets */; };
 		E0A8A51F24AA41F400DA145C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A8A51D24AA41F400DA145C /* LaunchScreen.storyboard */; };
@@ -43,8 +43,8 @@
 
 /* Begin PBXFileReference section */
 		0888647324AE322B00866612 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		E0591D7D24B1E16900988CDE /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
-		E089E0F524B0780E0023909A /* SelectAndChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAndChangeView.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyTableViewController.swift; sourceTree = "<group>"; };
 		E0A8A50C24AA41F400DA145C /* UltimateTravellerTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimateTravellerTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,11 +88,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0591D7A24B1E0EF00988CDE /* General */ = {
+			isa = PBXGroup;
+			children = (
+				E0591D7D24B1E16900988CDE /* Alert.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		E089E0F424B077DF0023909A /* CurrencyChange */ = {
 			isa = PBXGroup;
 			children = (
 				E0A8A51324AA41F400DA145C /* CurrencyViewController.swift */,
-				E089E0F524B0780E0023909A /* SelectAndChangeView.swift */,
 				E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */,
 			);
 			path = CurrencyChange;
@@ -154,6 +161,7 @@
 		E0A8A53524AA427400DA145C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E0591D7A24B1E0EF00988CDE /* General */,
 				E089E0F424B077DF0023909A /* CurrencyChange */,
 			);
 			path = Controller;
@@ -260,6 +268,9 @@
 		E0A8A50424AA41F400DA145C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					0,
+				);
 				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "mickael ruzel";
@@ -320,7 +331,7 @@
 			files = (
 				E0A8A51424AA41F400DA145C /* CurrencyViewController.swift in Sources */,
 				0888647424AE322B00866612 /* Logger.swift in Sources */,
-				E089E0F624B0780E0023909A /* SelectAndChangeView.swift in Sources */,
+				E0591D7E24B1E16900988CDE /* Alert.swift in Sources */,
 				E0A8A53E24AA463200DA145C /* NetworkError.swift in Sources */,
 				E0A8A51024AA41F400DA145C /* AppDelegate.swift in Sources */,
 				E0A8A53B24AA42AE00DA145C /* HTTPClient.swift in Sources */,

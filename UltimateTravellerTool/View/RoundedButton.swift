@@ -9,7 +9,7 @@
 import UIKit
 
 class RoundedButton: UIButton {
-
+    
     func roundButton() {
         self.layer.cornerRadius = self.bounds.height / 2
     }

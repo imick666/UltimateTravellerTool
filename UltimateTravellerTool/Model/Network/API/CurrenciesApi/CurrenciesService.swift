@@ -14,8 +14,6 @@ class CurrenciesService {
     private var httpClient: HTTPClient
     private let baseUrl = URL(string: "http://data.fixer.io/api/latest")
     
-    private var currenciesRatesList: CurrenciesResult?
-    
     //MARK : - Initalizer
     init(httpClient: HTTPClient = HTTPClient()) {
         self.httpClient = httpClient
@@ -29,26 +27,9 @@ class CurrenciesService {
         }
     }
     
-    func makeChangeCalcul(amount: Double, from: String, to: String, callback: ((Result<Double, Error>) -> Void)?) {
-        guard let rates = currenciesRatesList?.rates else {
-            getCurrencies { (result) in
-                switch result {
-                case .failure(let error):
-                    callback?(.failure(error))
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        self.currenciesRatesList = data
-                    }
-                }
-            }
-            makeChangeCalcul(amount: amount, from: from, to: to, callback: nil)
-            return
-        }
-        guard let fromRate = rates[from], let toRate = rates[to] else { return }
-        let amountInEur = (amount / fromRate)
-        let result = (amountInEur * toRate)
-        
-        let formatter = NumberFormatter()
-        callback?(.success(result))
+    func convertCurrencies(from: Double, to: Double, amount: Double) -> Double {
+        let amountInEuro = amount / from
+        let result = amountInEuro * to
+        return result
     }
 }

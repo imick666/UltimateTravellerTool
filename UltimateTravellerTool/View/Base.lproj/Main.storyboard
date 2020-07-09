@@ -51,26 +51,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Sy-Ot-yrG">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Sy-Ot-yrG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5R-kl-r83" userLabel="CurrencyViewOne">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="357.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Am5-Nc-Lf2" userLabel="SelectAndChange" customClass="SelectAndChangeView" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                <rect key="frame" x="129.5" y="100.5" width="155.5" height="157"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I5u-ZO-jKM">
+                                                <rect key="frame" x="0.0" y="100.5" width="414" height="156.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0,00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N6r-oO-CTw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="81.5"/>
+                                                        <rect key="frame" x="129.5" y="0.0" width="155.5" height="81.5"/>
                                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                        <connections>
-                                                            <action selector="amountTextField:" destination="YaH-az-JZS" eventType="valueChanged" id="jah-NM-wtw"/>
-                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGd-T8-5XI" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                        <rect key="frame" x="2.5" y="97" width="150" height="60"/>
+                                                        <rect key="frame" x="132" y="96.5" width="150" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="51I-N5-TBQ"/>
@@ -81,49 +78,34 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="currencyButtonDidTap" destination="YaH-az-JZS" eventType="touchUpInside" id="OaW-mn-7ur"/>
-                                                            <action selector="currencyButtonDidTap" destination="Am5-Nc-Lf2" eventType="touchUpInside" id="Yjs-oH-49s"/>
+                                                            <action selector="selectCurrencyButtonTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1lh-bM-Joc"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="CGd-T8-5XI" firstAttribute="centerX" secondItem="Am5-Nc-Lf2" secondAttribute="centerX" id="2p2-3z-TAM"/>
-                                                    <constraint firstItem="N6r-oO-CTw" firstAttribute="width" secondItem="Am5-Nc-Lf2" secondAttribute="width" id="8rJ-tf-cRD"/>
-                                                    <constraint firstAttribute="bottom" secondItem="CGd-T8-5XI" secondAttribute="bottom" id="FyW-Dn-vEp"/>
-                                                    <constraint firstAttribute="height" constant="157" id="NFd-zq-HGa"/>
-                                                    <constraint firstItem="N6r-oO-CTw" firstAttribute="top" secondItem="Am5-Nc-Lf2" secondAttribute="top" id="QFh-mJ-GDS"/>
-                                                    <constraint firstItem="N6r-oO-CTw" firstAttribute="centerX" secondItem="Am5-Nc-Lf2" secondAttribute="centerX" id="tNU-eH-n0z"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="amountTextField" destination="N6r-oO-CTw" id="Je9-DD-BxR"/>
-                                                    <outlet property="currencyButton" destination="CGd-T8-5XI" id="dDh-M6-qNU"/>
-                                                </connections>
-                                            </view>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="Am5-Nc-Lf2" firstAttribute="centerX" secondItem="E5R-kl-r83" secondAttribute="centerX" id="w9e-Uj-1Oq"/>
-                                            <constraint firstItem="Am5-Nc-Lf2" firstAttribute="centerY" secondItem="E5R-kl-r83" secondAttribute="centerY" id="ybh-HN-l8A"/>
+                                            <constraint firstItem="I5u-ZO-jKM" firstAttribute="centerX" secondItem="E5R-kl-r83" secondAttribute="centerX" id="7ga-7D-WA5"/>
+                                            <constraint firstAttribute="trailing" secondItem="I5u-ZO-jKM" secondAttribute="trailing" id="E8M-xw-wGU"/>
+                                            <constraint firstItem="I5u-ZO-jKM" firstAttribute="centerY" secondItem="E5R-kl-r83" secondAttribute="centerY" id="pVm-Mn-mb6"/>
+                                            <constraint firstItem="I5u-ZO-jKM" firstAttribute="leading" secondItem="E5R-kl-r83" secondAttribute="leading" id="sBu-Tf-BBv"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHc-Gk-97X" userLabel="CurrencyViewOnTwo">
                                         <rect key="frame" x="0.0" y="367.5" width="414" height="357.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7b-ci-ffs" userLabel="SelectAndChange" customClass="SelectAndChangeView" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                <rect key="frame" x="129.5" y="100.5" width="155.5" height="157"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vse-Ac-XDY">
+                                                <rect key="frame" x="0.0" y="100.5" width="414" height="156.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0,00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lss-UF-tbp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="81.5"/>
+                                                        <rect key="frame" x="129.5" y="0.0" width="155.5" height="81.5"/>
                                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                                        <connections>
-                                                            <action selector="amountDidChange" destination="b7b-ci-ffs" eventType="editingDidEnd" id="ASM-i7-awp"/>
-                                                        </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-g2-RpT" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                        <rect key="frame" x="2.5" y="97" width="150" height="60"/>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-g2-RpT" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                                        <rect key="frame" x="132" y="96.5" width="150" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="WLZ-An-K6U"/>
@@ -134,29 +116,18 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="currencyButtonDidTap" destination="b7b-ci-ffs" eventType="touchUpInside" id="SDz-nO-dcO"/>
+                                                            <action selector="selectCurrencyButtonTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="agg-zR-hGg"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="UVM-g2-RpT" firstAttribute="centerX" secondItem="b7b-ci-ffs" secondAttribute="centerX" id="B5z-BD-BC9"/>
-                                                    <constraint firstItem="lss-UF-tbp" firstAttribute="top" secondItem="b7b-ci-ffs" secondAttribute="top" id="T29-aR-OHd"/>
-                                                    <constraint firstItem="lss-UF-tbp" firstAttribute="width" secondItem="b7b-ci-ffs" secondAttribute="width" id="ddZ-1j-3Jn"/>
-                                                    <constraint firstAttribute="height" constant="157" id="hHJ-wI-nfI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="UVM-g2-RpT" secondAttribute="bottom" id="i0v-s6-g4s"/>
-                                                    <constraint firstItem="lss-UF-tbp" firstAttribute="centerX" secondItem="b7b-ci-ffs" secondAttribute="centerX" id="y6x-W4-ueE"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="amountTextField" destination="lss-UF-tbp" id="L85-4m-AZa"/>
-                                                    <outlet property="currencyButton" destination="UVM-g2-RpT" id="jI2-Xa-Tby"/>
-                                                </connections>
-                                            </view>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="b7b-ci-ffs" firstAttribute="centerX" secondItem="hHc-Gk-97X" secondAttribute="centerX" id="Dad-3r-Sec"/>
-                                            <constraint firstItem="b7b-ci-ffs" firstAttribute="centerY" secondItem="hHc-Gk-97X" secondAttribute="centerY" id="IA5-QS-kT1"/>
+                                            <constraint firstItem="vse-Ac-XDY" firstAttribute="leading" secondItem="hHc-Gk-97X" secondAttribute="leading" id="HRa-2x-wxB"/>
+                                            <constraint firstAttribute="trailing" secondItem="vse-Ac-XDY" secondAttribute="trailing" id="Jb8-V2-Udh"/>
+                                            <constraint firstItem="vse-Ac-XDY" firstAttribute="centerY" secondItem="hHc-Gk-97X" secondAttribute="centerY" id="OwV-jv-a0w"/>
+                                            <constraint firstItem="vse-Ac-XDY" firstAttribute="centerX" secondItem="hHc-Gk-97X" secondAttribute="centerX" id="dSd-X2-Vz6"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -174,13 +145,14 @@
                     <tabBarItem key="tabBarItem" title="Item" id="fAR-fA-9W5"/>
                     <navigationItem key="navigationItem" id="fra-Md-gxa"/>
                     <connections>
-                        <outlet property="currencyOneView" destination="Am5-Nc-Lf2" id="exh-c7-g43"/>
-                        <outlet property="currencyTwoView" destination="b7b-ci-ffs" id="7i5-5e-r8B"/>
+                        <outletCollection property="selectCurrencyButton" destination="CGd-T8-5XI" collectionClass="NSMutableArray" id="Aqa-lB-lvf"/>
+                        <outletCollection property="selectCurrencyButton" destination="UVM-g2-RpT" collectionClass="NSMutableArray" id="ctn-Py-scr"/>
+                        <outletCollection property="amountTextField" destination="N6r-oO-CTw" collectionClass="NSMutableArray" id="03p-Kc-B4p"/>
+                        <outletCollection property="amountTextField" destination="lss-UF-tbp" collectionClass="NSMutableArray" id="9ie-2g-9Kr"/>
                         <segue destination="lMU-2a-HO8" kind="show" identifier="SelectCurrency" id="fL2-m4-jG4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="YaH-az-JZS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
