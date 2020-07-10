@@ -15,6 +15,13 @@ protocol PassSelectedCurrency: class {
 class CurrencyViewController: UIViewController {
     
     //MARK: - Outlet
+    @IBOutlet weak var currencyOneView: UIView!
+    @IBOutlet weak var currencyTwoView: UIView!
+    
+    @IBOutlet weak var currencyOneStakView: UIStackView!
+    @IBOutlet weak var currencyTwoStackView: UIStackView!
+    
+    
     @IBOutlet var selectCurrencyButton: [RoundedButton]!
     @IBOutlet var amountTextField: [UITextField]!
     
@@ -57,6 +64,7 @@ class CurrencyViewController: UIViewController {
         for button in selectCurrencyButton {
             button.roundButton()
             button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.baselineAdjustment = .alignCenters
         }
         
         setupButton()
@@ -97,6 +105,24 @@ class CurrencyViewController: UIViewController {
         }
     }
     
+    // MARK: - Animations
+
+    
+    private func currencyTwoAnimation(x: CGFloat, y: CGFloat) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.currencyTwoView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }) { (_) in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.currencyTwoView.transform = CGAffineTransform(translationX: x, y: y)
+            }) { (_) in
+                
+            }
+            
+        }
+    }
+    
+    // MARK: - Segues
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectCurrency" {
             guard let destination = segue.destination as? SelectCurrencyTableViewController else { return }
@@ -111,30 +137,25 @@ class CurrencyViewController: UIViewController {
     @IBAction func selectCurrencyButtonTaped(_ sender: UIButton) {
         performSegue(withIdentifier: "SelectCurrency", sender: sender.tag)
     }
+    @IBAction func reverseButtonPressed() {
+        switched = !switched
+    }
     
 }
 
 extension CurrencyViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard var rateOne = currencyOne?.rate else { return }
-        guard var rateTwo = currencyTwo?.rate else { return }
+        guard let rateOne = currencyOne?.rate else { return }
+        guard let rateTwo = currencyTwo?.rate else { return }
         guard let text = textField.text else { return }
-        guard let amount = Double(text) else { return }
-        
-        if textField.text == nil {
-            for textField in amountTextField {
-                rateOne = 0
-                rateTwo = 0
-            }
-        }
         
         if !switched {
-            let result = currencyService.convertCurrencies(from: rateOne, to: rateTwo, amount: amount)
-            amountTextField[1].text = "\(result)"
+            let result = currencyService.convertCurrencies(from: rateOne, to: rateTwo, amount: text)
+            amountTextField[1].text = result
         } else {
-            let result = currencyService.convertCurrencies(from: rateTwo, to: rateOne, amount: amount)
-            amountTextField[1].text = "\(result)"
+            let result = currencyService.convertCurrencies(from: rateTwo, to: rateOne, amount: text)
+            amountTextField[0].text = result
         }
     }
     

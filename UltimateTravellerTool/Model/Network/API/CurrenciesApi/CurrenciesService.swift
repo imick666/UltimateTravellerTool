@@ -11,6 +11,7 @@ import Foundation
 class CurrenciesService {
     
     //MARK : - Properties
+    private let formatter = NumberFormatter()
     private var httpClient: HTTPClient
     private let baseUrl = URL(string: "http://data.fixer.io/api/latest")
     
@@ -27,9 +28,13 @@ class CurrenciesService {
         }
     }
     
-    func convertCurrencies(from: Double, to: Double, amount: Double) -> Double {
+    func convertCurrencies(from: Double, to: Double, amount: String) -> String? {
+        guard let amount = formatter.number(from: amount) as? Double else { return "" }
         let amountInEuro = amount / from
-        let result = amountInEuro * to
+        let converted = amountInEuro * to
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        let result = formatter.string(for: converted)
         return result
     }
 }

@@ -58,16 +58,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="357.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I5u-ZO-jKM">
-                                                <rect key="frame" x="0.0" y="100.5" width="414" height="156.5"/>
+                                                <rect key="frame" x="0.0" y="104.5" width="414" height="148.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0,00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N6r-oO-CTw">
-                                                        <rect key="frame" x="129.5" y="0.0" width="155.5" height="81.5"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="0,00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N6r-oO-CTw">
+                                                        <rect key="frame" x="143.5" y="0.0" width="127.5" height="73.5"/>
                                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGd-T8-5XI" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                        <rect key="frame" x="132" y="96.5" width="150" height="60"/>
+                                                        <rect key="frame" x="132" y="88.5" width="150" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="51I-N5-TBQ"/>
@@ -84,7 +84,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="I5u-ZO-jKM" firstAttribute="centerX" secondItem="E5R-kl-r83" secondAttribute="centerX" id="7ga-7D-WA5"/>
                                             <constraint firstAttribute="trailing" secondItem="I5u-ZO-jKM" secondAttribute="trailing" id="E8M-xw-wGU"/>
@@ -96,16 +96,16 @@
                                         <rect key="frame" x="0.0" y="367.5" width="414" height="357.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vse-Ac-XDY">
-                                                <rect key="frame" x="0.0" y="100.5" width="414" height="156.5"/>
+                                                <rect key="frame" x="0.0" y="104.5" width="414" height="148.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0,00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lss-UF-tbp">
-                                                        <rect key="frame" x="129.5" y="0.0" width="155.5" height="81.5"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="0,00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lss-UF-tbp">
+                                                        <rect key="frame" x="143.5" y="0.0" width="127.5" height="73.5"/>
                                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="60"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                                     </textField>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVM-g2-RpT" customClass="RoundedButton" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                        <rect key="frame" x="132" y="96.5" width="150" height="60"/>
+                                                        <rect key="frame" x="132" y="88.5" width="150" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="WLZ-An-K6U"/>
@@ -122,7 +122,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="vse-Ac-XDY" firstAttribute="leading" secondItem="hHc-Gk-97X" secondAttribute="leading" id="HRa-2x-wxB"/>
                                             <constraint firstAttribute="trailing" secondItem="vse-Ac-XDY" secondAttribute="trailing" id="Jb8-V2-Udh"/>
@@ -132,19 +132,36 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-7U-xCZ">
+                                <rect key="frame" x="174.5" y="415.5" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="HP0-uX-XTR"/>
+                                    <constraint firstAttribute="width" secondItem="bQU-7U-xCZ" secondAttribute="height" multiplier="1:1" id="UbO-gV-df1"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="reverse arrow"/>
+                                <connections>
+                                    <action selector="reverseButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="j4Q-wq-cXT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="bQU-7U-xCZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HpY-9O-NTp"/>
                             <constraint firstItem="2Sy-Ot-yrG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mos-Vk-PPx"/>
                             <constraint firstItem="2Sy-Ot-yrG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="U5p-8o-qlv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Sy-Ot-yrG" secondAttribute="bottom" id="ZR3-lM-0HC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Sy-Ot-yrG" secondAttribute="trailing" id="aMl-RT-DLq"/>
+                            <constraint firstItem="bQU-7U-xCZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iDi-D0-xvY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="fAR-fA-9W5"/>
                     <navigationItem key="navigationItem" id="fra-Md-gxa"/>
                     <connections>
+                        <outlet property="currencyOneStakView" destination="I5u-ZO-jKM" id="IYO-a6-ju9"/>
+                        <outlet property="currencyOneView" destination="E5R-kl-r83" id="Nyx-V9-vG6"/>
+                        <outlet property="currencyTwoStackView" destination="vse-Ac-XDY" id="aeL-SB-Duy"/>
+                        <outlet property="currencyTwoView" destination="hHc-Gk-97X" id="uSg-2Q-1JM"/>
                         <outletCollection property="selectCurrencyButton" destination="CGd-T8-5XI" collectionClass="NSMutableArray" id="Aqa-lB-lvf"/>
                         <outletCollection property="selectCurrencyButton" destination="UVM-g2-RpT" collectionClass="NSMutableArray" id="ctn-Py-scr"/>
                         <outletCollection property="amountTextField" destination="N6r-oO-CTw" collectionClass="NSMutableArray" id="03p-Kc-B4p"/>
@@ -186,4 +203,7 @@
             <point key="canvasLocation" x="1091" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reverse arrow" width="65" height="65"/>
+    </resources>
 </document>
