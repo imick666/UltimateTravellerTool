@@ -196,7 +196,9 @@
                             <outlet property="delegate" destination="lMU-2a-HO8" id="7hr-lj-Olv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Og9-hy-izj"/>
+                    <navigationItem key="navigationItem" id="Og9-hy-izj">
+                        <nil key="title"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kc5-dG-ntI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

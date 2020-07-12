@@ -87,4 +87,15 @@ class CurrenciesTest: XCTestCase {
         
         wait(for: [expectation], timeout: 0.01)
     }
+    
+    func testConvertOneEurosInEuros() {
+        let currencies = CurrenciesService()
+        let amount = "1"
+        let rateOne = 1.00
+        let rateTow = 1.00
+        
+        let result = currencies.convertCurrencies(from: rateOne, to: rateTow, amount: amount)
+        
+        XCTAssertEqual(result, "1,00")
+    }
 }
