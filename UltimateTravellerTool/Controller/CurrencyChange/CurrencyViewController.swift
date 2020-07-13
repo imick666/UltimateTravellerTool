@@ -146,8 +146,13 @@ class CurrencyViewController: UIViewController {
 extension CurrencyViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let rateOne = currencyOne?.rate else { return }
-        guard let rateTwo = currencyTwo?.rate else { return }
+        guard let rateOne = currencyOne?.rate, let rateTwo = currencyTwo?.rate else {
+            alertController.showAlert(title: "No Currency Selected", message: "Please Select currencies before", controller: self)
+            for textField in amountTextField {
+                textField.text = nil
+            }
+            return
+        }
         guard let text = textField.text else { return }
         
         if !switched {
@@ -172,7 +177,5 @@ extension CurrencyViewController: PassSelectedCurrency {
             return
         }
     }
-    
-    
 }
 

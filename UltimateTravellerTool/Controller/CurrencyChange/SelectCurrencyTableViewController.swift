@@ -14,34 +14,81 @@ class SelectCurrencyTableViewController: UITableViewController {
         case iso, name
     }
     
+    typealias currenciesIndex = (indexTitle: String, currencies: [(name:String, code: String)])
+    
+    // Outlets
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     // MARK: - Properties
 
     var passSelectedCurrencyDelegate: PassSelectedCurrency?
     var rates: CurrenciesResult?
     var buttonTag: Int?
-    var sortBy: SortBy = .name
+    var sortBy: SortBy = .name {
+        didSet {
+            sortedSectionIndex()
+        }
+    }
     //create currencies list sorted in section by name
-    var ratesList: [(indexTitle: String, currencies: [(name:String, code: String)])] {
-        return sortedSectionIndex()
+    var ratesList = [currenciesIndex]() {
+        didSet {
+            tableView.reloadData()
+        }
     }
     
     // MARK: - View life Cycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        searchBar.delegate = self
+        sortedSectionIndex()
     }
 
     // MARK: - Methodes
     
+    //Sort index title
+   private func sortedSectionIndex() {
+       var currencies: [(name: String, code: String)] {
+           switch sortBy {
+           case .name:
+               return sortByName()
+           case .iso:
+               return sortByIso()
+           }
+       }
+       var result = [currenciesIndex]()
+       
+       for currency in currencies {
+           var stringToCompare: String? {
+               switch sortBy {
+               case .name:
+                   return currency.name.first?.uppercased()
+               case .iso:
+                   return currency.code.first?.uppercased()
+               }
+           }
+           
+           // Create tuple with IndexTitle and currencies Array
+           if result.contains(where: {$0.indexTitle.uppercased() == stringToCompare}) {
+               guard let index = result.lastIndex(where: { $0.indexTitle.uppercased() == stringToCompare}) else { continue }
+               result[index].currencies.append(currency)
+           } else {
+               guard let indexTitle = stringToCompare else { continue }
+               let elementToInsert = (indexTitle, [(currency)])
+               result.append(elementToInsert)
+           }
+       }
+       
+       // Sort IndexTitle
+       ratesList = result.sorted { $0.indexTitle < $1.indexTitle }
+   }
+    
     private func sortByName() -> [(name: String, code: String)] {
         guard let list = rates?.rates else { return [(String, String)]() }
         var currencies = [(name: String, code: String)]()
+        // Create tuple with Name and ISO Code
         for (key, _) in list {
             guard let name = Locale.current.localizedString(forCurrencyCode: key) else { continue }
             let currency = (name: name, code: key)
@@ -55,48 +102,15 @@ class SelectCurrencyTableViewController: UITableViewController {
     private func sortByIso() -> [(name: String, code: String)] {
         guard let list = rates?.rates else { return [(String, String)]() }
         var currencies = [(name: String, code: String)]()
+        //create tuple with Name and ISO Code
         for (key, _) in list {
             guard let name = Locale.current.localizedString(forCurrencyCode: key) else { continue }
             let currency = (name: name, code: key)
             currencies.append(currency)
         }
         
-        //Sort all currencies by name
+        //Sort all currencies by ISO
         return currencies.sorted { $0.code < $1.code }
-    }
-    
-    //Sort index title
-    private func sortedSectionIndex() -> [(indexTitle: String, currencies: [(name:String, code: String)])] {
-        var currencies: [(name: String, code: String)] {
-            switch sortBy {
-            case .name:
-                return sortByName()
-            case .iso:
-                return sortByIso()
-            }
-        }
-        var result = [(indexTitle: String, currencies: [(name: String, code: String)])]()
-        
-        for currency in currencies {
-            var stringToCompare: String? {
-                switch sortBy {
-                case .name:
-                    return currency.name.first?.uppercased()
-                case .iso:
-                    return currency.code.first?.uppercased()
-                }
-            }
-            //create section
-            if result.contains(where: {$0.indexTitle.uppercased() == stringToCompare}) {
-                guard let index = result.lastIndex(where: { $0.indexTitle.uppercased() == stringToCompare}) else { continue }
-                result[index].currencies.append(currency)
-            } else {
-                guard let indexTitle = stringToCompare else { continue }
-                let elementToInsert = (indexTitle, [(currency)])
-                result.append(elementToInsert)
-            }
-        }
-        return result.sorted { $0.indexTitle < $1.indexTitle }
     }
     
     // MARK: - Table view data source
@@ -196,4 +210,45 @@ class SelectCurrencyTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension SelectCurrencyTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            sortedSectionIndex()
+            return
+        }
+        
+        var newIndex = [currenciesIndex]()
+        
+        for index in ratesList {
+            var indexTitle = ""
+            var currencies = [(name: String, code: String)]()
+            for currency in index.currencies where currency.name.lowercased().hasPrefix(searchText.lowercased()) {
+                indexTitle = index.indexTitle
+                currencies.append(currency)
+            }
+            currencies.sort { $0.name < $1.name }
+            let indexToAdd = (indexTitle, currencies)
+            newIndex.append(indexToAdd)
+        }
+        
+        ratesList = newIndex
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            sortBy = .name
+        case 1:
+            sortBy = .iso
+        default:
+            return
+        }
+    }
+}
+
+extension SelectCurrencyTableViewController {
+    
 }

@@ -181,9 +181,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" showsScopeBar="YES" id="0U1-bk-gV3">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Name</string>
+                                <string>ISO</string>
+                            </scopeButtonTitles>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iOM-zJ-kdY">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iOM-zJ-kdY" id="IS8-AN-zFN">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -199,6 +208,9 @@
                     <navigationItem key="navigationItem" id="Og9-hy-izj">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="0U1-bk-gV3" id="qh4-ir-KvH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kc5-dG-ntI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
