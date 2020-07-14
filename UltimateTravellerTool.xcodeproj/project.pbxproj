@@ -12,6 +12,7 @@
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* RoundedButton.swift */; };
 		E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */; };
+		E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E099FFEE24BDFC3900422CBB /* CurrencyTableViewCell.swift */; };
 		E0A8A51024AA41F400DA145C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A50F24AA41F400DA145C /* AppDelegate.swift */; };
 		E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A51124AA41F400DA145C /* SceneDelegate.swift */; };
 		E0A8A51424AA41F400DA145C /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A51324AA41F400DA145C /* CurrencyViewController.swift */; };
@@ -47,6 +48,7 @@
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyTableViewController.swift; sourceTree = "<group>"; };
+		E099FFEE24BDFC3900422CBB /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		E0A8A50C24AA41F400DA145C /* UltimateTravellerTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimateTravellerTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8A50F24AA41F400DA145C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A8A51124AA41F400DA145C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,22 @@
 			path = CurrencyChange;
 			sourceTree = "<group>";
 		};
+		E099FFEC24BDFC0800422CBB /* CurrenciesTab */ = {
+			isa = PBXGroup;
+			children = (
+				E099FFED24BDFC1F00422CBB /* Cells */,
+			);
+			path = CurrenciesTab;
+			sourceTree = "<group>";
+		};
+		E099FFED24BDFC1F00422CBB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E099FFEE24BDFC3900422CBB /* CurrencyTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E0A8A50324AA41F400DA145C = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +169,7 @@
 		E0A8A53424AA426D00DA145C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E099FFEC24BDFC0800422CBB /* CurrenciesTab */,
 				E0A8A51524AA41F400DA145C /* Main.storyboard */,
 				E0A8A51D24AA41F400DA145C /* LaunchScreen.storyboard */,
 				E089E0F824B09B240023909A /* RoundedButton.swift */,
@@ -342,6 +361,7 @@
 				E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */,
 				E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */,
 				E0A8A54624AA4BFD00DA145C /* CurrenciesService.swift in Sources */,
+				E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */,
 				E089E0F924B09B240023909A /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,31 +8,36 @@
 
 import UIKit
 
-
 class SelectCurrencyTableViewController: UITableViewController {
+    
     enum SortBy {
-        case iso, name
+        case iso
+        case name
     }
     
-    typealias currenciesIndex = (indexTitle: String, currencies: [(name:String, code: String)])
+    typealias CurrenciesIndex = (indexTitle: String, currencies: AllCurrencies)
+    typealias AllCurrencies = [(name: String, code: String)]
     
     // Outlets
-    
+
     @IBOutlet weak var searchBar: UISearchBar!
     
     
     // MARK: - Properties
 
     var passSelectedCurrencyDelegate: PassSelectedCurrency?
-    var rates: CurrenciesResult?
+    var rates: CurrenciesResult!
     var buttonTag: Int?
     var sortBy: SortBy = .name {
         didSet {
-            sortedSectionIndex()
+            sortedSectionIndex { (result) in
+                dataSource = result
+            }
         }
     }
+    
     //create currencies list sorted in section by name
-    var ratesList = [currenciesIndex]() {
+    var dataSource = [CurrenciesIndex]() {
         didSet {
             tableView.reloadData()
         }
@@ -43,24 +48,39 @@ class SelectCurrencyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        sortedSectionIndex()
+        
+        //Set sortBy from scope selection
+        switch searchBar.selectedScopeButtonIndex {
+        case 0:
+            sortBy = .name
+        case 1:
+            sortBy = .iso
+        default:
+            return
+        }
+        
+        //Open table on "A" section with searchBar hide
+        sortedSectionIndex { (result) in
+            dataSource = result
+        }
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
     }
 
     // MARK: - Methodes
     
     //Sort index title
-   private func sortedSectionIndex() {
-       var currencies: [(name: String, code: String)] {
-           switch sortBy {
-           case .name:
-               return sortByName()
-           case .iso:
-               return sortByIso()
-           }
-       }
-       var result = [currenciesIndex]()
-       
-       for currency in currencies {
+    private func sortedSectionIndex(completion: (_ result: [CurrenciesIndex]) -> Void) {
+        var result = [CurrenciesIndex]()
+        var sortedCurrencies: AllCurrencies {
+            switch sortBy {
+            case .name:
+                return sortByName()
+            case .iso:
+                return sortByIso()
+            }
+        }
+
+        for currency in sortedCurrencies {
            var stringToCompare: String? {
                switch sortBy {
                case .name:
@@ -69,7 +89,7 @@ class SelectCurrencyTableViewController: UITableViewController {
                    return currency.code.first?.uppercased()
                }
            }
-           
+
            // Create tuple with IndexTitle and currencies Array
            if result.contains(where: {$0.indexTitle.uppercased() == stringToCompare}) {
                guard let index = result.lastIndex(where: { $0.indexTitle.uppercased() == stringToCompare}) else { continue }
@@ -79,14 +99,16 @@ class SelectCurrencyTableViewController: UITableViewController {
                let elementToInsert = (indexTitle, [(currency)])
                result.append(elementToInsert)
            }
-       }
-       
+        }
+        
        // Sort IndexTitle
-       ratesList = result.sorted { $0.indexTitle < $1.indexTitle }
-   }
+        result.sort { $0.indexTitle < $1.indexTitle }
+        
+        completion(result)
+    }
     
-    private func sortByName() -> [(name: String, code: String)] {
-        guard let list = rates?.rates else { return [(String, String)]() }
+    private func sortByName() -> AllCurrencies {
+        let list = rates.rates
         var currencies = [(name: String, code: String)]()
         // Create tuple with Name and ISO Code
         for (key, _) in list {
@@ -99,8 +121,8 @@ class SelectCurrencyTableViewController: UITableViewController {
         return currencies.sorted { $0.name < $1.name }
     }
     
-    private func sortByIso() -> [(name: String, code: String)] {
-        guard let list = rates?.rates else { return [(String, String)]() }
+    private func sortByIso() -> AllCurrencies {
+        let list = rates.rates
         var currencies = [(name: String, code: String)]()
         //create tuple with Name and ISO Code
         for (key, _) in list {
@@ -113,44 +135,68 @@ class SelectCurrencyTableViewController: UITableViewController {
         return currencies.sorted { $0.code < $1.code }
     }
     
+    // MARK: - Animation
+    
+    private func hideSearchBar() {
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return ratesList.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let title = ratesList[section].indexTitle
-        return title
+        return dataSource.count
     }
 
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .systemBlue
+
+        let title = dataSource[section].indexTitle
+        let titleLable = UILabel()
+        titleLable.text = title
+        titleLable.textColor = .white
+        titleLable.font = .systemFont(ofSize: 17, weight: .semibold)
+        titleLable.frame = CGRect(x: 20, y: 5, width: 100, height: 25)
+        titleLable.textAlignment = .left
+
+        view.addSubview(titleLable)
+
+        return view
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if dataSource[section].indexTitle == "" {
+            return 0
+        }
+        return 35
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return ratesList[section].currencies.count
+        return dataSource[section].currencies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        
-        let currency = ratesList[indexPath.section].currencies[indexPath.row]
+        guard let currencyCell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as? CurrencyTableViewCell else { return UITableViewCell() }
+
+        let currency = dataSource[indexPath.section].currencies[indexPath.row]
         let currencyName = currency.name
         let currencyCode = currency.code
+        
         switch sortBy {
         case .name:
-            cell.textLabel?.text = "\(currencyName) - \(currencyCode)"
+            currencyCell.currencyName = currencyName
+            currencyCell.currencyCode = currencyCode
         case .iso:
-            cell.textLabel?.text = "\(currencyCode) - \(currencyName)"
+            currencyCell.currencyName = currencyCode
+            currencyCell.currencyCode = currencyName
         }
-        
-
-        // Configure the cell...
-
-        return cell
+        return currencyCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedIso = ratesList[indexPath.section].currencies[indexPath.row].code
+        let selectedIso = dataSource[indexPath.section].currencies[indexPath.row].code
         guard let selectCurrency = rates?.rates[selectedIso] else { return }
         let dataToPass = (code: selectedIso, rate: selectCurrency)
         passSelectedCurrencyDelegate?.passCurrency(dataToPass, forButton: buttonTag)
@@ -159,84 +205,60 @@ class SelectCurrencyTableViewController: UITableViewController {
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexTitle = [String]()
-        for title in ratesList {
+        for title in dataSource {
             indexTitle.append(title.indexTitle)
         }
+        
+        let searchIndex = UITableView.indexSearch
+        indexTitle.insert(searchIndex, at: 0)
+        
         return indexTitle
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        if title == UITableView.indexSearch {
+            return -1
+        } else {
+            return index - 1
+        }
     }
-    */
+    
+    // MARK: - Actions
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
 
+// MARK: - Extensions
+
 extension SelectCurrencyTableViewController: UISearchBarDelegate {
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
-            sortedSectionIndex()
+            sortedSectionIndex { (result) in
+                dataSource = result
+            }
             return
         }
-        
-        var newIndex = [currenciesIndex]()
-        
-        for index in ratesList {
-            var indexTitle = ""
-            var currencies = [(name: String, code: String)]()
-            for currency in index.currencies where currency.name.lowercased().hasPrefix(searchText.lowercased()) {
-                indexTitle = index.indexTitle
-                currencies.append(currency)
+
+        var newIndex = [CurrenciesIndex]()
+
+        sortedSectionIndex { (result) in
+            for index in result {
+                var indexTitle = ""
+                var currencies = [(name: String, code: String)]()
+                for currency in index.currencies where currency.name.lowercased().hasPrefix(searchText.lowercased()) {
+                    indexTitle = index.indexTitle
+                    currencies.append(currency)
+                }
+                currencies.sort { $0.name < $1.name }
+                let indexToAdd = (indexTitle, currencies)
+                newIndex.append(indexToAdd)
             }
-            currencies.sort { $0.name < $1.name }
-            let indexToAdd = (indexTitle, currencies)
-            newIndex.append(indexToAdd)
         }
-        
-        ratesList = newIndex
+
+        dataSource = newIndex
     }
-    
+
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         switch selectedScope {
         case 0:
@@ -246,9 +268,13 @@ extension SelectCurrencyTableViewController: UISearchBarDelegate {
         default:
             return
         }
-    }
-}
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
 
-extension SelectCurrencyTableViewController {
-    
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

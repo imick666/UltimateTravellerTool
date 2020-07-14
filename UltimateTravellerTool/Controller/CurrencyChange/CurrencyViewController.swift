@@ -106,20 +106,6 @@ class CurrencyViewController: UIViewController {
     }
     
     // MARK: - Animations
-
-    
-    private func currencyTwoAnimation(x: CGFloat, y: CGFloat) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.currencyTwoView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        }) { (_) in
-            UIView.animate(withDuration: 0.5, animations: {
-                self.currencyTwoView.transform = CGAffineTransform(translationX: x, y: y)
-            }) { (_) in
-                
-            }
-            
-        }
-    }
     
     // MARK: - Segues
     
@@ -135,8 +121,13 @@ class CurrencyViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func selectCurrencyButtonTaped(_ sender: UIButton) {
+        guard currencyRate != nil else {
+            alertController.showAlert(title: "Error", message: "A probleme is append, please retry later", controller: self)
+            return
+        }
         performSegue(withIdentifier: "SelectCurrency", sender: sender.tag)
     }
+    
     @IBAction func reverseButtonPressed() {
         switched = !switched
     }
