@@ -30,7 +30,6 @@ class CurrencyViewController: UIViewController {
     let currencyService = CurrenciesService()
     var currencyRate: CurrenciesResult?
     weak var PassSelectedCurrencyDelegate: PassSelectedCurrency?
-    let alertController = Alert()
     
     var switched = false {
         didSet {
@@ -92,11 +91,11 @@ class CurrencyViewController: UIViewController {
     }
     
     private func getCurrenciesRates() {
-        currencyService.getCurrencies { (result) in
+        currencyService.getCurrencies { [unowned self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    self.alertController.showAlert(title: "Error", message: error.description, controller: self)
+                    self.showAlert(title: "Error", message: error.description)
                 case .success(let data):
                     self.currencyRate = data
                 }
@@ -122,14 +121,14 @@ class CurrencyViewController: UIViewController {
     
     @IBAction func selectCurrencyButtonTaped(_ sender: UIButton) {
         guard currencyRate != nil else {
-            alertController.showAlert(title: "Error", message: "A probleme is append, please retry later", controller: self)
+            showAlert(title: "Error", message: "A probleme is append, please retry later")
             return
         }
         performSegue(withIdentifier: "SelectCurrency", sender: sender.tag)
     }
     
     @IBAction func reverseButtonPressed() {
-        switched = !switched
+        switched.toggle()
     }
     
 }
@@ -138,7 +137,7 @@ extension CurrencyViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let rateOne = currencyOne?.rate, let rateTwo = currencyTwo?.rate else {
-            alertController.showAlert(title: "No Currency Selected", message: "Please Select currencies before", controller: self)
+            showAlert(title: "No Currency Selected", message: "Please Select currencies before")
             for textField in amountTextField {
                 textField.text = nil
             }
