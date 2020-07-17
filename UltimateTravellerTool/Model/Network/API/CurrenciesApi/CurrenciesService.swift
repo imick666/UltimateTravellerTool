@@ -29,11 +29,13 @@ class CurrenciesService {
     }
     
     func convertCurrencies(from: Double, to: Double, amount: String) -> String? {
-        guard let amount = formatter.number(from: amount) as? Double else { return "" }
+        let amountFormatted = amount.replacingOccurrences(of: " ", with: "")
+        guard let amount = formatter.number(from: amountFormatted) as? Double else { return "" }
         let amountInEuro = amount / from
         let converted = amountInEuro * to
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = ""
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.groupingSeparator = " "
         let result = formatter.string(for: converted)
         return result
     }

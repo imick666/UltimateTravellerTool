@@ -22,7 +22,6 @@ class SelectCurrencyTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     // MARK: - Properties
 
     var passSelectedCurrencyDelegate: PassSelectedCurrency?

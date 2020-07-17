@@ -14,49 +14,53 @@ protocol PassSelectedCurrency: class {
 
 class CurrencyViewController: UIViewController {
     
-    //MARK: - Outlet
-    @IBOutlet weak var currencyOneView: UIView!
-    @IBOutlet weak var currencyTwoView: UIView!
-    
-    @IBOutlet weak var currencyOneStakView: UIStackView!
-    @IBOutlet weak var currencyTwoStackView: UIStackView!
-    
-    
+    // MARK: - Outlet
     @IBOutlet var selectCurrencyButton: [RoundedButton]!
     @IBOutlet var amountTextField: [UITextField]!
     
-    //MARK: - Properties
-
+    @IBOutlet weak var lastUpdateLabel: UILabel!
+    
+    // MARK: - Properties
+    
     let currencyService = CurrenciesService()
-    var currencyRate: CurrenciesResult?
+    var currencyRate: CurrenciesResult? {
+        didSet {
+            let date = timeStampToDay(currencyRate?.timestamp ?? 0)
+            let hour = timeStampToHour(currencyRate?.timestamp ?? 0)
+            lastUpdateLabel.text = "Last update : \(date) at \(hour)"
+        }
+    }
+    
     weak var PassSelectedCurrencyDelegate: PassSelectedCurrency?
     
     var switched = false {
         didSet {
-            setupTextField()
+            currencySwitched()
         }
     }
+    
     var currencyOne: (code: String, rate: Double)? {
         didSet {
-            setupButton()
+            currencySwitched()
         }
     }
+    
     var currencyTwo: (code: String, rate: Double)? {
         didSet {
-            setupButton()
+            currencySwitched()
         }
     }
-    //MARK: - View life cycle
+    
+    // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setpUp()
     }
 
-    //MARK: - Methodes
+    // MARK: - Methodes
     
     private func setpUp() {
-        // Get currencies rates
         getCurrenciesRates()
         
         //Draw round button
@@ -66,27 +70,39 @@ class CurrencyViewController: UIViewController {
             button.titleLabel?.baselineAdjustment = .alignCenters
         }
         
-        setupButton()
-        
         //setup text field
-        setupTextField()
+        currencySwitched()
+        amountTextField[1].isEnabled = false
+        amountTextField[0].delegate = self
     }
     
-    private func setupButton() {
-        selectCurrencyButton[0].setTitle(currencyOne?.code ?? "Select Currency", for: .normal)
-        selectCurrencyButton[1].setTitle(currencyTwo?.code ?? "Select Currency", for: .normal)
-    }
-    
-    private func setupTextField() {
+    private func currencySwitched() {
         switch switched {
-        case false :
-            amountTextField[0].isEnabled = true
-            amountTextField[1].isEnabled = false
-            amountTextField[0].delegate = self
-        case true :
-            amountTextField[0].isEnabled = false
-            amountTextField[1].isEnabled = true
-            amountTextField[1].delegate = self
+        case true:
+            selectCurrencyButton[0].setTitle(currencyTwo?.code ?? "Select Currency", for: .normal)
+            selectCurrencyButton[1].setTitle(currencyOne?.code ?? "Select Currency", for: .normal)
+        case false:
+            selectCurrencyButton[0].setTitle(currencyOne?.code ?? "Select Currency", for: .normal)
+            selectCurrencyButton[1].setTitle(currencyTwo?.code ?? "Select Currency", for: .normal)
+        }
+        amountTextField[0].text = amountTextField[1].text
+    }
+    
+    func makeConvert(amount: String) {
+        guard let rateOne = currencyOne?.rate, let rateTwo = currencyTwo?.rate else {
+            showAlert(title: "No Currency Selected", message: "Please Select currencies before")
+            for textField in amountTextField {
+                textField.text = nil
+            }
+            return
+        }
+        
+        if !switched {
+            let result = currencyService.convertCurrencies(from: rateOne, to: rateTwo, amount: amount)
+            amountTextField[1].text = result
+        } else {
+            let result = currencyService.convertCurrencies(from: rateTwo, to: rateOne, amount: amount)
+            amountTextField[1].text = result
         }
     }
     
@@ -100,7 +116,6 @@ class CurrencyViewController: UIViewController {
                     self.currencyRate = data
                 }
             }
-            
         }
     }
     
@@ -133,28 +148,7 @@ class CurrencyViewController: UIViewController {
     
 }
 
-extension CurrencyViewController: UITextFieldDelegate {
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let rateOne = currencyOne?.rate, let rateTwo = currencyTwo?.rate else {
-            showAlert(title: "No Currency Selected", message: "Please Select currencies before")
-            for textField in amountTextField {
-                textField.text = nil
-            }
-            return
-        }
-        guard let text = textField.text else { return }
-        
-        if !switched {
-            let result = currencyService.convertCurrencies(from: rateOne, to: rateTwo, amount: text)
-            amountTextField[1].text = result
-        } else {
-            let result = currencyService.convertCurrencies(from: rateTwo, to: rateOne, amount: text)
-            amountTextField[0].text = result
-        }
-    }
-    
-}
+
 
 extension CurrencyViewController: PassSelectedCurrency {
     func passCurrency(_ currency: (code: String, rate: Double), forButton: Int?) {
