@@ -15,7 +15,7 @@ protocol PassSelectedCurrency: class {
 class CurrencyViewController: UIViewController {
     
     // MARK: - Outlet
-    @IBOutlet var selectCurrencyButton: [RoundedButton]!
+    @IBOutlet var selectCurrencyButton: [CurrencyButton]!
     @IBOutlet var amountTextField: [UITextField]!
     
     @IBOutlet weak var lastUpdateLabel: UILabel!
@@ -39,18 +39,6 @@ class CurrencyViewController: UIViewController {
         }
     }
     
-    var currencyOne: (code: String, rate: Double)? {
-        didSet {
-            currencySwitched()
-        }
-    }
-    
-    var currencyTwo: (code: String, rate: Double)? {
-        didSet {
-            currencySwitched()
-        }
-    }
-    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -65,31 +53,29 @@ class CurrencyViewController: UIViewController {
         
         //Draw round button
         for button in selectCurrencyButton {
-            button.roundButton()
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.baselineAdjustment = .alignCenters
+            button.setupButton()
         }
         
         //setup text field
-        currencySwitched()
-        amountTextField[1].isEnabled = false
         amountTextField[0].delegate = self
+        
+        // Create tap gesture for dismiss keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeayboard))
+        view.addGestureRecognizer(tapGesture)
+        
     }
     
     private func currencySwitched() {
-        switch switched {
-        case true:
-            selectCurrencyButton[0].setTitle(currencyTwo?.code ?? "Select Currency", for: .normal)
-            selectCurrencyButton[1].setTitle(currencyOne?.code ?? "Select Currency", for: .normal)
-        case false:
-            selectCurrencyButton[0].setTitle(currencyOne?.code ?? "Select Currency", for: .normal)
-            selectCurrencyButton[1].setTitle(currencyTwo?.code ?? "Select Currency", for: .normal)
-        }
+        let currencyOne = selectCurrencyButton[0].currency
+        selectCurrencyButton[0].currency = selectCurrencyButton[1].currency
+        selectCurrencyButton[1].currency = currencyOne
         amountTextField[0].text = amountTextField[1].text
+        makeConvert(amount: amountTextField[0].text ?? "")
     }
     
     func makeConvert(amount: String) {
-        guard let rateOne = currencyOne?.rate, let rateTwo = currencyTwo?.rate else {
+        guard let rateOne = selectCurrencyButton[0].currency?.rate, let rateTwo = selectCurrencyButton[1].currency?.rate else {
+            dismissKeayboard()
             showAlert(title: "No Currency Selected", message: "Please Select currencies before")
             for textField in amountTextField {
                 textField.text = nil
@@ -97,13 +83,8 @@ class CurrencyViewController: UIViewController {
             return
         }
         
-        if !switched {
-            let result = currencyService.convertCurrencies(from: rateOne, to: rateTwo, amount: amount)
-            amountTextField[1].text = result
-        } else {
-            let result = currencyService.convertCurrencies(from: rateTwo, to: rateOne, amount: amount)
-            amountTextField[1].text = result
-        }
+        let result = currencyService.convertCurrencies(from: rateOne, to: rateTwo, amount: amount)
+        amountTextField[1].text = result
     }
     
     private func getCurrenciesRates() {
@@ -119,7 +100,12 @@ class CurrencyViewController: UIViewController {
         }
     }
     
-    // MARK: - Animations
+    // MARK: - Selector OBJC
+    
+    @objc
+    private func dismissKeayboard() {
+        amountTextField[0].resignFirstResponder()
+    }
     
     // MARK: - Segues
     
@@ -139,26 +125,27 @@ class CurrencyViewController: UIViewController {
             showAlert(title: "Error", message: "A probleme is append, please retry later")
             return
         }
+        dismissKeayboard()
         performSegue(withIdentifier: "SelectCurrency", sender: sender.tag)
     }
     
     @IBAction func reverseButtonPressed() {
+        guard selectCurrencyButton[0].currency != nil, selectCurrencyButton[1].currency != nil else {
+            showAlert(title: "No Currency Selected", message: "Please Select currencies before")
+            return
+        }
         switched.toggle()
     }
     
 }
 
-
-
 extension CurrencyViewController: PassSelectedCurrency {
     func passCurrency(_ currency: (code: String, rate: Double), forButton: Int?) {
-        switch forButton {
-        case 0:
-            currencyOne = currency
-        case 1:
-            currencyTwo = currency
-        default:
-            return
+        for button in selectCurrencyButton where button.tag == forButton {
+            button.currency = currency
+        }
+        for textField in amountTextField {
+            textField.text = nil
         }
     }
 }

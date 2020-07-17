@@ -33,9 +33,9 @@ class CurrenciesService {
         guard let amount = formatter.number(from: amountFormatted) as? Double else { return "" }
         let amountInEuro = amount / from
         let converted = amountInEuro * to
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
-        formatter.groupingSeparator = " "
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        formatter.groupingSeparator = ""
         let result = formatter.string(for: converted)
         return result
     }

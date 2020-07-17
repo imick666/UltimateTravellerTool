@@ -15,7 +15,7 @@ class SelectCurrencyTableViewController: UITableViewController {
         case name
     }
     
-    typealias CurrenciesIndex = (indexTitle: String, currencies: AllCurrencies)
+    typealias CurrenciesIndex = (indexTitle: String?, currencies: AllCurrencies)
     typealias AllCurrencies = [(name: String, code: String)]
     
     // Outlets
@@ -63,12 +63,14 @@ class SelectCurrencyTableViewController: UITableViewController {
             dataSource = result
         }
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+        
+        tableView.sectionIndexColor = .systemGray
     }
 
     // MARK: - Methodes
     
     //Sort index title
-    private func sortedSectionIndex(completion: (_ result: [CurrenciesIndex]) -> Void) {
+    func sortedSectionIndex(completion: (_ result: [CurrenciesIndex]) -> Void) {
         var result = [CurrenciesIndex]()
         var sortedCurrencies: AllCurrencies {
             switch sortBy {
@@ -90,8 +92,8 @@ class SelectCurrencyTableViewController: UITableViewController {
            }
 
            // Create tuple with IndexTitle and currencies Array
-           if result.contains(where: {$0.indexTitle.uppercased() == stringToCompare}) {
-               guard let index = result.lastIndex(where: { $0.indexTitle.uppercased() == stringToCompare}) else { continue }
+            if result.contains(where: {$0.indexTitle?.uppercased() == stringToCompare}) {
+                guard let index = result.lastIndex(where: { $0.indexTitle?.uppercased() == stringToCompare}) else { continue }
                result[index].currencies.append(currency)
            } else {
                guard let indexTitle = stringToCompare else { continue }
@@ -101,7 +103,7 @@ class SelectCurrencyTableViewController: UITableViewController {
         }
         
        // Sort IndexTitle
-        result.sort { $0.indexTitle < $1.indexTitle }
+        result.sort { $0.indexTitle! < $1.indexTitle! }
         
         completion(result)
     }
@@ -134,12 +136,6 @@ class SelectCurrencyTableViewController: UITableViewController {
         return currencies.sorted { $0.code < $1.code }
     }
     
-    // MARK: - Animation
-    
-    private func hideSearchBar() {
-        
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -166,7 +162,7 @@ class SelectCurrencyTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if dataSource[section].indexTitle == "" {
+        if dataSource[section].indexTitle == nil {
             return 0
         }
         return 35
@@ -202,78 +198,15 @@ class SelectCurrencyTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
 
+    // MARK: Section Index
+    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexTitle = [String]()
         for title in dataSource {
-            indexTitle.append(title.indexTitle)
+            guard let letter = title.indexTitle else { continue }
+            indexTitle.append(letter)
         }
-        
-        let searchIndex = UITableView.indexSearch
-        indexTitle.insert(searchIndex, at: 0)
         
         return indexTitle
-    }
-    
-    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        if title == UITableView.indexSearch {
-            return -1
-        } else {
-            return index - 1
-        }
-    }
-    
-    // MARK: - Actions
-
-    
-}
-
-// MARK: - Extensions
-
-extension SelectCurrencyTableViewController: UISearchBarDelegate {
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {
-            sortedSectionIndex { (result) in
-                dataSource = result
-            }
-            return
-        }
-
-        var newIndex = [CurrenciesIndex]()
-
-        sortedSectionIndex { (result) in
-            for index in result {
-                var indexTitle = ""
-                var currencies = [(name: String, code: String)]()
-                for currency in index.currencies where currency.name.lowercased().hasPrefix(searchText.lowercased()) {
-                    indexTitle = index.indexTitle
-                    currencies.append(currency)
-                }
-                currencies.sort { $0.name < $1.name }
-                let indexToAdd = (indexTitle, currencies)
-                newIndex.append(indexToAdd)
-            }
-        }
-
-        dataSource = newIndex
-    }
-
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        switch selectedScope {
-        case 0:
-            sortBy = .name
-        case 1:
-            sortBy = .iso
-        default:
-            return
-        }
-        searchBar.text = nil
-        searchBar.resignFirstResponder()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
-
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
     }
 }

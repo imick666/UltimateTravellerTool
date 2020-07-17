@@ -19,7 +19,12 @@ extension UIViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
-        return formatter.string(from: date)
+  
+        if formatter.string(from: date) == formatter.string(from: Date()) {
+            return "Today"
+        } else {
+            return formatter.string(from: date)
+        }
     }
     
     func timeStampToHour(_ timestamp: Int) -> String {
