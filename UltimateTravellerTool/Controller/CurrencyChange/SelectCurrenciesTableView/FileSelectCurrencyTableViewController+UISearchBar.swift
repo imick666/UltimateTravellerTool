@@ -34,7 +34,6 @@ extension SelectCurrencyTableViewController: UISearchBarDelegate {
                 newIndex.append(indexToAdd)
             }
         }
-
         dataSource = newIndex
     }
 

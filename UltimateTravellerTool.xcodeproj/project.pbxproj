@@ -136,17 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				E089E0F824B09B240023909A /* CurrencyButton.swift */,
-				E099FFED24BDFC1F00422CBB /* Cells */,
-			);
-			path = CurrenciesTab;
-			sourceTree = "<group>";
-		};
-		E099FFED24BDFC1F00422CBB /* Cells */ = {
-			isa = PBXGroup;
-			children = (
 				E099FFEE24BDFC3900422CBB /* CurrencyTableViewCell.swift */,
 			);
-			path = Cells;
+			path = CurrenciesTab;
 			sourceTree = "<group>";
 		};
 		E0A8A50324AA41F400DA145C = {
