@@ -11,6 +11,8 @@ import XCTest
 
 class CurrentWeatherTest: XCTestCase {
 
+    let expectation = XCTestExpectation(description: "wait for queue")
+    
     private func createWeatherService(session: FakeUrlSession) -> CurrentWeatherService {
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
@@ -19,7 +21,6 @@ class CurrentWeatherTest: XCTestCase {
     }
     
     func testBadUrlResponse() {
-        let expectation = XCTestExpectation(description: "wait for queue")
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrentWeatherFakeResponse.badUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
@@ -28,7 +29,7 @@ class CurrentWeatherTest: XCTestCase {
                 XCTFail("testBadUrlResponseFailed")
                 return
             }
-            expectation.fulfill()
+            self.expectation.fulfill()
             XCTAssertEqual(error, NetworkError.badResponse)
         }
         
@@ -36,7 +37,6 @@ class CurrentWeatherTest: XCTestCase {
     }
 
     func testGoodUrlResponseWithError() {
-        let expectation = XCTestExpectation(description: "wait for queue")
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: CurrentWeatherFakeResponse.fakeError)
         let currentWeather = createWeatherService(session: session)
         
@@ -45,7 +45,7 @@ class CurrentWeatherTest: XCTestCase {
                 XCTFail("testGoodUrlResponseWithError Failed")
                 return
             }
-            expectation.fulfill()
+            self.expectation.fulfill()
             XCTAssertNotNil(error)
         }
         
@@ -54,7 +54,6 @@ class CurrentWeatherTest: XCTestCase {
     }
     
     func testNoData() {
-        let expactation = XCTestExpectation(description: "wait for queue")
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
@@ -63,15 +62,14 @@ class CurrentWeatherTest: XCTestCase {
                 XCTFail()
                 return
             }
-            expactation.fulfill()
+            self.expectation.fulfill()
             XCTAssertEqual(error, NetworkError.noData)
         }
         
-        wait(for: [expactation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.01)
     }
     
     func testIncorrectData() {
-        let expectation = XCTestExpectation(description: "wait for queue")
         let session = FakeUrlSession(fakeData: CurrentWeatherFakeResponse.incorrectData, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
@@ -80,7 +78,7 @@ class CurrentWeatherTest: XCTestCase {
                 XCTFail()
                 return
             }
-            expectation.fulfill()
+            self.expectation.fulfill()
             XCTAssertEqual(error, NetworkError.dataUndecodable)
         }
         
@@ -88,7 +86,6 @@ class CurrentWeatherTest: XCTestCase {
     }
     
     func testCorrectData() {
-        let expectation = XCTestExpectation(description: "wait for queu")
         let session = FakeUrlSession(fakeData: CurrentWeatherFakeResponse.correctData, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
@@ -97,7 +94,7 @@ class CurrentWeatherTest: XCTestCase {
                 XCTFail()
                 return
             }
-            expectation.fulfill()
+            self.expectation.fulfill()
             XCTAssertNotNil(data)
         }
         

@@ -19,6 +19,11 @@
 		E02D5AE724C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AE624C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift */; };
 		E02D5AE924C8550E002BE9D5 /* CurrentWeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AE824C8550E002BE9D5 /* CurrentWeatherTest.swift */; };
 		E02D5AEB24C85DA1002BE9D5 /* CurrentWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AEA24C85DA1002BE9D5 /* CurrentWeatherService.swift */; };
+		E02D5AEE24C8A2C6002BE9D5 /* ForecastWeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AED24C8A2C6002BE9D5 /* ForecastWeatherTest.swift */; };
+		E02D5AF024C8A308002BE9D5 /* ForecastWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AEF24C8A308002BE9D5 /* ForecastWeatherService.swift */; };
+		E02D5AF224C8A3AB002BE9D5 /* ForecastWeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AF124C8A3AB002BE9D5 /* ForecastWeatherResult.swift */; };
+		E02D5AF424C8A4AC002BE9D5 /* ForecastWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = E02D5AF324C8A4AC002BE9D5 /* ForecastWeather.json */; };
+		E02D5AF624C8A4D1002BE9D5 /* ForecastWeatherFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AF524C8A4D1002BE9D5 /* ForecastWeatherFakeResponse.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* CurrencyButton.swift */; };
@@ -67,6 +72,11 @@
 		E02D5AE624C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherFakeResponse.swift; sourceTree = "<group>"; };
 		E02D5AE824C8550E002BE9D5 /* CurrentWeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherTest.swift; sourceTree = "<group>"; };
 		E02D5AEA24C85DA1002BE9D5 /* CurrentWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherService.swift; sourceTree = "<group>"; };
+		E02D5AED24C8A2C6002BE9D5 /* ForecastWeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherTest.swift; sourceTree = "<group>"; };
+		E02D5AEF24C8A308002BE9D5 /* ForecastWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherService.swift; sourceTree = "<group>"; };
+		E02D5AF124C8A3AB002BE9D5 /* ForecastWeatherResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherResult.swift; sourceTree = "<group>"; };
+		E02D5AF324C8A4AC002BE9D5 /* ForecastWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ForecastWeather.json; sourceTree = "<group>"; };
+		E02D5AF524C8A4D1002BE9D5 /* ForecastWeatherFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherFakeResponse.swift; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
@@ -162,6 +172,7 @@
 		E02D5ADC24C84970002BE9D5 /* WeatherApi */ = {
 			isa = PBXGroup;
 			children = (
+				E02D5AEC24C8A2AD002BE9D5 /* ForecastWeather */,
 				E02D5AE524C8526B002BE9D5 /* currentWeather */,
 			);
 			path = WeatherApi;
@@ -189,6 +200,8 @@
 		E02D5ADF24C84BEE002BE9D5 /* ForecastWeatherApi */ = {
 			isa = PBXGroup;
 			children = (
+				E02D5AEF24C8A308002BE9D5 /* ForecastWeatherService.swift */,
+				E02D5AF124C8A3AB002BE9D5 /* ForecastWeatherResult.swift */,
 			);
 			path = ForecastWeatherApi;
 			sourceTree = "<group>";
@@ -208,6 +221,16 @@
 				E02D5AE824C8550E002BE9D5 /* CurrentWeatherTest.swift */,
 			);
 			path = currentWeather;
+			sourceTree = "<group>";
+		};
+		E02D5AEC24C8A2AD002BE9D5 /* ForecastWeather */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AF324C8A4AC002BE9D5 /* ForecastWeather.json */,
+				E02D5AF524C8A4D1002BE9D5 /* ForecastWeatherFakeResponse.swift */,
+				E02D5AED24C8A2C6002BE9D5 /* ForecastWeatherTest.swift */,
+			);
+			path = ForecastWeather;
 			sourceTree = "<group>";
 		};
 		E089E0F424B077DF0023909A /* CurrencyChange */ = {
@@ -446,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E02D5AE424C8525D002BE9D5 /* CurrentWeather.json in Resources */,
+				E02D5AF424C8A4AC002BE9D5 /* ForecastWeather.json in Resources */,
 				E0A8A54E24AA55D800DA145C /* CurrenciesFakeData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +491,7 @@
 				E02D5ADB24C8494A002BE9D5 /* WeatherIcon.swift in Sources */,
 				E02D5AD424C848AA002BE9D5 /* WeatherTableViewController.swift in Sources */,
 				0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */,
+				E02D5AF224C8A3AB002BE9D5 /* ForecastWeatherResult.swift in Sources */,
 				E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */,
 				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */,
@@ -480,6 +505,7 @@
 				E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */,
 				E02D5AD624C848BC002BE9D5 /* WeatherDetailViewController.swift in Sources */,
 				E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */,
+				E02D5AF024C8A308002BE9D5 /* ForecastWeatherService.swift in Sources */,
 				E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,8 +517,10 @@
 				E02D5AE724C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift in Sources */,
 				E0A8A52A24AA41F500DA145C /* UltimateTravellerToolTests.swift in Sources */,
 				E0A8A55024AA562200DA145C /* CurrenciesFakeResponse.swift in Sources */,
+				E02D5AF624C8A4D1002BE9D5 /* ForecastWeatherFakeResponse.swift in Sources */,
 				E0A8A55224AA58D000DA145C /* CurrenciesTest.swift in Sources */,
 				E02D5AE924C8550E002BE9D5 /* CurrentWeatherTest.swift in Sources */,
+				E02D5AEE24C8A2C6002BE9D5 /* ForecastWeatherTest.swift in Sources */,
 				E0A8A54924AA535D00DA145C /* FakeUrlSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

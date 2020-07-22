@@ -22,6 +22,7 @@ struct CurrentWeatherResult: Decodable {
         var description: String
         var icon: String
     }
+
     var main: Main
     struct Main: Decodable {
         var temp: Double
