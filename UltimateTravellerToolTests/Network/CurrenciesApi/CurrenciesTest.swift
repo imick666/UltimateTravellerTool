@@ -96,6 +96,6 @@ class CurrenciesTest: XCTestCase {
         
         let result = currencies.convertCurrencies(from: rateOne, to: rateTow, amount: amount)
         
-        XCTAssertEqual(result, "1,00")
+        XCTAssertEqual(result, "1.00")
     }
 }

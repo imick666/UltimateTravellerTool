@@ -10,6 +10,15 @@
 		0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864914C24C0AC6D0063286D /* UIViewController+Alert.swift */; };
 		0888647424AE322B00866612 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888647324AE322B00866612 /* Logger.swift */; };
 		08F95BA924C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F95BA824C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift */; };
+		E02D5AD424C848AA002BE9D5 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AD324C848AA002BE9D5 /* WeatherTableViewController.swift */; };
+		E02D5AD624C848BC002BE9D5 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AD524C848BC002BE9D5 /* WeatherDetailViewController.swift */; };
+		E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AD824C84915002BE9D5 /* WeatherTableViewCell.swift */; };
+		E02D5ADB24C8494A002BE9D5 /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5ADA24C8494A002BE9D5 /* WeatherIcon.swift */; };
+		E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AE124C84C14002BE9D5 /* CurrentWeatherResult.swift */; };
+		E02D5AE424C8525D002BE9D5 /* CurrentWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = E02D5AE324C8525D002BE9D5 /* CurrentWeather.json */; };
+		E02D5AE724C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AE624C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift */; };
+		E02D5AE924C8550E002BE9D5 /* CurrentWeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AE824C8550E002BE9D5 /* CurrentWeatherTest.swift */; };
+		E02D5AEB24C85DA1002BE9D5 /* CurrentWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AEA24C85DA1002BE9D5 /* CurrentWeatherService.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* CurrencyButton.swift */; };
@@ -49,6 +58,15 @@
 		0864914C24C0AC6D0063286D /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		0888647324AE322B00866612 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		08F95BA824C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyViewController+TextFieldDelegate.swift"; sourceTree = "<group>"; };
+		E02D5AD324C848AA002BE9D5 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
+		E02D5AD524C848BC002BE9D5 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		E02D5AD824C84915002BE9D5 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		E02D5ADA24C8494A002BE9D5 /* WeatherIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIcon.swift; sourceTree = "<group>"; };
+		E02D5AE124C84C14002BE9D5 /* CurrentWeatherResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherResult.swift; sourceTree = "<group>"; };
+		E02D5AE324C8525D002BE9D5 /* CurrentWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrentWeather.json; sourceTree = "<group>"; };
+		E02D5AE624C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherFakeResponse.swift; sourceTree = "<group>"; };
+		E02D5AE824C8550E002BE9D5 /* CurrentWeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherTest.swift; sourceTree = "<group>"; };
+		E02D5AEA24C85DA1002BE9D5 /* CurrentWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherService.swift; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
@@ -123,6 +141,75 @@
 			path = SelectCurrenciesTableView;
 			sourceTree = "<group>";
 		};
+		E02D5AD224C84878002BE9D5 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AD324C848AA002BE9D5 /* WeatherTableViewController.swift */,
+				E02D5AD524C848BC002BE9D5 /* WeatherDetailViewController.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		E02D5AD724C848EE002BE9D5 /* WeatherTab */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AD824C84915002BE9D5 /* WeatherTableViewCell.swift */,
+				E02D5ADA24C8494A002BE9D5 /* WeatherIcon.swift */,
+			);
+			path = WeatherTab;
+			sourceTree = "<group>";
+		};
+		E02D5ADC24C84970002BE9D5 /* WeatherApi */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AE524C8526B002BE9D5 /* currentWeather */,
+			);
+			path = WeatherApi;
+			sourceTree = "<group>";
+		};
+		E02D5ADD24C84BDB002BE9D5 /* WeatherApi */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AE024C84BF7002BE9D5 /* LocationSearchApi */,
+				E02D5ADF24C84BEE002BE9D5 /* ForecastWeatherApi */,
+				E02D5ADE24C84BE5002BE9D5 /* CurrentWeatherApi */,
+			);
+			path = WeatherApi;
+			sourceTree = "<group>";
+		};
+		E02D5ADE24C84BE5002BE9D5 /* CurrentWeatherApi */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AE124C84C14002BE9D5 /* CurrentWeatherResult.swift */,
+				E02D5AEA24C85DA1002BE9D5 /* CurrentWeatherService.swift */,
+			);
+			path = CurrentWeatherApi;
+			sourceTree = "<group>";
+		};
+		E02D5ADF24C84BEE002BE9D5 /* ForecastWeatherApi */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForecastWeatherApi;
+			sourceTree = "<group>";
+		};
+		E02D5AE024C84BF7002BE9D5 /* LocationSearchApi */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocationSearchApi;
+			sourceTree = "<group>";
+		};
+		E02D5AE524C8526B002BE9D5 /* currentWeather */ = {
+			isa = PBXGroup;
+			children = (
+				E02D5AE324C8525D002BE9D5 /* CurrentWeather.json */,
+				E02D5AE624C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift */,
+				E02D5AE824C8550E002BE9D5 /* CurrentWeatherTest.swift */,
+			);
+			path = currentWeather;
+			sourceTree = "<group>";
+		};
 		E089E0F424B077DF0023909A /* CurrencyChange */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +275,7 @@
 		E0A8A53424AA426D00DA145C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E02D5AD724C848EE002BE9D5 /* WeatherTab */,
 				E099FFEC24BDFC0800422CBB /* CurrenciesTab */,
 				E0A8A51524AA41F400DA145C /* Main.storyboard */,
 				E0A8A51D24AA41F400DA145C /* LaunchScreen.storyboard */,
@@ -198,6 +286,7 @@
 		E0A8A53524AA427400DA145C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E02D5AD224C84878002BE9D5 /* Weather */,
 				E089E0F424B077DF0023909A /* CurrencyChange */,
 			);
 			path = Controller;
@@ -226,6 +315,7 @@
 		E0A8A53C24AA42F700DA145C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				E02D5ADD24C84BDB002BE9D5 /* WeatherApi */,
 				E0A8A54124AA4BDB00DA145C /* CurrenciesApi */,
 				E089E0F224AEFC740023909A /* ApiConfig.swift */,
 			);
@@ -246,6 +336,7 @@
 			children = (
 				E0A8A54824AA535D00DA145C /* FakeUrlSession.swift */,
 				E0A8A54A24AA557C00DA145C /* CurrenciesApi */,
+				E02D5ADC24C84970002BE9D5 /* WeatherApi */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -354,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02D5AE424C8525D002BE9D5 /* CurrentWeather.json in Resources */,
 				E0A8A54E24AA55D800DA145C /* CurrenciesFakeData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +464,10 @@
 				E0A8A53B24AA42AE00DA145C /* HTTPClient.swift in Sources */,
 				E0A8A54424AA4BF400DA145C /* CurrenciesResult.swift in Sources */,
 				E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */,
+				E02D5ADB24C8494A002BE9D5 /* WeatherIcon.swift in Sources */,
+				E02D5AD424C848AA002BE9D5 /* WeatherTableViewController.swift in Sources */,
 				0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */,
+				E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */,
 				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */,
 				08F95BA924C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift in Sources */,
@@ -380,8 +475,11 @@
 				E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */,
 				E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */,
 				E0C5C0FF24C1A45100EEBF98 /* UIViewController+Date.swift in Sources */,
+				E02D5AEB24C85DA1002BE9D5 /* CurrentWeatherService.swift in Sources */,
 				E0A8A54624AA4BFD00DA145C /* CurrenciesService.swift in Sources */,
 				E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */,
+				E02D5AD624C848BC002BE9D5 /* WeatherDetailViewController.swift in Sources */,
+				E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */,
 				E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,9 +488,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02D5AE724C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift in Sources */,
 				E0A8A52A24AA41F500DA145C /* UltimateTravellerToolTests.swift in Sources */,
 				E0A8A55024AA562200DA145C /* CurrenciesFakeResponse.swift in Sources */,
 				E0A8A55224AA58D000DA145C /* CurrenciesTest.swift in Sources */,
+				E02D5AE924C8550E002BE9D5 /* CurrentWeatherTest.swift in Sources */,
 				E0A8A54924AA535D00DA145C /* FakeUrlSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
