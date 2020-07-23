@@ -25,6 +25,7 @@ final class ForecastWeatherService {
         
         var parameters = parameters
         parameters.append(("appid", ApiConfig.weatherApiKey))
+        parameters.append(("exclude", "minutely,current"))
         
         client.request(baseUrl: url, parameters: parameters) { (result: Result<ForecastWeatherResult, NetworkError>) in
             callback(result)

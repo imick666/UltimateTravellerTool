@@ -9,9 +9,5 @@
 import UIKit
 
 class WeatherIcon: UIImage {
-
-    func getIcon() {
-        
-    }
     
 }
