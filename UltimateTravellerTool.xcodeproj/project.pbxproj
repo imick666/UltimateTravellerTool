@@ -143,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				E0A8A51324AA41F400DA145C /* CurrencyViewController.swift */,
-				08F95BA824C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift */,
 			);
 			path = ConvertCurrencies;
 			sourceTree = "<group>";
@@ -522,7 +521,6 @@
 				E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */,
 				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */,
-				08F95BA924C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift in Sources */,
 				E0A8A51A24AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld in Sources */,
 				E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */,
 				E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */,

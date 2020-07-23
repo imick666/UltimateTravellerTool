@@ -15,7 +15,7 @@ class SelectCurrencyTableViewController: UITableViewController {
         case name
     }
     
-    typealias CurrenciesIndex = (indexTitle: String?, currencies: AllCurrencies)
+    typealias CurrenciesIndex = (indexTitle: String, currencies: AllCurrencies)
     typealias AllCurrencies = [(name: String, code: String)]
     
     // Outlets
@@ -92,8 +92,8 @@ class SelectCurrencyTableViewController: UITableViewController {
            }
 
            // Create tuple with IndexTitle and currencies Array
-            if result.contains(where: {$0.indexTitle?.uppercased() == stringToCompare}) {
-                guard let index = result.lastIndex(where: { $0.indexTitle?.uppercased() == stringToCompare}) else { continue }
+            if result.contains(where: {$0.indexTitle.uppercased() == stringToCompare}) {
+                guard let index = result.lastIndex(where: { $0.indexTitle.uppercased() == stringToCompare}) else { continue }
                result[index].currencies.append(currency)
            } else {
                guard let indexTitle = stringToCompare else { continue }
@@ -103,7 +103,7 @@ class SelectCurrencyTableViewController: UITableViewController {
         }
         
        // Sort IndexTitle
-        result.sort { $0.indexTitle! < $1.indexTitle! }
+        result.sort { $0.indexTitle < $1.indexTitle }
         
         completion(result)
     }
@@ -162,10 +162,7 @@ class SelectCurrencyTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if dataSource[section].indexTitle == nil {
-            return 0
-        }
-        return 35
+        return dataSource[section].indexTitle == "" ? 0 : 35
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -203,10 +200,8 @@ class SelectCurrencyTableViewController: UITableViewController {
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexTitle = [String]()
         for title in dataSource {
-            guard let letter = title.indexTitle else { continue }
-            indexTitle.append(letter)
+            indexTitle.append(title.indexTitle)
         }
-        
         return indexTitle
     }
 }

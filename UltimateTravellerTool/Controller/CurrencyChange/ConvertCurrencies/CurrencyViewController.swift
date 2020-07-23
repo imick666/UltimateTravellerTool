@@ -25,8 +25,8 @@ class CurrencyViewController: UIViewController {
     let currencyService = CurrenciesService()
     var currencyRate: CurrenciesResult? {
         didSet {
-            let date = timeStampToDay(currencyRate?.timestamp ?? 0)
-            let hour = timeStampToHour(currencyRate?.timestamp ?? 0)
+            let date = dateToDay(Date())
+            let hour = dateToHour(Date())
             lastUpdateLabel.text = "Last update : \(date) at \(hour)"
         }
     }
@@ -147,6 +147,17 @@ extension CurrencyViewController: PassSelectedCurrency {
         for textField in amountTextField {
             textField.text = nil
         }
+    }
+}
+
+extension CurrencyViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = amountTextField[0].text, text.count <= 10 else {
+            showAlert(title: "Amount Too Large", message: "The amount you try to convert is to large")
+            amountTextField[0].deleteBackward()
+            return
+        }
+        makeConvert(amount: text)
     }
 }
 
