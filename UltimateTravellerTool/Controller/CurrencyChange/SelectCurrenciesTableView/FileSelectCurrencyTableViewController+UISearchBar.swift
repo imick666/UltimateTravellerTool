@@ -22,7 +22,7 @@ extension SelectCurrencyTableViewController: UISearchBarDelegate {
 
         sortedSectionIndex { (result) in
             for index in result {
-                var indexTitle: String?
+                var indexTitle = String()
                 var currencies = [(name: String, code: String)]()
                 for currency in index.currencies where currency.name.lowercased().contains(searchText.lowercased()) {
                     indexTitle = index.indexTitle
@@ -30,8 +30,10 @@ extension SelectCurrencyTableViewController: UISearchBarDelegate {
                 }
                 
                 currencies.sort { $0.name < $1.name }
-                let indexToAdd = (indexTitle, currencies)
-                newIndex.append(indexToAdd)
+                if indexTitle != "" {
+                    let indexToAdd = (indexTitle, currencies)
+                    newIndex.append(indexToAdd)
+                }
             }
         }
         dataSource = newIndex

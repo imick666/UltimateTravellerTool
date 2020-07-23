@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864914C24C0AC6D0063286D /* UIViewController+Alert.swift */; };
 		0888647424AE322B00866612 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888647324AE322B00866612 /* Logger.swift */; };
-		08F95BA924C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F95BA824C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* CurrencyButton.swift */; };
@@ -48,7 +47,6 @@
 /* Begin PBXFileReference section */
 		0864914C24C0AC6D0063286D /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		0888647324AE322B00866612 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		08F95BA824C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyViewController+TextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				E0A8A51324AA41F400DA145C /* CurrencyViewController.swift */,
-				08F95BA824C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift */,
 			);
 			path = ConvertCurrencies;
 			sourceTree = "<group>";
@@ -375,7 +372,6 @@
 				0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */,
 				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */,
-				08F95BA924C224CA006D5EA6 /* CurrencyViewController+TextFieldDelegate.swift in Sources */,
 				E0A8A51A24AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld in Sources */,
 				E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */,
 				E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */,

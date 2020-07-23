@@ -14,8 +14,7 @@ extension UIViewController {
         return Date(timeIntervalSince1970: Double(timeStamp))
     }
     
-    func timeStampToDay(_ timeStamp: Int) -> String {
-        let date = dateFromTimeStamp(timeStamp)
+    func dateToDay(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
@@ -27,12 +26,13 @@ extension UIViewController {
         }
     }
     
-    func timeStampToHour(_ timestamp: Int) -> String {
-        let date = dateFromTimeStamp(timestamp)
+    func dateToHour(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         
         return formatter.string(from: date)
     }
+    
+    
 }
