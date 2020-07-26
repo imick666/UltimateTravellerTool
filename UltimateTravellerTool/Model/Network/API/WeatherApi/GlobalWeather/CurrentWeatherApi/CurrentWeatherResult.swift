@@ -19,6 +19,7 @@ struct CurrentWeatherResult: Decodable {
     }
     var weather: [Weather]
     struct Weather: Decodable {
+        var id: Int
         var description: String
         var icon: String
     }

@@ -33,6 +33,8 @@ class WeatherTableViewController: UITableViewController {
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
         }
+        
+        tableView.separatorStyle = .none
     }
 
     // MARK: - Methodes
@@ -73,6 +75,14 @@ class WeatherTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row])
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -109,14 +119,12 @@ class WeatherTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? WeatherDetailViewController {
+            destination.dataSource = sender as? GlobalWeatherResult
+        }
     }
-    */
 
 }

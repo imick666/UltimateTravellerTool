@@ -24,6 +24,7 @@ final class ForecastWeatherService {
         }
         
         var parameters = parameters
+        parameters.append(("units", "metric"))
         parameters.append(("appid", ApiConfig.weatherApiKey))
         parameters.append(("exclude", "minutely,current"))
         

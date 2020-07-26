@@ -16,6 +16,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var weatherDetailLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var iconImageView: WeatherIcon!
+    @IBOutlet weak var backGroundImageView: UIImageView!
     
     // MARK: - Properties
     
@@ -24,6 +25,20 @@ class WeatherTableViewCell: UITableViewCell {
             cityNameLabel.text = weather.name
             weatherDetailLabel.text = weather.weather[0].description
             tempLabel.text = String(weather.main.temp)
+            setpBackGround()
+        }
+    }
+    
+    private func setpBackGround() {
+        let code = weather.weather[0].id
+        if code >= 200 && code < 500 {
+            backGroundImageView.image = UIImage(named: "thunderstorm")
+        } else if code >= 500 && code < 800 {
+            backGroundImageView.image = UIImage(named: "Rain")
+        } else if code == 800 {
+            backGroundImageView.image = UIImage(named: "Clear")
+        } else if code > 800 {
+            backGroundImageView.image = UIImage(named: "ClearCloud")
         }
     }
 }
