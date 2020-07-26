@@ -9,38 +9,70 @@
 import UIKit
 
 class WeatherTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let weatherService = GlobalWeatherService()
+    let dispatchGroup = DispatchGroup()
+    
+    var dataSource = [GlobalWeatherResult]()
+    
+    let fakeCoord: [[(String, Any)]] = [
+        [("lat", 39.90), ("lon", 116.39)],
+        [("q", "montpellier")],
+        [("q", "beziers")],
+        [("lat", 46.19), ("lon", 6.23)]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        fakeCoord.forEach { (coord) in
+            getWeather(for: coord)
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
     }
 
+    // MARK: - Methodes
+    
+    private func getWeather(for param: [(String, Any)]) {
+        dispatchGroup.enter()
+        weatherService.getGlobalWeather(parameters: param) { (result) in
+            switch result {
+            case .success(let data):
+                self.dataSource.append(data)
+            case .failure(let error):
+                print(error.description)
+            }
+            self.dispatchGroup.leave()
+        }
+    }
+    
+    private func udpateWeather(for weathers: [GlobalWeatherResult]) {
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dataSource.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
+        
+        cell.weather = dataSource[indexPath.row].currentWeather
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
