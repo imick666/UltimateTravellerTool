@@ -36,6 +36,10 @@ class WeatherDetailViewController: UIViewController {
         dailyForecastTableView.separatorStyle = .none
         dailyForecastTableView.allowsSelection = false
         
+        hourlyForecastCollectionView.delegate = self
+        hourlyForecastCollectionView.dataSource = self
+        hourlyForecastCollectionView.allowsSelection = false
+        
         setup()
         // Do any additional setup after loading the view.
     }
@@ -62,6 +66,8 @@ class WeatherDetailViewController: UIViewController {
         }
         
         dataSource.forecastWeather.daily.remove(at: 0)
+        
+        dataSource.forecastWeather.hourly.removeSubrange(0..<24)
         
     }
     
@@ -101,6 +107,8 @@ class WeatherDetailViewController: UIViewController {
 
 }
 
+// MARK: - TableView
+
 extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.forecastWeather.daily.count
@@ -120,5 +128,26 @@ extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+}
+
+// MARK: - CollectionView
+
+extension WeatherDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSource.forecastWeather.hourly.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyForecastCell", for: indexPath) as? HourlyForecastCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let hourlyWeather = dataSource.forecastWeather.hourly[indexPath.row]
+        
+        cell.weather = hourlyWeather
+        cell.hourLabel.text = getHour(from: hourlyWeather.dt) + "H"
+        
+        return cell
     }
 }

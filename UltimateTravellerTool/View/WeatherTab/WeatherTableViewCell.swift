@@ -25,6 +25,7 @@ class WeatherTableViewCell: UITableViewCell {
             cityNameLabel.text = weather.name
             weatherDetailLabel.text = weather.weather[0].description
             tempLabel.text = String(weather.main.temp)
+            iconImageView.getIcon(id: weather.weather[0].icon)
             setpBackGround()
         }
     }

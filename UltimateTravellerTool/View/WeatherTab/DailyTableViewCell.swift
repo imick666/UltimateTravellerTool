@@ -21,9 +21,10 @@ class DailyTableViewCell: UITableViewCell {
     
     var weather: ForecastWeatherResult.Daily! {
         didSet {
-            dayNameLabel.text = "Lundi"
+            dayNameLabel.text = ""
             minTempLabel.text = String(weather.temp.min) + " °C"
             maxTempLabel.text = String(weather.temp.max) + " °C"
+            iconImageView.getIcon(id: weather.weather[0].icon)
         }
     }
     

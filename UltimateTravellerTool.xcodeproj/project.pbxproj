@@ -26,7 +26,7 @@
 		E02D5AFA24C93362002BE9D5 /* GlobalWeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AF924C93362002BE9D5 /* GlobalWeatherResult.swift */; };
 		E02D5AFC24C933F3002BE9D5 /* GlobalWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AFB24C933F3002BE9D5 /* GlobalWeatherService.swift */; };
 		E02D5AFF24C938A6002BE9D5 /* GlobalWeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AFE24C938A6002BE9D5 /* GlobalWeatherTest.swift */; };
-		E03CC1C224CDC60E006124B9 /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03CC1C124CDC60E006124B9 /* HourlyTableViewCell.swift */; };
+		E02F994224CED39500F90E44 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F994124CED39500F90E44 /* HourlyForecastCollectionViewCell.swift */; };
 		E03CC1C424CDC61D006124B9 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
@@ -83,7 +83,7 @@
 		E02D5AF924C93362002BE9D5 /* GlobalWeatherResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWeatherResult.swift; sourceTree = "<group>"; };
 		E02D5AFB24C933F3002BE9D5 /* GlobalWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWeatherService.swift; sourceTree = "<group>"; };
 		E02D5AFE24C938A6002BE9D5 /* GlobalWeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWeatherTest.swift; sourceTree = "<group>"; };
-		E03CC1C124CDC60E006124B9 /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
+		E02F994124CED39500F90E44 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 			children = (
 				E02D5AD824C84915002BE9D5 /* WeatherTableViewCell.swift */,
 				E02D5ADA24C8494A002BE9D5 /* WeatherIcon.swift */,
-				E03CC1C124CDC60E006124B9 /* HourlyTableViewCell.swift */,
 				E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */,
+				E02F994124CED39500F90E44 /* HourlyForecastCollectionViewCell.swift */,
 			);
 			path = WeatherTab;
 			sourceTree = "<group>";
@@ -533,6 +533,7 @@
 				E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */,
 				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */,
+				E02F994224CED39500F90E44 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				E0A8A51A24AA41F400DA145C /* UltimateTravellerTool.xcdatamodeld in Sources */,
 				E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */,
 				E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */,
@@ -544,7 +545,6 @@
 				E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */,
 				E03CC1C424CDC61D006124B9 /* DailyTableViewCell.swift in Sources */,
 				E02D5AF024C8A308002BE9D5 /* ForecastWeatherService.swift in Sources */,
-				E03CC1C224CDC60E006124B9 /* HourlyTableViewCell.swift in Sources */,
 				E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
