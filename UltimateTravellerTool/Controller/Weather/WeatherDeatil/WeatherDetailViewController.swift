@@ -47,6 +47,7 @@ class WeatherDetailViewController: UIViewController {
     // MARK: - Methodes
 
     private func setup() {
+        // Set label
         cityNameLabel.text = dataSource.currentWeather.name
         weatherDescriptionLabel.text = dataSource.currentWeather.weather[0].description
         tempLabel.text = String(dataSource.currentWeather.main.temp) + " °C"
@@ -54,6 +55,7 @@ class WeatherDetailViewController: UIViewController {
         maxTempLabel.text = String(dataSource.currentWeather.main.temp_max)
         todayLabel.text = getDayName(from: dataSource.currentWeather.dt)
         
+        // Set BackGround for each weather category
         let code = dataSource.currentWeather.weather[0].id
         if code >= 200 && code < 500 {
             backGroundImageView.image = UIImage(named: "thunderstorm")
@@ -65,17 +67,19 @@ class WeatherDetailViewController: UIViewController {
             backGroundImageView.image = UIImage(named: "ClearCloud")
         }
         
+        //sort arrays for remove unwanted informations
         dataSource.forecastWeather.daily.remove(at: 0)
-        
         dataSource.forecastWeather.hourly.removeSubrange(0..<24)
         
     }
     
+    // transform TimeStamp into Date
     private func getDate(from timestamp: Int) -> Date {
         let date = Date(timeIntervalSince1970: Double(timestamp))
         return date
     }
     
+    // Transform Date into Day Name
     private func getDayName(from timestamp: Int) -> String {
         let date = getDate(from: timestamp)
         let formatter = DateFormatter()
@@ -85,6 +89,7 @@ class WeatherDetailViewController: UIViewController {
         return formatter.string(from: date).capitalized
     }
     
+    // Trnsform Date into Hour
     private func getHour(from timestamp: Int) -> String {
         let date = getDate(from: timestamp)
         let formatter = DateFormatter()
@@ -93,18 +98,6 @@ class WeatherDetailViewController: UIViewController {
         
         return formatter.string(from: date)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: - TableView

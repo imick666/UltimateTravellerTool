@@ -12,10 +12,12 @@ final class GlobalWeatherService {
     
     private let currentWeather: CurrentWeatherService
     private let forecastWeather: ForecastWeatherService
+    private let client: HTTPClient
     
-    init(currentWeather: CurrentWeatherService = CurrentWeatherService(), forecastWeather: ForecastWeatherService = ForecastWeatherService()) {
+    init(currentWeather: CurrentWeatherService = CurrentWeatherService(), forecastWeather: ForecastWeatherService = ForecastWeatherService(), client: HTTPClient = HTTPClient()) {
         self.currentWeather = currentWeather
         self.forecastWeather = forecastWeather
+        self.client = client
     }
     
     func getGlobalWeather(parameters: [(String, Any)], callback: @escaping ((Result<GlobalWeatherResult, NetworkError>) -> Void)) {
@@ -42,35 +44,14 @@ final class GlobalWeatherService {
         }
     }
     
-    func updateGlobalWeather(for weather: GlobalWeatherResult, callBack: @escaping ((Result<GlobalWeatherResult, NetworkError>) -> Void)) {
-        let parameters = [("lon", weather.currentWeather.coord.lon), ("lat", weather.currentWeather.coord.lat)]
-        getGlobalWeather(parameters: parameters) { (result) in
-            callBack(result)
-        }
-    }
-    
     func getIcon(id: String, callback: @escaping ((Result<Data, NetworkError>) -> Void)) {
         guard let url = URL(string: "http://openweathermap.org/img/wn/\(id)@2x.png") else {
             callback(.failure(.badUrl))
             return
         }
         
-        let session = URLSession(configuration: .default)
-        let request = session.dataTask(with: url) { (data, response, error) in
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                callback(.failure(.badResponse))
-                return
-            }
-            guard error == nil else {
-                callback(.failure(.noConnection))
-                return
-            }
-            guard let data = data else {
-                callback(.failure(.noData))
-                return
-            }
-            callback(.success(data))
+        client.requestData(baseUrl: url, parameters: nil) { (result) in
+            callback(result)
         }
-        request.resume()
     }
 }

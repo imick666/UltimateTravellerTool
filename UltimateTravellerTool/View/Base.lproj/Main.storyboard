@@ -190,18 +190,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CurrentWeatherCell" rowHeight="72" id="X2k-jS-eH8" customClass="WeatherTableViewCell" customModule="UltimateTravellerTool" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentWeatherCell" rowHeight="72" id="X2k-jS-eH8" customClass="WeatherTableViewCell" customModule="UltimateTravellerTool" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X2k-jS-eH8" id="fR9-16-qKq">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="pSg-8C-8Ae">
-                                            <rect key="frame" x="0.0" y="0.0" width="413" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="444" height="72"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-wJ-fi4">
-                                            <rect key="frame" x="8" y="8" width="375" height="56"/>
+                                            <rect key="frame" x="8" y="8" width="398" height="56"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-93-FZB">
                                                     <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="56"/>
@@ -221,16 +221,16 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jNv-Xa-xPS">
-                                                    <rect key="frame" x="112.66666666666666" y="0.0" width="262.33333333333337" height="56"/>
+                                                    <rect key="frame" x="112.66666666666666" y="0.0" width="285.33333333333337" height="56"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5B-eR-yCh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="198.33333333333334" height="56"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="221.33333333333334" height="56"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OP8-eV-bAz" customClass="WeatherIcon" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                                            <rect key="frame" x="206.33333333333331" y="0.0" width="56" height="56"/>
+                                                            <rect key="frame" x="229.33333333333331" y="0.0" width="56" height="56"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="OP8-eV-bAz" secondAttribute="height" multiplier="1:1" id="Ve7-hf-Uo6"/>
                                                             </constraints>
@@ -247,7 +247,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="gOP-wJ-fi4" firstAttribute="top" secondItem="fR9-16-qKq" secondAttribute="top" constant="8" id="Ec4-6V-fsh"/>
-                                        <constraint firstAttribute="trailing" secondItem="gOP-wJ-fi4" secondAttribute="trailing" id="KHC-dj-JYr"/>
+                                        <constraint firstAttribute="trailing" secondItem="gOP-wJ-fi4" secondAttribute="trailing" constant="8" id="KHC-dj-JYr"/>
                                         <constraint firstAttribute="bottom" secondItem="pSg-8C-8Ae" secondAttribute="bottom" id="Ov0-H1-yyZ"/>
                                         <constraint firstAttribute="bottom" secondItem="gOP-wJ-fi4" secondAttribute="bottom" constant="8" id="Pw4-A7-2rm"/>
                                         <constraint firstItem="gOP-wJ-fi4" firstAttribute="leading" secondItem="fR9-16-qKq" secondAttribute="leading" constant="8" id="SFr-aW-Trf"/>

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherTableViewController: UITableViewController {
     
     // MARK: - Properties
     let weatherService = GlobalWeatherService()
     let dispatchGroup = DispatchGroup()
+    let locationManager = CLLocationManager()
     
     var dataSource = [GlobalWeatherResult]()
     
@@ -27,7 +29,14 @@ class WeatherTableViewController: UITableViewController {
         super.viewDidLoad()
         
         fakeCoord.forEach { (coord) in
-            getWeather(for: coord)
+            getWeather(for: coord) { (result) in
+                switch result {
+                case .failure(let error):
+                    print(error.description)
+                case .success(let data):
+                    self.dataSource.append(data)
+                }
+            }
         }
         
         dispatchGroup.notify(queue: .main) {
@@ -35,19 +44,16 @@ class WeatherTableViewController: UITableViewController {
         }
         
         tableView.separatorStyle = .none
+        
+        locationSetUp()
     }
 
     // MARK: - Methodes
     
-    private func getWeather(for param: [(String, Any)]) {
+    func getWeather(for param: [(String, Any)], callback: @escaping ((Result<GlobalWeatherResult, NetworkError>) -> Void)) {
         dispatchGroup.enter()
         weatherService.getGlobalWeather(parameters: param) { (result) in
-            switch result {
-            case .success(let data):
-                self.dataSource.append(data)
-            case .failure(let error):
-                print(error.description)
-            }
+            callback(result)
             self.dispatchGroup.leave()
         }
     }
@@ -59,12 +65,10 @@ class WeatherTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return dataSource.count
     }
 
@@ -83,41 +87,6 @@ class WeatherTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row])
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 

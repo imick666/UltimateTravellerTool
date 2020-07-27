@@ -28,7 +28,7 @@ final class ForecastWeatherService {
         parameters.append(("appid", ApiConfig.weatherApiKey))
         parameters.append(("exclude", "minutely,current"))
         
-        client.request(baseUrl: url, parameters: parameters) { (result: Result<ForecastWeatherResult, NetworkError>) in
+        client.requestJson(baseUrl: url, parameters: parameters) { (result: Result<ForecastWeatherResult, NetworkError>) in
             callback(result)
         }
     }
