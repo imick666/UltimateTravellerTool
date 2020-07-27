@@ -16,6 +16,9 @@ class WeatherTableViewController: UITableViewController {
     let dispatchGroup = DispatchGroup()
     let locationManager = CLLocationManager()
     
+    // MARK: - DataSources
+    
+    var localWeatehr: GlobalWeatherResult?
     var dataSource = [GlobalWeatherResult]()
     
     let fakeCoord: [[(String, Any)]] = [
@@ -28,6 +31,8 @@ class WeatherTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationSetUp()
+        
         fakeCoord.forEach { (coord) in
             getWeather(for: coord) { (result) in
                 switch result {
@@ -39,27 +44,45 @@ class WeatherTableViewController: UITableViewController {
             }
         }
         
-        dispatchGroup.notify(queue: .main) {
-            self.tableView.reloadData()
-        }
-        
         tableView.separatorStyle = .none
-        
-        locationSetUp()
     }
 
     // MARK: - Methodes
     
     func getWeather(for param: [(String, Any)], callback: @escaping ((Result<GlobalWeatherResult, NetworkError>) -> Void)) {
         dispatchGroup.enter()
+        print("entered")
         weatherService.getGlobalWeather(parameters: param) { (result) in
             callback(result)
             self.dispatchGroup.leave()
+            print("leaved")
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+            print("C'EST OK!!!!!!!!!!")
         }
     }
     
-    private func udpateWeather(for weathers: [GlobalWeatherResult]) {
+    private func updateWeather() {
+        print("refresh in progress")
+        // update local Weather
+        locationSetUp()
         
+        // update other Weather
+        for (index, weather) in dataSource.enumerated() {
+            let coord = [("lat", weather.currentWeather.coord.lat), ("lon", weather.currentWeather.coord.lon)]
+            getWeather(for: coord) { (result) in
+                switch result {
+                case .failure(_):
+                    return
+                case .success(let data):
+                    self.dataSource[index] = data
+                }
+            }
+        }
+        
+        tableView.endUpdates()
     }
     
     // MARK: - Table view data source
@@ -69,13 +92,23 @@ class WeatherTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        guard localWeatehr != nil else { return dataSource.count }
+        return dataSource.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
         
-        cell.weather = dataSource[indexPath.row].currentWeather
+        guard localWeatehr != nil else {
+            cell.weather = dataSource[indexPath.row].currentWeather
+            return cell
+        }
+        
+        if indexPath.row == 0 {
+            cell.weather = localWeatehr?.currentWeather
+        } else {
+            cell.weather = dataSource[indexPath.row - 1].currentWeather
+        }
 
         return cell
     }
@@ -85,7 +118,16 @@ class WeatherTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row])
+        guard localWeatehr != nil else {
+            performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row])
+            return
+        }
+        
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "WeatherDetailSegue", sender: localWeatehr)
+        } else {
+            performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row - 1])
+        }
     }
 
     // MARK: - Navigation

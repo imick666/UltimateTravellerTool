@@ -26,12 +26,7 @@ extension WeatherTableViewController: CLLocationManagerDelegate {
             case .failure(let error):
                 print(error.description)
             case .success(let data):
-                if self.dataSource[0].currentWeather.coord.lat == data.currentWeather.coord.lat &&
-                self.dataSource[0].currentWeather.coord.lon == data.currentWeather.coord.lon {
-                    self.dataSource[0] = data
-                } else {
-                    self.dataSource.insert(data, at: 0)
-                }
+                self.localWeatehr = data
             }
         }
     }
