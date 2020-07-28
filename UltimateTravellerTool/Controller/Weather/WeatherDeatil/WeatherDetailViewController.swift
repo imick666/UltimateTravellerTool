@@ -38,7 +38,6 @@ class WeatherDetailViewController: UIViewController {
         hourlyForecastCollectionView.allowsSelection = false
         
         setup()
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Methodes
@@ -93,6 +92,13 @@ class WeatherDetailViewController: UIViewController {
         
         return formatter.string(from: date)
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - TableView

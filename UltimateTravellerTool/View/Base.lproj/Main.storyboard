@@ -277,7 +277,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ9-Jm-nym" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="889.95535714285711"/>
+            <point key="canvasLocation" x="138" y="869"/>
         </scene>
         <!--Weather Detail View Controller-->
         <scene sceneID="HkB-5c-42P">
@@ -464,13 +464,24 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4V-xT-R5W">
+                                <rect key="frame" x="360" y="8" width="46" height="34"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="5eL-cn-q3g" eventType="touchUpInside" id="VoA-UL-GcK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nXv-U5-MCV" firstAttribute="leading" secondItem="qwy-Ah-XJ1" secondAttribute="leading" constant="8" id="0PA-qy-xWX"/>
                             <constraint firstItem="KEu-3e-Rgs" firstAttribute="top" secondItem="NTP-Gy-xqe" secondAttribute="top" id="4zv-ng-fL7"/>
+                            <constraint firstItem="qwy-Ah-XJ1" firstAttribute="trailing" secondItem="V4V-xT-R5W" secondAttribute="trailing" constant="8" id="BQa-7d-z6b"/>
+                            <constraint firstItem="V4V-xT-R5W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qwy-Ah-XJ1" secondAttribute="leading" symbolic="YES" id="BcX-EW-8my"/>
                             <constraint firstAttribute="bottom" secondItem="nXv-U5-MCV" secondAttribute="bottom" id="Bih-cF-8bT"/>
                             <constraint firstItem="nXv-U5-MCV" firstAttribute="trailing" secondItem="qwy-Ah-XJ1" secondAttribute="trailing" constant="-8" id="EZa-k9-lYd"/>
+                            <constraint firstItem="V4V-xT-R5W" firstAttribute="top" secondItem="qwy-Ah-XJ1" secondAttribute="top" constant="8" id="NXY-pd-7SD"/>
                             <constraint firstItem="KEu-3e-Rgs" firstAttribute="leading" secondItem="NTP-Gy-xqe" secondAttribute="leading" id="Yit-49-MVp"/>
                             <constraint firstItem="nXv-U5-MCV" firstAttribute="top" secondItem="qwy-Ah-XJ1" secondAttribute="top" id="bl9-m0-YaO"/>
                             <constraint firstAttribute="bottom" secondItem="KEu-3e-Rgs" secondAttribute="bottom" id="qTo-kN-KsU"/>
@@ -491,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cu-Bf-rGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289.8550724637682" y="889.95535714285711"/>
+            <point key="canvasLocation" x="1290" y="869"/>
         </scene>
         <!--Select Currency Table View Controller-->
         <scene sceneID="6xU-n8-aDp">
