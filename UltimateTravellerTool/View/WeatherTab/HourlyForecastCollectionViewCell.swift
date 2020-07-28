@@ -18,7 +18,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var weather: ForecastWeatherResult.Hourly! {
+    var weather: WeatherResult.Hourly! {
         didSet {
             tempLabel.text = String(weather.temp)
             iconImageView.getIcon(id: weather.weather[0].icon)

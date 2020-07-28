@@ -18,8 +18,8 @@ class WeatherTableViewController: UITableViewController {
     
     // MARK: - DataSources
     
-    var localWeatehr: GlobalWeatherResult?
-    var dataSource = [GlobalWeatherResult]()
+    var localWeatehr: WeatherResult?
+    var dataSource = [WeatherResult]()
     
     let fakeCoord: [[(String, Any)]] = [
         [("lat", 39.90), ("lon", 116.39)],
@@ -49,7 +49,7 @@ class WeatherTableViewController: UITableViewController {
 
     // MARK: - Methodes
     
-    func getWeather(for param: [(String, Any)], callback: @escaping ((Result<GlobalWeatherResult, NetworkError>) -> Void)) {
+    func getWeather(for param: [(String, Any)], callback: @escaping ((Result<WeatherResult, NetworkError>) -> Void)) {
         dispatchGroup.enter()
         print("entered")
         weatherService.getGlobalWeather(parameters: param) { (result) in
@@ -71,7 +71,7 @@ class WeatherTableViewController: UITableViewController {
         
         // update other Weather
         for (index, weather) in dataSource.enumerated() {
-            let coord = [("lat", weather.currentWeather.coord.lat), ("lon", weather.currentWeather.coord.lon)]
+            let coord = [("lat", weather.lat), ("lon", weather.lon)]
             getWeather(for: coord) { (result) in
                 switch result {
                 case .failure(_):
@@ -100,14 +100,14 @@ class WeatherTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
         
         guard localWeatehr != nil else {
-            cell.weather = dataSource[indexPath.row].currentWeather
+            cell.weather = dataSource[indexPath.row]
             return cell
         }
         
         if indexPath.row == 0 {
-            cell.weather = localWeatehr?.currentWeather
+            cell.weather = localWeatehr
         } else {
-            cell.weather = dataSource[indexPath.row - 1].currentWeather
+            cell.weather = dataSource[indexPath.row - 1]
         }
 
         return cell
@@ -134,7 +134,7 @@ class WeatherTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? WeatherDetailViewController {
-            destination.dataSource = sender as? GlobalWeatherResult
+            destination.dataSource = sender as? WeatherResult
         }
     }
 

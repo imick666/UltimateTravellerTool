@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ForecastWeatherService {
+final class WeatherService {
     
     private let baseUrl = "https://api.openweathermap.org/data/2.5/onecall"
     private let client: HTTPClient
@@ -17,7 +17,7 @@ final class ForecastWeatherService {
         self.client = client
     }
     
-    func getForecastWeather(parameters: [(String, Any)], callback: @escaping (Result<ForecastWeatherResult, NetworkError>) -> Void) {
+    func getForecastWeather(parameters: [(String, Any)], callback: @escaping (Result<WeatherResult, NetworkError>) -> Void) {
         guard let url = URL(string: baseUrl) else {
             callback(.failure(.badUrl))
             return
@@ -25,10 +25,10 @@ final class ForecastWeatherService {
         
         var parameters = parameters
         parameters.append(("units", "metric"))
+        parameters.append(("exclude", "minutely"))
         parameters.append(("appid", ApiConfig.weatherApiKey))
-        parameters.append(("exclude", "minutely,current"))
         
-        client.requestJson(baseUrl: url, parameters: parameters) { (result: Result<ForecastWeatherResult, NetworkError>) in
+        client.requestJson(baseUrl: url, parameters: parameters) { (result: Result<WeatherResult, NetworkError>) in
             callback(result)
         }
     }

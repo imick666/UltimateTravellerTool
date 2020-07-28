@@ -13,10 +13,10 @@ class ForecastWeatherTest: XCTestCase {
     
     let expectation = XCTestExpectation(description: "Wait for queue")
     
-    private func createClient(session: FakeUrlSession) -> ForecastWeatherService {
+    private func createClient(session: FakeUrlSession) -> WeatherService {
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
-        let forecastWeather = ForecastWeatherService(client: client)
+        let forecastWeather = WeatherService(client: client)
         
         return forecastWeather
     }
@@ -90,7 +90,9 @@ class ForecastWeatherTest: XCTestCase {
         
         forecastWeather.getForecastWeather(parameters: []) { (result) in
             guard case .success(let data) = result else {
-                XCTFail()
+                if case .failure(let error) = result {
+                    XCTFail(error.description)
+                }
                 return
             }
             self.expectation.fulfill()

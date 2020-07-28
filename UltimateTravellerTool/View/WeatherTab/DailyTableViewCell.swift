@@ -19,7 +19,7 @@ class DailyTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var weather: ForecastWeatherResult.Daily! {
+    var weather: WeatherResult.Daily! {
         didSet {
             dayNameLabel.text = ""
             minTempLabel.text = String(weather.temp.min) + " °C"

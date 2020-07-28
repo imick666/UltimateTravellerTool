@@ -20,18 +20,18 @@ class WeatherTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var weather: CurrentWeatherResult! {
+    var weather: WeatherResult! {
         didSet {
             cityNameLabel.text = weather.name
-            weatherDetailLabel.text = weather.weather[0].description
-            tempLabel.text = String(weather.main.temp)
-            iconImageView.getIcon(id: weather.weather[0].icon)
+            weatherDetailLabel.text = weather.current.weather[0].description
+            tempLabel.text = String(weather.current.temp)
+            iconImageView.getIcon(id: weather.current.weather[0].icon)
             setpBackGround()
         }
     }
     
     private func setpBackGround() {
-        let code = weather.weather[0].id
+        let code = weather.current.weather[0].id
         if code >= 200 && code < 500 {
             backGroundImageView.image = UIImage(named: "thunderstorm")
         } else if code >= 500 && code < 800 {

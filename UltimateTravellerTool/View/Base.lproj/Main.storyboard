@@ -323,31 +323,11 @@
                                         <rect key="frame" x="0.0" y="208" width="398" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajourd'hui Dimanche" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUW-ae-XJT">
-                                                <rect key="frame" x="0.0" y="0.0" width="158.33333333333334" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="wAQ-WO-qLm">
-                                                <rect key="frame" x="311.66666666666669" y="0.0" width="86.333333333333314" height="44"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-Az-m7i">
-                                                        <rect key="frame" x="0.0" y="0.0" width="39.666666666666664" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="660-32-4ei">
-                                                        <rect key="frame" x="46.666666666666629" y="0.0" width="39.666666666666657" height="44"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="660-32-4ei" firstAttribute="width" secondItem="9qd-Az-m7i" secondAttribute="width" id="IYi-NL-yWa"/>
-                                                </constraints>
-                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="LW1-Bq-jtW"/>
@@ -504,8 +484,6 @@
                         <outlet property="cityNameLabel" destination="DpU-cB-oFa" id="z6L-ow-EEl"/>
                         <outlet property="dailyForecastTableView" destination="AZ8-Tq-yag" id="zo4-81-z55"/>
                         <outlet property="hourlyForecastCollectionView" destination="u1B-ql-9gX" id="n7P-3w-obM"/>
-                        <outlet property="maxTempLabel" destination="660-32-4ei" id="7KX-39-wRL"/>
-                        <outlet property="minTempLabel" destination="9qd-Az-m7i" id="twT-It-6M3"/>
                         <outlet property="tempLabel" destination="2J1-eI-HBy" id="Rix-1x-cWP"/>
                         <outlet property="todayLabel" destination="iUW-ae-XJT" id="qP2-0M-7I3"/>
                         <outlet property="weatherDescriptionLabel" destination="zuB-nL-4SJ" id="u0r-fR-5TE"/>

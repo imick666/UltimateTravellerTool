@@ -11,16 +11,16 @@ import Foundation
 final class GlobalWeatherService {
     
     private let currentWeather: CurrentWeatherService
-    private let forecastWeather: ForecastWeatherService
+    private let forecastWeather: WeatherService
     private let client: HTTPClient
     
-    init(currentWeather: CurrentWeatherService = CurrentWeatherService(), forecastWeather: ForecastWeatherService = ForecastWeatherService(), client: HTTPClient = HTTPClient()) {
+    init(currentWeather: CurrentWeatherService = CurrentWeatherService(), forecastWeather: WeatherService = WeatherService(), client: HTTPClient = HTTPClient()) {
         self.currentWeather = currentWeather
         self.forecastWeather = forecastWeather
         self.client = client
     }
     
-    func getGlobalWeather(parameters: [(String, Any)], callback: @escaping ((Result<GlobalWeatherResult, NetworkError>) -> Void)) {
+    func getGlobalWeather(parameters: [(String, Any)], callback: @escaping ((Result<WeatherResult, NetworkError>) -> Void)) {
         // PickUp Current Weather
         currentWeather.getCurrentWeather(parameters: parameters) { (currentResult) in
             switch currentResult {
@@ -34,10 +34,9 @@ final class GlobalWeatherService {
                     switch forecastResult {
                     case .failure(let error):
                         callback(.failure(error))
-                    case .success(let forecastData):
-                        //Create Global Weather
-                        let globalWeather = GlobalWeatherResult(currentWeather: currentData, forecastWeather: forecastData)
-                        callback(.success(globalWeather))
+                    case .success(var weatherData):
+                        weatherData.name = currentData.name
+                        callback(.success(weatherData))
                     }
                 }
             }

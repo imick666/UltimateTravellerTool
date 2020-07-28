@@ -22,15 +22,22 @@ class GlobalWeatherTest: XCTestCase {
         return currentWeather
     }
     
-    func createForecastClient(session: FakeUrlSession) -> ForecastWeatherService{
+    func createForecastClient(session: FakeUrlSession) -> WeatherService{
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
-        let forecastWeather = ForecastWeatherService(client: client)
+        let forecastWeather = WeatherService(client: client)
         return forecastWeather
     }
     
-    func createGlobalClient(currentSession: CurrentWeatherService, forecastSession: ForecastWeatherService) -> GlobalWeatherService {
+    func createGlobalClient(currentSession: CurrentWeatherService, forecastSession: WeatherService) -> GlobalWeatherService {
         let globalWeather = GlobalWeatherService(currentWeather: currentSession, forecastWeather: forecastSession)
+        return globalWeather
+    }
+    
+    func createGlobalClientForIcon(globalSession: FakeUrlSession) -> GlobalWeatherService {
+        let request = HTTPRequest(session: globalSession)
+        let client = HTTPClient(httpRequest: request)
+        let globalWeather = GlobalWeatherService(client: client)
         return globalWeather
     }
     
@@ -252,4 +259,89 @@ class GlobalWeatherTest: XCTestCase {
         
         wait(for: [expactation], timeout: 0.01)
     }
+    
+    // MARK: - Get Icon Test
+    
+    func testGetIconBadResponse() {
+        let session = FakeUrlSession(fakeData: nil, fakeResponse: GlobalWeatherFakeResponse.basResponse, fakeError: nil)
+        let globalWeather = createGlobalClientForIcon(globalSession: session)
+        
+        globalWeather.getIcon(id: "") { (result) in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            self.expactation.fulfill()
+            XCTAssertEqual(error, NetworkError.badResponse)
+        }
+        
+        wait(for: [expactation], timeout: 0.01)
+    }
+    
+    func testGetIconGoodResponseWithError() {
+        let session = FakeUrlSession(fakeData: nil, fakeResponse: GlobalWeatherFakeResponse.goodResponse, fakeError: GlobalWeatherFakeResponse.fakError)
+        let globalWeather = createGlobalClientForIcon(globalSession: session)
+        
+        globalWeather.getIcon(id: "") { (result) in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            self.expactation.fulfill()
+            XCTAssertNotNil(error)
+        }
+        
+        wait(for: [expactation], timeout: 0.01)
+    }
+    
+    func testGetIconNoData() {
+        let session = FakeUrlSession(fakeData: nil, fakeResponse: GlobalWeatherFakeResponse.goodResponse, fakeError: nil)
+        let globalWeather = createGlobalClientForIcon(globalSession: session)
+        
+        globalWeather.getIcon(id: "") { (result) in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            self.expactation.fulfill()
+            XCTAssertEqual(error, NetworkError.noData)
+        }
+        
+        wait(for: [expactation], timeout: 0.01)
+    }
+    
+    func testGetIconIncorrectData() {
+        let session = FakeUrlSession(fakeData: GlobalWeatherFakeResponse.incorrectData, fakeResponse: GlobalWeatherFakeResponse.goodResponse, fakeError: nil)
+        let globalWeather = createGlobalClientForIcon(globalSession: session)
+        
+        globalWeather.getIcon(id: "") { (result) in
+            guard case .success(let data) = result else {
+                XCTFail()
+                return
+            }
+            self.expactation.fulfill()
+            XCTAssertNil(UIImage(data: data))
+        }
+        
+        wait(for: [expactation], timeout: 0.01)
+    }
+    
+    func testGetIconCorrectData() {
+        let session = FakeUrlSession(fakeData: GlobalWeatherFakeResponse.correctData, fakeResponse: GlobalWeatherFakeResponse.goodResponse, fakeError: nil)
+        let globalWeather = createGlobalClientForIcon(globalSession: session)
+        
+        globalWeather.getIcon(id: "") { (result) in
+            guard case .success(let data) = result else {
+                XCTFail()
+                return
+            }
+            self.expactation.fulfill()
+            XCTAssertNotNil(UIImage(data: data))
+        }
+        
+        wait(for: [expactation], timeout: 0.01)
+    }
 }
+
+
+    
