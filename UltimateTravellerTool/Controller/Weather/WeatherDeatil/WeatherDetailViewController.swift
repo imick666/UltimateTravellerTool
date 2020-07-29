@@ -17,6 +17,8 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var backGroundImageView: UIImageView!
     @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     
     @IBOutlet weak var hourlyForecastCollectionView: UICollectionView!
     @IBOutlet weak var dailyForecastTableView: UITableView!
@@ -48,6 +50,8 @@ class WeatherDetailViewController: UIViewController {
         weatherDescriptionLabel.text = dataSource.current.weather[0].description
         tempLabel.text = String(dataSource.current.temp) + " °C"
         todayLabel.text = getDayName(from: dataSource.current.dt)
+        minTempLabel.text = String(dataSource.daily[0].temp.min)
+        maxTempLabel.text = String(dataSource.daily[0].temp.max)
         
         // Set BackGround for each weather category
         let code = dataSource.current.weather[0].id
@@ -105,7 +109,7 @@ class WeatherDetailViewController: UIViewController {
 
 extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.daily.count
+        return dataSource.daily.count - 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,8 +118,8 @@ extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return UITableViewCell()
         }
         
-        dailyCell.weather = dataSource.daily[indexPath.row]
-        dailyCell.dayNameLabel.text = getDayName(from: dataSource.daily[indexPath.row].dt)
+        dailyCell.weather = dataSource.daily[indexPath.row + 1]
+        dailyCell.dayNameLabel.text = getDayName(from: dataSource.daily[indexPath.row + 1].dt)
         
         return dailyCell
     }
