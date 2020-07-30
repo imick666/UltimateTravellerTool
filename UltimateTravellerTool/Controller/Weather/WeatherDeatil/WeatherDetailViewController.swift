@@ -29,16 +29,15 @@ class WeatherDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        dailyForecastTableView.delegate = self
-        dailyForecastTableView.dataSource = self
+        
+        // TableView SetUp
         dailyForecastTableView.separatorStyle = .none
         dailyForecastTableView.allowsSelection = false
         
-        hourlyForecastCollectionView.delegate = self
-        hourlyForecastCollectionView.dataSource = self
+        // CollectionView Setup
         hourlyForecastCollectionView.allowsSelection = false
         
+        // Display SetUp
         setup()
     }
     
@@ -48,8 +47,8 @@ class WeatherDetailViewController: UIViewController {
         // Set label
         cityNameLabel.text = dataSource.name
         weatherDescriptionLabel.text = dataSource.current.weather[0].description
-        tempLabel.text = String(dataSource.current.temp) + " °C"
-        todayLabel.text = getDayName(from: dataSource.current.dt)
+        tempLabel.text = String(dataSource.current.temp.int) + " °C"
+        todayLabel.text = getDayName(from: dataSource.daily[0].dt)
         minTempLabel.text = String(dataSource.daily[0].temp.min)
         maxTempLabel.text = String(dataSource.daily[0].temp.max)
         
@@ -66,20 +65,13 @@ class WeatherDetailViewController: UIViewController {
         }
         
         //sort arrays for remove unwanted informations
-        dataSource.daily.remove(at: 0)
         dataSource.hourly.removeSubrange(0..<24)
         
     }
     
-    // transform TimeStamp into Date
-    private func getDate(from timestamp: Int) -> Date {
-        let date = Date(timeIntervalSince1970: Double(timestamp))
-        return date
-    }
-    
     // Transform Date into Day Name
     private func getDayName(from timestamp: Int) -> String {
-        let date = getDate(from: timestamp)
+        let date = timestamp.date
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(secondsFromGMT: dataSource.timezone_offset)
         formatter.dateFormat = "EEEE"
@@ -89,7 +81,7 @@ class WeatherDetailViewController: UIViewController {
     
     // Trnsform Date into Hour
     private func getHour(from timestamp: Int) -> String {
-        let date = getDate(from: timestamp)
+        let date = timestamp.date
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(secondsFromGMT: dataSource.timezone_offset)
         formatter.dateFormat = "HH"
@@ -144,7 +136,7 @@ extension WeatherDetailViewController: UICollectionViewDelegate, UICollectionVie
         let hourlyWeather = dataSource.hourly[indexPath.row]
         
         cell.weather = hourlyWeather
-        cell.hourLabel.text = getHour(from: hourlyWeather.dt) + "H"
+        cell.hourLabel.text = getHour(from: hourlyWeather.dt) == getHour(from: dataSource.current.dt) ? "Now" : getHour(from: hourlyWeather.dt) + "H"
         
         return cell
     }

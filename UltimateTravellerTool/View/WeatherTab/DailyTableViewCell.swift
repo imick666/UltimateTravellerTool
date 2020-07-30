@@ -22,21 +22,9 @@ class DailyTableViewCell: UITableViewCell {
     var weather: WeatherResult.Daily! {
         didSet {
             dayNameLabel.text = ""
-            minTempLabel.text = String(weather.temp.min) + " °C"
-            maxTempLabel.text = String(weather.temp.max) + " °C"
+            minTempLabel.text = String(weather.temp.min.int) + " °C"
+            maxTempLabel.text = String(weather.temp.max.int) + " °C"
             iconImageView.getIcon(id: weather.weather[0].icon)
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

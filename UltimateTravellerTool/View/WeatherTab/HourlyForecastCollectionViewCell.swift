@@ -20,7 +20,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
     var weather: WeatherResult.Hourly! {
         didSet {
-            tempLabel.text = String(weather.temp)
+            tempLabel.text = String(weather.temp.int) + "°C"
             iconImageView.getIcon(id: weather.weather[0].icon)
         }
     }

@@ -15,12 +15,14 @@ class WeatherTableViewController: UITableViewController {
     let weatherService = GlobalWeatherService()
     let dispatchGroup = DispatchGroup()
     let locationManager = CLLocationManager()
+    var refreshcontrol = UIRefreshControl()
     
     // MARK: - DataSources
     
     var localWeatehr: WeatherResult?
     var dataSource = [WeatherResult]()
     
+    // FakeData for test
     let fakeCoord: [[(String, Any)]] = [
         [("lat", 39.90), ("lon", 116.39)],
         [("q", "montpellier")],
@@ -31,41 +33,54 @@ class WeatherTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get porsition and add it to "localWeateher"
         locationSetUp()
         
+        // Create FakeData
         fakeCoord.forEach { (coord) in
             getWeather(for: coord) { (result) in
-                switch result {
-                case .failure(let error):
-                    print(error.description)
-                case .success(let data):
-                    self.dataSource.append(data)
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure(let error):
+                        self.showAlert(title: "Error", message: error.description)
+                    case .success(let data):
+                        self.dataSource.append(data)
+                    }
                 }
+                
             }
         }
         
+        // remove TableView seprator
         tableView.separatorStyle = .none
+        
+        // SetUp RefreshControl
+        refreshcontrol.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        tableView.addSubview(refreshcontrol)
     }
 
+    // MARK: - Selector
+    @objc
+    private func refreshData(_ sender: UIRefreshControl) {
+        updateWeather()
+    }
+    
     // MARK: - Methodes
     
     func getWeather(for param: [(String, Any)], callback: @escaping ((Result<WeatherResult, NetworkError>) -> Void)) {
         dispatchGroup.enter()
-        print("entered")
         weatherService.getGlobalWeather(parameters: param) { (result) in
             callback(result)
             self.dispatchGroup.leave()
-            print("leaved")
         }
         
         dispatchGroup.notify(queue: .main) {
+            self.refreshcontrol.endRefreshing()
             self.tableView.reloadData()
-            print("C'EST OK!!!!!!!!!!")
         }
     }
     
     private func updateWeather() {
-        print("refresh in progress")
         // update local Weather
         locationSetUp()
         
@@ -81,8 +96,6 @@ class WeatherTableViewController: UITableViewController {
                 }
             }
         }
-        
-        tableView.endUpdates()
     }
     
     // MARK: - Table view data source
@@ -104,11 +117,7 @@ class WeatherTableViewController: UITableViewController {
             return cell
         }
         
-        if indexPath.row == 0 {
-            cell.weather = localWeatehr
-        } else {
-            cell.weather = dataSource[indexPath.row - 1]
-        }
+        cell.weather = indexPath.row == 0 ? localWeatehr : dataSource[indexPath.row - 1]
 
         return cell
     }
@@ -123,11 +132,8 @@ class WeatherTableViewController: UITableViewController {
             return
         }
         
-        if indexPath.row == 0 {
-            performSegue(withIdentifier: "WeatherDetailSegue", sender: localWeatehr)
-        } else {
-            performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row - 1])
-        }
+        indexPath.row == 0 ? performSegue(withIdentifier: "WeatherDetailSegue", sender: localWeatehr) :  performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row - 1])
+
     }
 
     // MARK: - Navigation
