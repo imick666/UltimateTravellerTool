@@ -49,8 +49,8 @@ class WeatherDetailViewController: UIViewController {
         weatherDescriptionLabel.text = dataSource.current.weather[0].description
         tempLabel.text = String(dataSource.current.temp.int) + " °C"
         todayLabel.text = getDayName(from: dataSource.daily[0].dt)
-        minTempLabel.text = String(dataSource.daily[0].temp.min)
-        maxTempLabel.text = String(dataSource.daily[0].temp.max)
+        minTempLabel.text = String(dataSource.daily[0].temp.min.int) + " °C"
+        maxTempLabel.text = String(dataSource.daily[0].temp.max.int) + " °C"
         
         // Set BackGround for each weather category
         let code = dataSource.current.weather[0].id

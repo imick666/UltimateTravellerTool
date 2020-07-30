@@ -9,8 +9,12 @@
 import UIKit
 import CoreLocation
 
+protocol SelectCityDelegate {
+    func cityDidSelect(city: String)
+}
+
 class WeatherTableViewController: UITableViewController {
-    
+
     // MARK: - Properties
     let weatherService = GlobalWeatherService()
     let dispatchGroup = DispatchGroup()
@@ -21,6 +25,7 @@ class WeatherTableViewController: UITableViewController {
     
     var localWeatehr: WeatherResult?
     var dataSource = [WeatherResult]()
+    var selectCityDelegate: SelectCityDelegate?
     
     // FakeData for test
     let fakeCoord: [[(String, Any)]] = [
@@ -133,7 +138,20 @@ class WeatherTableViewController: UITableViewController {
         }
         
         indexPath.row == 0 ? performSegue(withIdentifier: "WeatherDetailSegue", sender: localWeatehr) :  performSegue(withIdentifier: "WeatherDetailSegue", sender: dataSource[indexPath.row - 1])
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        localWeatehr != nil && indexPath.row == 0 ? false : true
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let index = localWeatehr != nil ? indexPath.row - 1 : indexPath.row
 
+        if editingStyle == .delete {
+            dataSource.remove(at: index)
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Navigation
@@ -142,6 +160,29 @@ class WeatherTableViewController: UITableViewController {
         if let destination = segue.destination as? WeatherDetailViewController {
             destination.dataSource = sender as? WeatherResult
         }
+        if let destination = segue.destination as? SearchCityNameTableViewController {
+            destination.delegate = self
+        }
     }
+    
+    // MARK: Actions
+    
+    @IBAction func addCityButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "SearchCitySegue", sender: nil)
+    }
+}
 
+extension WeatherTableViewController: SelectCityDelegate {
+    func cityDidSelect(city: String) {
+        getWeather(for: [("q", city)]) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.description)
+                case .success(let data):
+                    self.dataSource.append(data)
+                }
+            }
+        }
+    }
 }

@@ -258,13 +258,14 @@
                     <navigationItem key="navigationItem" title="Title" id="rpV-k9-cuO">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dIx-QB-rfx">
                             <connections>
-                                <segue destination="88I-o3-RLd" kind="presentation" id="MOq-Db-Ztf"/>
+                                <action selector="addCityButtonTapped:" destination="4xZ-X3-bNT" id="J3Y-Ce-eX1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="5eL-cn-q3g" kind="presentation" identifier="WeatherDetailSegue" id="XYY-m4-H88"/>
+                        <segue destination="88I-o3-RLd" kind="show" identifier="SearchCitySegue" id="BVV-RD-x6X"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ9-Jm-nym" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -276,13 +277,16 @@
             <objects>
                 <tableViewController id="88I-o3-RLd" customClass="SearchCityNameTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d8g-j2-RBU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="zjS-l9-yxg">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="88I-o3-RLd" id="UcQ-eb-9ST"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="61J-kd-EiD">
@@ -299,6 +303,10 @@
                             <outlet property="delegate" destination="88I-o3-RLd" id="ZTR-9X-Ljw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="tZ3-Nf-y2N"/>
+                    <connections>
+                        <outlet property="searchBar" destination="zjS-l9-yxg" id="Loj-2q-MVR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xZ-Xq-psR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
