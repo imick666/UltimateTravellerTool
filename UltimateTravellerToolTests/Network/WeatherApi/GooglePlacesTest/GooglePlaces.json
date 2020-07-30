@@ -1,0 +1,207 @@
+{
+   "predictions": [
+      {
+         "description": "New York, NY, USA",
+         "matched_substrings": [
+            {
+               "length": 3,
+               "offset": 0
+            }
+         ],
+         "place_id": "ChIJOwg_06VPwokRYv534QaPC8g",
+         "reference": "ChIJOwg_06VPwokRYv534QaPC8g",
+         "structured_formatting": {
+            "main_text": "New York",
+            "main_text_matched_substrings": [
+               {
+                  "length": 3,
+                  "offset": 0
+               }
+            ],
+            "secondary_text": "NY, USA"
+         },
+         "terms": [
+            {
+               "offset": 0,
+               "value": "New York"
+            },
+            {
+               "offset": 10,
+               "value": "NY"
+            },
+            {
+               "offset": 14,
+               "value": "USA"
+            }
+         ],
+         "types": [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description": "New Orleans, LA, USA",
+         "id": "b92e63d48f722331759b1c2bae902a5e4e6f0c1c",
+         "matched_substrings": [
+            {
+               "length": 3,
+               "offset": 0
+            }
+         ],
+         "place_id": "ChIJZYIRslSkIIYRtNMiXuhbBts",
+         "reference": "ChIJZYIRslSkIIYRtNMiXuhbBts",
+         "structured_formatting": {
+            "main_text": "New Orleans",
+            "main_text_matched_substrings": [
+               {
+                  "length": 3,
+                  "offset": 0
+               }
+            ],
+            "secondary_text": "LA, USA"
+         },
+         "terms": [
+            {
+               "offset": 0,
+               "value": "New Orleans"
+            },
+            {
+               "offset": 13,
+               "value": "LA"
+            },
+            {
+               "offset": 17,
+               "value": "USA"
+            }
+         ],
+         "types": [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description": "Newport Beach, CA, USA",
+         "id": "acfe6ea9676f51de8932f0a319fd2de4f024e902",
+         "matched_substrings": [
+            {
+               "length": 3,
+               "offset": 0
+            }
+         ],
+         "place_id": "ChIJ3bO_xLbo3IARvVmLZFSVVPE",
+         "reference": "ChIJ3bO_xLbo3IARvVmLZFSVVPE",
+         "structured_formatting": {
+            "main_text": "Newport Beach",
+            "main_text_matched_substrings": [
+               {
+                  "length": 3,
+                  "offset": 0
+               }
+            ],
+            "secondary_text": "CA, USA"
+         },
+         "terms": [
+            {
+               "offset": 0,
+               "value": "Newport Beach"
+            },
+            {
+               "offset": 15,
+               "value": "CA"
+            },
+            {
+               "offset": 19,
+               "value": "USA"
+            }
+         ],
+         "types": [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description": "New Delhi, Delhi, India",
+         "matched_substrings": [
+            {
+               "length": 3,
+               "offset": 0
+            }
+         ],
+         "place_id": "ChIJLbZ-NFv9DDkRzk0gTkm3wlI",
+         "reference": "ChIJLbZ-NFv9DDkRzk0gTkm3wlI",
+         "structured_formatting": {
+            "main_text": "New Delhi",
+            "main_text_matched_substrings": [
+               {
+                  "length": 3,
+                  "offset": 0
+               }
+            ],
+            "secondary_text": "Delhi, India"
+         },
+         "terms": [
+            {
+               "offset": 0,
+               "value": "New Delhi"
+            },
+            {
+               "offset": 11,
+               "value": "Delhi"
+            },
+            {
+               "offset": 18,
+               "value": "India"
+            }
+         ],
+         "types": [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description": "Newark, NJ, USA",
+         "matched_substrings": [
+            {
+               "length": 3,
+               "offset": 0
+            }
+         ],
+         "place_id": "ChIJHQ6aMnBTwokRc-T-3CrcvOE",
+         "reference": "ChIJHQ6aMnBTwokRc-T-3CrcvOE",
+         "structured_formatting": {
+            "main_text": "Newark",
+            "main_text_matched_substrings": [
+               {
+                  "length": 3,
+                  "offset": 0
+               }
+            ],
+            "secondary_text": "NJ, USA"
+         },
+         "terms": [
+            {
+               "offset": 0,
+               "value": "Newark"
+            },
+            {
+               "offset": 8,
+               "value": "NJ"
+            },
+            {
+               "offset": 12,
+               "value": "USA"
+            }
+         ],
+         "types": [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      }
+   ],
+   "status": "OK"
+}
