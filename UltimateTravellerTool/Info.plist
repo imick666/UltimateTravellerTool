@@ -75,5 +75,11 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationUsageDescription</key>
+	<string>We nedd your location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We nedd your location</string>
 </dict>
 </plist>

@@ -19,8 +19,12 @@ final class HTTPClient {
     }
     
     //MARK: - METHODES
-    func request<T: Decodable>(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping ((Result<T, NetworkError>) -> Void)) {
+    func requestJson<T: Decodable>(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping ((Result<T, NetworkError>) -> Void)) {
         httpRequest.request(baseUrl: baseUrl, parameters: parameters) { (data, response, error) in
+            guard response != nil else {
+                callback(.failure(.noConnection))
+                return
+            }
             guard let response = response, response.statusCode == 200 else {
                 callback(.failure(.badResponse))
                 return
@@ -35,6 +39,24 @@ final class HTTPClient {
             } catch {
                 callback(.failure(.dataUndecodable))
             }
+        }
+    }
+    
+    func requestData(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping ((Result<Data, NetworkError>) -> Void)) {
+        httpRequest.request(baseUrl: baseUrl, parameters: parameters) { (data, response, error) in
+            guard response != nil else {
+                callback(.failure(.noConnection))
+                return
+            }
+            guard let response = response, response.statusCode == 200 else {
+                callback(.failure(.badResponse))
+                return
+            }
+            guard let data = data, error == nil else {
+                callback(.failure(.noData))
+                return
+            }
+            callback(.success(data))
         }
     }
 }

@@ -34,7 +34,7 @@ final class HTTPRequest {
         
         let url = encodeUrl(baseUrl: baseUrl, parameters: parameters)
         Logger(url: url).show()
-        task?.cancel()
+//        task?.cancel()
         task = session.dataTask(with: url) { (data, response, error) in
             guard let response = response as? HTTPURLResponse else {
                 callback(data, nil, error)
