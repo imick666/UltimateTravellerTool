@@ -22,6 +22,7 @@
                     <connections>
                         <segue destination="8Xi-sP-90u" kind="relationship" relationship="viewControllers" id="ncx-O6-WJK"/>
                         <segue destination="uvs-fj-BwA" kind="relationship" relationship="viewControllers" id="2bv-oJ-XmE"/>
+                        <segue destination="kZb-dz-QKH" kind="relationship" relationship="viewControllers" id="s0k-h6-Mpa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25j-yK-vg4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -43,12 +44,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIf-Jr-c6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="138"/>
+            <point key="canvasLocation" x="138" y="240"/>
         </scene>
-        <!--Item-->
+        <!--Currencies Converter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="CurrencyViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -168,7 +168,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="fAR-fA-9W5"/>
-                    <navigationItem key="navigationItem" id="fra-Md-gxa"/>
+                    <navigationItem key="navigationItem" title="Currencies Converter" id="fra-Md-gxa"/>
                     <connections>
                         <outlet property="lastUpdateLabel" destination="W0S-Gh-JJ9" id="Dvd-oJ-fHR"/>
                         <outletCollection property="selectCurrencyButton" destination="CGd-T8-5XI" collectionClass="NSMutableArray" id="Aqa-lB-lvf"/>
@@ -178,10 +178,11 @@
                         <segue destination="lMU-2a-HO8" kind="show" identifier="SelectCurrency" id="fL2-m4-jG4"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="138"/>
+            <point key="canvasLocation" x="1290" y="240"/>
         </scene>
-        <!--Weather Table View Controller-->
+        <!--Weather-->
         <scene sceneID="6Od-eY-Urq">
             <objects>
                 <tableViewController id="4xZ-X3-bNT" customClass="WeatherTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
@@ -272,7 +273,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rpV-k9-cuO">
+                    <navigationItem key="navigationItem" title="Weather" id="rpV-k9-cuO">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dIx-QB-rfx">
                             <connections>
                                 <action selector="addCityButtonTapped:" destination="4xZ-X3-bNT" id="J3Y-Ce-eX1"/>
@@ -327,7 +328,87 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xZ-Xq-psR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="856"/>
+            <point key="canvasLocation" x="2206" y="938"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="dxn-BB-oGH">
+            <objects>
+                <navigationController id="kZb-dz-QKH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="CuA-ak-m1r"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QsU-zj-B1w">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kGk-KN-mdG" kind="relationship" relationship="rootViewController" id="GMn-PC-NxU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="szk-s1-pzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="2325"/>
+        </scene>
+        <!--Translation-->
+        <scene sceneID="oAY-Kp-uZp">
+            <objects>
+                <tableViewController id="kGk-KN-mdG" customClass="TranslationTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hpT-Ez-zcx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bVl-cM-P48">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bVl-cM-P48" id="1ii-sf-5D5" customClass="ChatTableViewCell" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kGk-KN-mdG" id="DdE-8X-Vch"/>
+                            <outlet property="delegate" destination="kGk-KN-mdG" id="8oh-pL-Bq8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Translation" id="IVg-v7-HHl">
+                        <barButtonItem key="leftBarButtonItem" title="English" id="Age-KR-ejd"/>
+                        <barButtonItem key="rightBarButtonItem" title="Russian" id="c5o-hV-NbR"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="LfJ-G6-zqJ" kind="presentation" identifier="SelectLanguageSegue" id="4Pe-st-ZNE"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcM-KS-pbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1290" y="2325"/>
+        </scene>
+        <!--Select Language Table View Controller-->
+        <scene sceneID="kAk-la-pvc">
+            <objects>
+                <tableViewController id="LfJ-G6-zqJ" customClass="SelectLanguageTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6fB-Wu-26l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IIk-Uv-2mQ">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IIk-Uv-2mQ" id="0B0-q3-IJa">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LfJ-G6-zqJ" id="bk7-U6-b6n"/>
+                            <outlet property="delegate" destination="LfJ-G6-zqJ" id="5oZ-C9-hhR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cMk-T0-guc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2206" y="2325"/>
         </scene>
         <!--Weather Detail View Controller-->
         <scene sceneID="HkB-5c-42P">
@@ -581,7 +662,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cu-Bf-rGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="1666"/>
+            <point key="canvasLocation" x="2206" y="1611"/>
         </scene>
         <!--Select Currency Table View Controller-->
         <scene sceneID="6xU-n8-aDp">
@@ -653,7 +734,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kc5-dG-ntI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2207" y="138"/>
+            <point key="canvasLocation" x="2206" y="240"/>
         </scene>
         <!--Item-->
         <scene sceneID="nSk-Xv-f2j">

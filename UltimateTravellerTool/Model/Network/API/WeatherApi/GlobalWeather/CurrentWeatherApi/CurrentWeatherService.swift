@@ -27,7 +27,7 @@ final class CurrentWeatherService {
         parameters.append(("units", "metric"))
         parameters.append(("appid", ApiConfig.weatherApiKey))
         
-        httpClient.requestJson(baseUrl: url, parameters: parameters) { (result: Result<CurrentWeatherResult, NetworkError>) in
+        httpClient.requestJson(baseUrl: url, body: nil, parameters: parameters) { (result: Result<CurrentWeatherResult, NetworkError>) in
             callback(result)
         }
     }

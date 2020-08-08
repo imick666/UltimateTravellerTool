@@ -23,7 +23,7 @@ class CurrenciesService {
     //MARK : - Methodes
     func getCurrencies(callback: @escaping (Result<CurrenciesResult, NetworkError>) -> Void) {
         guard let url = baseUrl else { return }
-        httpClient.requestJson(baseUrl: url, parameters: [("access_key", ApiConfig.currecniesApiKey)]) { (result: Result<CurrenciesResult, NetworkError>) in
+        httpClient.requestJson(baseUrl: url, body: nil, parameters: [("access_key", ApiConfig.currecniesApiKey)]) { (result: Result<CurrenciesResult, NetworkError>) in
             callback(result)
         }
     }

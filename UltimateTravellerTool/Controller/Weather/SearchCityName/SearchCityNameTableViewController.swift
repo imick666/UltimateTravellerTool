@@ -65,9 +65,10 @@ extension SearchCityNameTableViewController: UISearchBarDelegate {
         googlePlaces.getCitiesName(q: searchText) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .failure(_):
-                    return
+                case .failure(let error):
+                    self.showAlert(title: "ERROR", message: error.description)
                 case .success(let data):
+                    print(data)
                     self.dataSource = data.predictions
                 }
             }

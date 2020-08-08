@@ -28,7 +28,7 @@ final class WeatherService {
         parameters.append(("exclude", "minutely"))
         parameters.append(("appid", ApiConfig.weatherApiKey))
         
-        client.requestJson(baseUrl: url, parameters: parameters) { (result: Result<WeatherResult, NetworkError>) in
+        client.requestJson(baseUrl: url, body: nil, parameters: parameters) { (result: Result<WeatherResult, NetworkError>) in
             callback(result)
         }
     }
