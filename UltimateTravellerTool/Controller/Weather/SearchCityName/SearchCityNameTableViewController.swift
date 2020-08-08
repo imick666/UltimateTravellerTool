@@ -28,23 +28,26 @@ class SearchCityNameTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
 
+    // MARK: - Selectors
+    
+    @objc
+    func tapGesture(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return dataSource.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = dataSource[indexPath.row].description
-
-        // Configure the cell...
 
         return cell
     }

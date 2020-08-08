@@ -57,7 +57,8 @@ class CurrencyViewController: UIViewController {
         }
         
         //setup text field
-        amountTextField[0].delegate = self
+//        amountTextField[0].delegate = self
+        amountTextField[0].addTarget(self, action: #selector(textFieldTextDidChange(_:)), for: .editingChanged)
         
         // Create tap gesture for dismiss keyboard
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeayboard))
@@ -107,6 +108,16 @@ class CurrencyViewController: UIViewController {
         amountTextField[0].resignFirstResponder()
     }
     
+    @objc
+    private func textFieldTextDidChange(_ sender: UITextField) {
+        guard let text = amountTextField[0].text, text.count <= 10 else {
+            showAlert(title: "Amount Too Large", message: "The amount you try to convert is to large")
+            amountTextField[0].deleteBackward()
+            return
+        }
+        makeConvert(amount: text)
+    }
+    
     // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -150,14 +161,14 @@ extension CurrencyViewController: PassSelectedCurrency {
     }
 }
 
-extension CurrencyViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = amountTextField[0].text, text.count <= 10 else {
-            showAlert(title: "Amount Too Large", message: "The amount you try to convert is to large")
-            amountTextField[0].deleteBackward()
-            return
-        }
-        makeConvert(amount: text)
-    }
-}
+//extension CurrencyViewController: UITextFieldDelegate {
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//        guard let text = amountTextField[0].text, text.count <= 10 else {
+//            showAlert(title: "Amount Too Large", message: "The amount you try to convert is to large")
+//            amountTextField[0].deleteBackward()
+//            return
+//        }
+//        makeConvert(amount: text)
+//    }
+//}
 
