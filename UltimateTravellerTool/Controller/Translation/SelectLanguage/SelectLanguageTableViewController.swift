@@ -10,37 +10,68 @@ import UIKit
 
 class SelectLanguageTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    
+    let googleTranslateService = GoogleTranslateService()
+    var delegate: passLanguageDelegate!
+    var target: String?
+    
+    var buttonId: Int!
+    var dataSource: GoogleTranslateListResult.GoogleData? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    // MARK: - View Cycle Life
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        getLanguages()
     }
 
+    // MARK: - Methodes
+    
+    private func getLanguages() {
+        let body = target != nil ? ["target": target!] : nil
+        
+        googleTranslateService.getLinguageList(body: body) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.description)
+                case .success(var data):
+                    data.data.languages.sort { $0.name ?? "" < $1.name ?? "" }
+                    self.dataSource = data.data
+                }
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dataSource?.languages.count ?? 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+    
+        cell.textLabel?.text = dataSource?.languages[indexPath.row].name
+        
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let language = dataSource?.languages[indexPath.row] else { return }
+        dismiss(animated: true, completion: nil)
+        delegate.passLanguage(language, for: buttonId)
+    }
 
     /*
     // Override to support conditional editing of the table view.

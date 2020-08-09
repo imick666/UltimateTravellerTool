@@ -340,47 +340,74 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="kGk-KN-mdG" kind="relationship" relationship="rootViewController" id="GMn-PC-NxU"/>
+                        <segue destination="pXn-8j-odH" kind="relationship" relationship="rootViewController" id="n2f-ec-JHO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szk-s1-pzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="2325"/>
         </scene>
-        <!--Translation-->
-        <scene sceneID="oAY-Kp-uZp">
+        <!--Translate-->
+        <scene sceneID="PGb-TM-I4A">
             <objects>
-                <tableViewController id="kGk-KN-mdG" customClass="TranslationTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hpT-Ez-zcx">
+                <viewController id="pXn-8j-odH" customClass="TranslationViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qQq-Yo-74R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Aj0-Vx-7za">
+                                <rect key="frame" x="0.0" y="88" width="414" height="681"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="pXn-8j-odH" id="aZO-vO-MjK"/>
+                                    <outlet property="delegate" destination="pXn-8j-odH" id="EV5-8E-JA6"/>
+                                </connections>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8iD-Gr-wSx">
+                                <rect key="frame" x="20" y="769" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eda-xD-qPY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bVl-cM-P48">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bVl-cM-P48" id="1ii-sf-5D5" customClass="ChatTableViewCell" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="kGk-KN-mdG" id="DdE-8X-Vch"/>
-                            <outlet property="delegate" destination="kGk-KN-mdG" id="8oh-pL-Bq8"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Translation" id="IVg-v7-HHl">
-                        <barButtonItem key="leftBarButtonItem" title="English" id="Age-KR-ejd"/>
-                        <barButtonItem key="rightBarButtonItem" title="Russian" id="c5o-hV-NbR"/>
+                        <constraints>
+                            <constraint firstItem="8iD-Gr-wSx" firstAttribute="bottom" secondItem="hN5-J8-Cqc" secondAttribute="bottom" id="7In-Ch-oVN"/>
+                            <constraint firstItem="Aj0-Vx-7za" firstAttribute="top" secondItem="hN5-J8-Cqc" secondAttribute="top" id="EQV-Ne-7CB"/>
+                            <constraint firstItem="Aj0-Vx-7za" firstAttribute="leading" secondItem="hN5-J8-Cqc" secondAttribute="leading" id="JQj-ty-pzi"/>
+                            <constraint firstItem="hN5-J8-Cqc" firstAttribute="trailing" secondItem="Aj0-Vx-7za" secondAttribute="trailing" id="meN-dm-Tet"/>
+                            <constraint firstItem="hN5-J8-Cqc" firstAttribute="trailing" secondItem="8iD-Gr-wSx" secondAttribute="trailing" constant="20" id="qlX-lJ-kdw"/>
+                            <constraint firstItem="8iD-Gr-wSx" firstAttribute="top" secondItem="Aj0-Vx-7za" secondAttribute="bottom" id="u6B-xm-Vik"/>
+                            <constraint firstItem="8iD-Gr-wSx" firstAttribute="centerX" secondItem="qQq-Yo-74R" secondAttribute="centerX" id="xiX-Ma-0Xl"/>
+                            <constraint firstItem="8iD-Gr-wSx" firstAttribute="leading" secondItem="hN5-J8-Cqc" secondAttribute="leading" constant="20" id="yPd-g5-aOC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hN5-J8-Cqc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Translate" id="EDo-0y-BUC">
+                        <barButtonItem key="leftBarButtonItem" title="English" id="Bjk-WN-EMz" customClass="SelectLaguagesButtons" customModule="UltimateTravellerTool" customModuleProvider="target">
+                            <connections>
+                                <action selector="SelectLanguagesButtonTapped:" destination="pXn-8j-odH" id="jH8-G6-ep1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="French" id="A6T-cW-0Di" customClass="SelectLaguagesButtons" customModule="UltimateTravellerTool" customModuleProvider="target">
+                            <connections>
+                                <action selector="SelectLanguagesButtonTapped:" destination="pXn-8j-odH" id="01D-kb-yJe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="LfJ-G6-zqJ" kind="presentation" identifier="SelectLanguageSegue" id="4Pe-st-ZNE"/>
+                        <outlet property="tableView" destination="Aj0-Vx-7za" id="Ed2-pQ-Ec6"/>
+                        <outlet property="textField" destination="8iD-Gr-wSx" id="9sa-ny-w6S"/>
+                        <outletCollection property="languageButton" destination="Bjk-WN-EMz" collectionClass="NSMutableArray" id="8VR-BL-A8g"/>
+                        <outletCollection property="languageButton" destination="A6T-cW-0Di" collectionClass="NSMutableArray" id="4u2-bS-kZ4"/>
+                        <segue destination="LfJ-G6-zqJ" kind="presentation" identifier="SelectLanguageSegue" id="16I-Ry-d92"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zcM-KS-pbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAs-JV-HLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="2325"/>
+            <point key="canvasLocation" x="1289.8550724637682" y="2325"/>
         </scene>
         <!--Select Language Table View Controller-->
         <scene sceneID="kAk-la-pvc">

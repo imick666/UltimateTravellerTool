@@ -11,9 +11,10 @@ import Foundation
 struct GoogleTranslateListResult: Decodable {
     var data: GoogleData
     struct GoogleData: Decodable {
-        var languages: Languages
+        var languages: [Languages]
         struct Languages: Decodable {
             var language: String
+            var name: String?
         }
     }
 }
