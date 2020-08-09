@@ -36,11 +36,10 @@ final class HTTPRequest {
         let body = encodeBody(query: bodyQuery)
         
         var request = URLRequest(url: url)
-        
-        if body != nil {
-            request.httpMethod = "POST"
-            request.httpBody = body
-        }
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = body
         
         Logger(url: url).show()
         

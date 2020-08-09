@@ -18,20 +18,11 @@ final class GoogleTranslateService {
         self.client = client
     }
     
-    func getLinguageList(body: [String: Any]?, callback: @escaping ((Result<GoogleTranslateListResult, NetworkError>) -> Void)) {
+    func getLinguageList(callback: @escaping ((Result<GoogleTranslateListResult, NetworkError>) -> Void)) {
         guard let url = URL(string: baseUrl + "languages") else { return }
         
-        client.requestJson(baseUrl: url, body: body, parameters: [("key", ApiConfig.googleTranslateApiKey)]) { (result: Result<GoogleTranslateListResult, NetworkError>) in
-            switch result {
-            case .failure(let error):
-                callback(.failure(error))
-            case .success(var data):
-                for (index, language) in data.data.languages.enumerated() {
-                    let name = Locale(identifier: self.localeLanguage).localizedString(forLanguageCode: language.language)
-                    data.data.languages[index].name = name
-                }
-                callback(.success(data))
-            }
+        client.requestJson(baseUrl: url, body: ["target": localeLanguage], parameters: [("key", ApiConfig.googleTranslateApiKey)]) { (result: Result<GoogleTranslateListResult, NetworkError>) in
+            callback(result)
         }
     }
     

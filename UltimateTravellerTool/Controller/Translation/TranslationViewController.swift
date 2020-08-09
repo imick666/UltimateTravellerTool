@@ -55,7 +55,9 @@ class TranslationViewController: UIViewController {
             return
         }
         
-        textField.frame.origin.y = 0 + keyboardSize.height
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        
+        textField.frame.origin.y -= keyboardSize.height - tabBarHeight
     }
     
     @objc
