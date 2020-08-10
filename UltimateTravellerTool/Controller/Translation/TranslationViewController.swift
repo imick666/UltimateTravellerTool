@@ -22,9 +22,10 @@ class TranslationViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendMessageView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet var languageButton: [SelectLaguagesButtons]!
-    
+
     // MARK: - Properties
     
     var dataSource = [
@@ -41,7 +42,7 @@ class TranslationViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-                        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
@@ -57,14 +58,8 @@ class TranslationViewController: UIViewController {
     // MARK: - OBJC Selectors
     
     @objc
-    private func keyboardWillShow(_ sender: NSNotification) {
-        guard let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
+    private func keyboardWillShow(_ notification: NSNotification) {
         
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        
-        textField.frame.origin.y -= keyboardSize.height - tabBarHeight
     }
     
     @objc
@@ -88,6 +83,8 @@ class TranslationViewController: UIViewController {
         performSegue(withIdentifier: "SelectLanguageSegue", sender: sender.tag)
     }
     
+    @IBAction func sendMessageButtonTapped(_ sender: Any) {
+    }
 }
 
 extension TranslationViewController: UITableViewDelegate, UITableViewDataSource {

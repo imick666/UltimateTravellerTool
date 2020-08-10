@@ -570,6 +570,8 @@
 			dependencies = (
 			);
 			name = UltimateTravellerTool;
+			packageProductDependencies = (
+			);
 			productName = UltimateTravellerTool;
 			productReference = E0A8A50C24AA41F400DA145C /* UltimateTravellerTool.app */;
 			productType = "com.apple.product-type.application";
@@ -623,6 +625,8 @@
 				Base,
 			);
 			mainGroup = E0A8A50324AA41F400DA145C;
+			packageReferences = (
+			);
 			productRefGroup = E0A8A50D24AA41F400DA145C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
