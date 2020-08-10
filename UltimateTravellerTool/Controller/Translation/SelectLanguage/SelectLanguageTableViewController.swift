@@ -14,7 +14,6 @@ class SelectLanguageTableViewController: UITableViewController {
     
     let googleTranslateService = GoogleTranslateService()
     var delegate: passLanguageDelegate!
-    var target: String?
     
     var buttonId: Int!
     var dataSource: GoogleTranslateListResult.GoogleData? {

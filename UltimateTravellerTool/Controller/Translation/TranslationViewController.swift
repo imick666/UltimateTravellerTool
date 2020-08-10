@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Message {
+    var message: String
+    var incomming: Bool
+}
+
 protocol passLanguageDelegate {
     func passLanguage(_ language: GoogleTranslateListResult.GoogleData.Languages, for buttonId: Int)
 }
@@ -23,9 +28,10 @@ class TranslationViewController: UIViewController {
     // MARK: - Properties
     
     var dataSource = [
-        "c'est ok",
-        "pourquoi pas",
-        "vas te faire enculer!!"
+        Message(message: "Hello, My name is john and I am very happy to chat with you! I hope this message will use more than one line", incomming: true),
+        Message(message: "Hello john! Nice to chat with you, my name is tony and I am the biggest cocaïne's reseller around all the world!!", incomming: false),
+        Message(message: "this is a little string", incomming: true),
+        Message(message: "Coucou mon amour, je t'aime très très fort de toute m came!!!!", incomming: false)
     ]
     
     // MARK: - View Cycle Life
@@ -34,7 +40,8 @@ class TranslationViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-
+        tableView.separatorStyle = .none
+                        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
@@ -72,7 +79,6 @@ class TranslationViewController: UIViewController {
             guard let destination = segue.destination as? SelectLanguageTableViewController else { return }
             destination.buttonId = sender as? Int
             destination.delegate = self
-            destination.target = languageButton[0].language != nil ? languageButton[0].language?.language : nil
         }
     }
     
@@ -90,9 +96,22 @@ extension TranslationViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = dataSource[indexPath.row]
-        return cell
+        guard let outgoingCell = tableView.dequeueReusableCell(withIdentifier: "OutgoingChatCell", for: indexPath) as? OutgoingChatCell else {
+            return UITableViewCell()
+        }
+        guard let incommingCell = tableView.dequeueReusableCell(withIdentifier: "IncommingChatCell", for: indexPath) as? IncommingChatCell else {
+            return UITableViewCell()
+        }
+        
+        if !dataSource[indexPath.row].incomming {
+            outgoingCell.setUp()
+            outgoingCell.messageLabel.text = dataSource[indexPath.row].message
+            return outgoingCell
+        } else {
+            incommingCell.setUp()
+            incommingCell.messageLabel.text = dataSource[indexPath.row].message
+            return incommingCell
+        }
     }
 }
 
