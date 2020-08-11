@@ -349,7 +349,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IncommingChatCell" rowHeight="79" id="kzi-ep-MIK" customClass="IncommingChatCell" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OutgoingChatCell" rowHeight="79" id="kzi-ep-MIK" customClass="OutgoingChatCell" customModule="UltimateTravellerTool" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzi-ep-MIK" id="Z2q-W8-hWe">
@@ -387,18 +387,18 @@
                                             <outlet property="messageLabel" destination="hR6-2H-pG0" id="gt1-uM-YiS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OutgoingChatCell" rowHeight="79" id="hde-q8-SMe" userLabel="OutgoingChatCell" customClass="OutgoingChatCell" customModule="UltimateTravellerTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="107" width="414" height="79"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IncommingChatCell" rowHeight="86" id="hde-q8-SMe" userLabel="OutgoingChatCell" customClass="IncommingChatCell" customModule="UltimateTravellerTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="107" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hde-q8-SMe" id="8Qt-SQ-uX3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycV-43-SF6">
-                                                    <rect key="frame" x="7.9999999999999964" y="8" width="57.666666666666657" height="63"/>
+                                                    <rect key="frame" x="7.9999999999999964" y="8" width="57.666666666666657" height="70"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncm-3V-er1">
-                                                            <rect key="frame" x="8" y="8" width="41.666666666666664" height="47"/>
+                                                            <rect key="frame" x="8" y="8" width="41.666666666666664" height="54"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -493,12 +493,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="sendMessageView" destination="ied-1V-hIw" id="vFP-5U-5ks"/>
                         <outlet property="tableView" destination="apv-L5-kvC" id="ciH-BH-hka"/>
                         <outlet property="textField" destination="8iD-Gr-wSx" id="9sa-ny-w6S"/>
                         <outletCollection property="languageButton" destination="Bjk-WN-EMz" collectionClass="NSMutableArray" id="8VR-BL-A8g"/>
                         <outletCollection property="languageButton" destination="A6T-cW-0Di" collectionClass="NSMutableArray" id="4u2-bS-kZ4"/>
-                        <segue destination="LfJ-G6-zqJ" kind="presentation" identifier="SelectLanguageSegue" id="16I-Ry-d92"/>
+                        <segue destination="LfJ-G6-zqJ" kind="show" identifier="SelectLanguageSegue" id="16I-Ry-d92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAs-JV-HLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -510,7 +509,7 @@
             <objects>
                 <tableViewController id="LfJ-G6-zqJ" customClass="SelectLanguageTableViewController" customModule="UltimateTravellerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6fB-Wu-26l">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <connections>
@@ -518,6 +517,7 @@
                             <outlet property="delegate" destination="LfJ-G6-zqJ" id="5oZ-C9-hhR"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="PqI-TQ-1mr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cMk-T0-guc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

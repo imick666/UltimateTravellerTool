@@ -24,7 +24,7 @@ class TranslateTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: TranslateApiFakeResponse.badResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(body: nil) { (result) in
+        api.translateText(parameters: nil) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -40,7 +40,7 @@ class TranslateTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: TranslateApiFakeResponse.goodResponse, fakeError: TranslateApiFakeResponse.fakeError)
         let api = createClient(with: session)
         
-        api.translateText(body: nil) { (result) in
+        api.translateText(parameters: nil) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -56,7 +56,7 @@ class TranslateTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: TranslateApiFakeResponse.goodResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(body: nil) { (result) in
+        api.translateText(parameters: nil) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -72,7 +72,7 @@ class TranslateTest: XCTestCase {
         let session = FakeUrlSession(fakeData: TranslateApiFakeResponse.incorrectData, fakeResponse: TranslateApiFakeResponse.goodResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(body: TranslateApiFakeResponse.fakeBody) { (result) in
+        api.translateText(parameters: nil) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -88,7 +88,7 @@ class TranslateTest: XCTestCase {
         let session = FakeUrlSession(fakeData: TranslateApiFakeResponse.correctData, fakeResponse: TranslateApiFakeResponse.goodResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(body: TranslateApiFakeResponse.fakeBody) { (result) in
+        api.translateText(parameters: nil) { (result) in
             guard case .success(let data) = result else {
                 if case .failure(let error) = result {
                     XCTFail(error.description)

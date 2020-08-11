@@ -28,7 +28,7 @@ final class GooglePlacesService {
         param.append(("types", "(cities)"))
         param.append(("key", ApiConfig.googlePlacesApiKey))
         
-        client.requestJson(baseUrl: url, body: nil, parameters: param) { (result: Result<GooglePlacesResult, NetworkError>) in
+        client.requestJson(baseUrl: url, parameters: param) { (result: Result<GooglePlacesResult, NetworkError>) in
             callback(result)
         }
     }

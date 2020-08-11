@@ -30,20 +30,13 @@ final class HTTPRequest {
         - parameters: Query items in tuple with (key, value).
         - callback: A CALLBACK.
      */
-    func request(baseUrl: URL, bodyQuery: [String: Any]?, parameters: [(String, Any)]?, callback: @escaping httpResponse) {
+    func request(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping httpResponse) {
         
         let url = encodeUrl(baseUrl: baseUrl, parameters: parameters)
-        let body = encodeBody(query: bodyQuery)
-        
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = body
         
         Logger(url: url).show()
         
-        task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let response = response as? HTTPURLResponse else {
                 callback(data, nil, error)
                 return
@@ -66,14 +59,5 @@ final class HTTPRequest {
         
         guard let url = urlComponent.url else { return baseUrl }
         return url
-    }
-    
-    private func encodeBody(query: [String: Any]?) -> Data? {
-        guard query != nil else {
-            return nil
-        }
-        
-        let jsonData = try? JSONSerialization.data(withJSONObject: query!)
-        return jsonData
     }
 }

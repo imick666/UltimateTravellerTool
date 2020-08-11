@@ -52,8 +52,9 @@
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* CurrencyButton.swift */; };
 		E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */; };
-		E08B0FE024E1582A00886B4C /* IncommingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B0FDF24E1582A00886B4C /* IncommingChatCell.swift */; };
-		E08B0FE224E15AF500886B4C /* OutgoingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B0FE124E15AF500886B4C /* OutgoingChatCell.swift */; };
+		E08B0FE024E1582A00886B4C /* OutgoingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B0FDF24E1582A00886B4C /* OutgoingChatCell.swift */; };
+		E08B0FE224E15AF500886B4C /* IncommingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B0FE124E15AF500886B4C /* IncommingChatCell.swift */; };
+		E08B0FE724E17F4E00886B4C /* UIViewController+KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B0FE624E17F4E00886B4C /* UIViewController+KeyboardManager.swift */; };
 		E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E099FFEE24BDFC3900422CBB /* CurrencyTableViewCell.swift */; };
 		E0A8A51024AA41F400DA145C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A50F24AA41F400DA145C /* AppDelegate.swift */; };
 		E0A8A51224AA41F400DA145C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8A51124AA41F400DA145C /* SceneDelegate.swift */; };
@@ -133,8 +134,9 @@
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyTableViewController.swift; sourceTree = "<group>"; };
-		E08B0FDF24E1582A00886B4C /* IncommingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingChatCell.swift; sourceTree = "<group>"; };
-		E08B0FE124E15AF500886B4C /* OutgoingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingChatCell.swift; sourceTree = "<group>"; };
+		E08B0FDF24E1582A00886B4C /* OutgoingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingChatCell.swift; sourceTree = "<group>"; };
+		E08B0FE124E15AF500886B4C /* IncommingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncommingChatCell.swift; sourceTree = "<group>"; };
+		E08B0FE624E17F4E00886B4C /* UIViewController+KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+KeyboardManager.swift"; sourceTree = "<group>"; };
 		E099FFEE24BDFC3900422CBB /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		E0A8A50C24AA41F400DA145C /* UltimateTravellerTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimateTravellerTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A8A50F24AA41F400DA145C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				E0C5C0FE24C1A45100EEBF98 /* UIViewController+Date.swift */,
 				0869F4DA24D300E5005558E4 /* Int+Date.swift */,
 				0869F4DC24D30632005558E4 /* Double+Int.swift */,
+				E08B0FE624E17F4E00886B4C /* UIViewController+KeyboardManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,8 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				E0D97C9624DFE71F0062DE61 /* SelectLaguagesButtons.swift */,
-				E08B0FDF24E1582A00886B4C /* IncommingChatCell.swift */,
-				E08B0FE124E15AF500886B4C /* OutgoingChatCell.swift */,
+				E08B0FDF24E1582A00886B4C /* OutgoingChatCell.swift */,
+				E08B0FE124E15AF500886B4C /* IncommingChatCell.swift */,
 			);
 			path = TranslationTab;
 			sourceTree = "<group>";
@@ -504,10 +507,10 @@
 		E0A8A53724AA428E00DA145C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E0A8A53C24AA42F700DA145C /* API */,
 				E0A8A53D24AA463200DA145C /* NetworkError.swift */,
 				E0A8A53824AA42A600DA145C /* HTTPRequest.swift */,
 				E0A8A53A24AA42AE00DA145C /* HTTPClient.swift */,
-				E0A8A53C24AA42F700DA145C /* API */,
 				0888647324AE322B00866612 /* Logger.swift */,
 			);
 			path = Network;
@@ -679,6 +682,7 @@
 				E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */,
 				E02D5ADB24C8494A002BE9D5 /* WeatherIcon.swift in Sources */,
 				E02D5AD424C848AA002BE9D5 /* WeatherTableViewController.swift in Sources */,
+				E08B0FE724E17F4E00886B4C /* UIViewController+KeyboardManager.swift in Sources */,
 				0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */,
 				E037338624CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift in Sources */,
 				0869F4DB24D300E5005558E4 /* Int+Date.swift in Sources */,
@@ -686,7 +690,7 @@
 				E0D97C9724DFE71F0062DE61 /* SelectLaguagesButtons.swift in Sources */,
 				E02D5AFC24C933F3002BE9D5 /* GlobalWeatherService.swift in Sources */,
 				E02D5AF224C8A3AB002BE9D5 /* WeatherResult.swift in Sources */,
-				E08B0FE224E15AF500886B4C /* OutgoingChatCell.swift in Sources */,
+				E08B0FE224E15AF500886B4C /* IncommingChatCell.swift in Sources */,
 				E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */,
 				E0A8A53924AA42A600DA145C /* HTTPRequest.swift in Sources */,
 				E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */,
@@ -705,7 +709,7 @@
 				08C00F0E24DEBE1200849C5A /* GoogleTranslateListResult.swift in Sources */,
 				E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */,
 				0869F4E424D3678B005558E4 /* GooglePlacesResult.swift in Sources */,
-				E08B0FE024E1582A00886B4C /* IncommingChatCell.swift in Sources */,
+				E08B0FE024E1582A00886B4C /* OutgoingChatCell.swift in Sources */,
 				E03CC1C424CDC61D006124B9 /* DailyTableViewCell.swift in Sources */,
 				08C00F0C24DEB71400849C5A /* GoogleTranslateResult.swift in Sources */,
 				E02D5AF024C8A308002BE9D5 /* WeatherService.swift in Sources */,

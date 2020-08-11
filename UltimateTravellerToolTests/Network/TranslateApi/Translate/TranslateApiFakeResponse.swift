@@ -29,9 +29,4 @@ class TranslateApiFakeResponse {
     
     static let incorrectData = TranslateApiFakeResponse().badData
     static let correctData = TranslateApiFakeResponse().goodData
-    
-    static let fakeBody: [String: Any] = [
-        "q": "Hello, my name is bryan",
-        "target": "de"
-    ]
 }

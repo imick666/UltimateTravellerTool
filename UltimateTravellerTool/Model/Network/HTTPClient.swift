@@ -19,9 +19,9 @@ final class HTTPClient {
     }
     
     //MARK: - METHODES
-    func requestJson<T: Decodable>(baseUrl: URL, body: [String: Any]?, parameters: [(String, Any)]?, callback: @escaping ((Result<T, NetworkError>) -> Void)) {
+    func requestJson<T: Decodable>(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping ((Result<T, NetworkError>) -> Void)) {
 
-        httpRequest.request(baseUrl: baseUrl, bodyQuery: body, parameters: parameters) { (data, response, error) in
+        httpRequest.request(baseUrl: baseUrl, parameters: parameters) { (data, response, error) in
             guard response != nil else {
                 callback(.failure(.noConnection))
                 return
@@ -44,7 +44,7 @@ final class HTTPClient {
     }
     
     func requestData(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping ((Result<Data, NetworkError>) -> Void)) {
-        httpRequest.request(baseUrl: baseUrl, bodyQuery: nil, parameters: parameters) { (data, response, error) in
+        httpRequest.request(baseUrl: baseUrl, parameters: parameters) { (data, response, error) in
             guard response != nil else {
                 callback(.failure(.noConnection))
                 return
