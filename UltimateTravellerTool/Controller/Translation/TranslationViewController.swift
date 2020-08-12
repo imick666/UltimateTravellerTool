@@ -8,13 +8,8 @@
 
 import UIKit
 
-struct Message {
-    var message: String
-    var incomming: Bool = true
-}
-
 protocol passLanguageDelegate {
-    func passLanguage(_ language: GoogleTranslateListResult.GoogleData.Languages, for buttonId: Int)
+    func passLanguage(_ language: GoogleTranslateListResult.GoogleData.Languages)
 }
 
 class TranslationViewController: UIViewController {
@@ -23,18 +18,18 @@ class TranslationViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet var languageButton: [SelectLaguagesButtons]!
+    @IBOutlet weak var languageButton: SelectLaguagesButtons!
+    
+    // MARK: - Typealias
 
+    typealias Language = GoogleTranslateListResult.GoogleData.Languages
+    
     // MARK: - Properties
     
-    let googleTranslate = GoogleTranslateService()
+    private let googleTranslate = GoogleTranslateService()
+    var languagesList: [Language]?
     
-    var dataSource = [
-        Message(message: "Hello, My name is john and I am very happy to chat with you! I hope this message will use more than one line"),
-        Message(message: "Hello john! Nice to chat with you, my name is tony and I am the biggest cocaïne's reseller around all the world!!", incomming: false),
-        Message(message: "this is a little string"),
-        Message(message: "Coucou mon amour, je t'aime très très fort de toute m came!!!!", incomming: false)
-        ] {
+    var dataSource = [TranslationMessages]() {
         didSet {
             tableView.reloadData()
         }
@@ -45,6 +40,8 @@ class TranslationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getLanguagesList()
+        
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
@@ -53,17 +50,16 @@ class TranslationViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
         view.addGestureRecognizer(tap)
         
-        if languageButton[0].language == nil {
-            languageButton[0].title = "Wait for detection..."
+        if languageButton.language == nil {
+            languageButton.title = "Select a language"
         } else {
-            languageButton[0].title = languageButton[0].language?.name
+            languageButton.title = languageButton.language?.name
         }
-        
-        if languageButton[1].language == nil {
-            languageButton[1].title = "Select a language"
-        } else {
-            languageButton[1].title = languageButton[0].language?.name
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - OBJC Selectors
@@ -84,8 +80,21 @@ class TranslationViewController: UIViewController {
                     self.showAlert(title: "Error", message: error.description)
                 case .success(let data):
                     let translation = data.data.translations[0]
-                    let translate = Message(message: translation.translatedText)
+                    let translate = TranslationMessages(message: translation.translatedText, isIncomming: true)
                     self.dataSource.append(translate)
+                }
+            }
+        }
+    }
+    
+    private func getLanguagesList() {
+        googleTranslate.getLinguageList { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.description)
+                case .success(let data):
+                    self.languagesList = data.data.languages
                 }
             }
         }
@@ -96,7 +105,11 @@ class TranslationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectLanguageSegue" {
             guard let destination = segue.destination as? SelectLanguageTableViewController else { return }
-            destination.buttonId = sender as? Int
+            guard let list = languagesList else {
+                showAlert(title: "Error", message: "Languages list couldn't be loaded, Please try later")
+                return
+            }
+            destination.sortLangueInSection(list)
             destination.delegate = self
         }
     }
@@ -104,11 +117,11 @@ class TranslationViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func SelectLanguagesButtonTapped(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "SelectLanguageSegue", sender: sender.tag)
+        performSegue(withIdentifier: "SelectLanguageSegue", sender: nil)
     }
     
     @IBAction func sendMessageButtonTapped(_ sender: Any) {
-        guard languageButton[1].language != nil else {
+        guard let selectedLanguage = languageButton.language else {
             showAlert(title: "Error", message: "Please select a language")
             textField.resignFirstResponder()
             textField.text = nil
@@ -121,8 +134,8 @@ class TranslationViewController: UIViewController {
             textField.resignFirstResponder()
             return
         }
-        getTranslationTo(languageButton[1].language?.language ?? "en", message: messageText)
-        let myMessage = Message(message: messageText, incomming: false)
+        getTranslationTo(selectedLanguage.language, message: messageText)
+        let myMessage = TranslationMessages(message: messageText, isIncomming: false)
         dataSource.append(myMessage)
         textField.text = nil
         textField.resignFirstResponder()
@@ -135,14 +148,12 @@ extension TranslationViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let incommingCell = tableView.dequeueReusableCell(withIdentifier: "IncommingChatCell", for: indexPath) as? IncommingChatCell else {
-            return UITableViewCell()
-        }
-        guard let outgoingCell = tableView.dequeueReusableCell(withIdentifier: "OutgoingChatCell", for: indexPath) as? OutgoingChatCell else {
-            return UITableViewCell()
+        guard let incommingCell = tableView.dequeueReusableCell(withIdentifier: "IncommingChatCell", for: indexPath) as? IncommingChatCell,
+            let outgoingCell = tableView.dequeueReusableCell(withIdentifier: "OutgoingChatCell", for: indexPath) as? OutgoingChatCell else {
+                return UITableViewCell()
         }
         
-        if dataSource[indexPath.row].incomming {
+        if dataSource[indexPath.row].isIncomming {
             incommingCell.setUp()
             incommingCell.messageLabel.text = dataSource[indexPath.row].message
             return incommingCell
@@ -155,9 +166,7 @@ extension TranslationViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension TranslationViewController: passLanguageDelegate {
-    func passLanguage(_ language: GoogleTranslateListResult.GoogleData.Languages, for buttonId: Int) {
-        for button in languageButton where button.tag == buttonId {
-            button.language = language
-        }
+    func passLanguage(_ language: GoogleTranslateListResult.GoogleData.Languages) {
+        languageButton.language = language
     }  
 }

@@ -49,6 +49,7 @@
 		E037338624CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E037338524CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift */; };
 		E03CC1C424CDC61D006124B9 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
+		E07D87F624E41A5D00CE4724 /* TranslationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* CurrencyButton.swift */; };
 		E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */; };
@@ -131,6 +132,7 @@
 		E037338524CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherTableViewController+LocationManager.swift"; sourceTree = "<group>"; };
 		E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
+		E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationMessages.swift; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyTableViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				08C00F0924DEB70700849C5A /* GoogleTranslateService.swift */,
 				08C00F0B24DEB71400849C5A /* GoogleTranslateResult.swift */,
 				08C00F0D24DEBE1200849C5A /* GoogleTranslateListResult.swift */,
+				E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */,
 			);
 			path = GoogleTranslate;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */,
 				E02D5AD624C848BC002BE9D5 /* WeatherDetailViewController.swift in Sources */,
 				08C00F0E24DEBE1200849C5A /* GoogleTranslateListResult.swift in Sources */,
+				E07D87F624E41A5D00CE4724 /* TranslationMessages.swift in Sources */,
 				E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */,
 				0869F4E424D3678B005558E4 /* GooglePlacesResult.swift in Sources */,
 				E08B0FE024E1582A00886B4C /* OutgoingChatCell.swift in Sources */,

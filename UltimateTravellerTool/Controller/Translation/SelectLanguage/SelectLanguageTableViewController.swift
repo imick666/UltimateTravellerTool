@@ -12,16 +12,15 @@ class SelectLanguageTableViewController: UITableViewController {
 
     // MARK: - Typealias
     
-    typealias Languages = GoogleTranslateListResult.GoogleData.Languages
-    typealias IndexedLanguages = (index: String, languages: [Languages])
+    typealias Language = GoogleTranslateListResult.GoogleData.Languages
+    typealias IndexedLanguages = (index: String, languages: [Language])
     
     // MARK: - Properties
     
     let googleTranslateService = GoogleTranslateService()
     var delegate: passLanguageDelegate!
     
-    var buttonId: Int!
-    var dataSource: [IndexedLanguages]? {
+    var dataSource = [IndexedLanguages]() {
         didSet {
             tableView.reloadData()
         }
@@ -31,27 +30,18 @@ class SelectLanguageTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getLanguages()
         
         tableView.sectionIndexColor = .systemGray
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
 
     // MARK: - Methodes
     
-    private func getLanguages() {        
-        googleTranslateService.getLinguageList { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    self.showAlert(title: "Error", message: error.description)
-                case .success(let data):
-                    self.dataSource = self.sortLangueInSection(data.data.languages)
-                }
-            }
-        }
-    }
-    
-    private func sortLangueInSection(_ list: [Languages]) -> [IndexedLanguages] {
+    func sortLangueInSection(_ list: [Language]) {
         var sorted = [IndexedLanguages]()
         
         for language in list {
@@ -71,24 +61,24 @@ class SelectLanguageTableViewController: UITableViewController {
         
         sorted.sort { $0.index < $1.index }
         
-        return sorted
+        dataSource = sorted
     }
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource?.count ?? 0
+        return dataSource.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return dataSource?[section].index
+        return dataSource[section].index
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .systemBlue
 
-        let title = dataSource?[section].index
+        let title = dataSource[section].index
         let titleLable = UILabel()
         titleLable.text = title
         titleLable.textColor = .white
@@ -102,36 +92,33 @@ class SelectLanguageTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return dataSource?[section].index == "" ? 0 : 35
+        return dataSource[section].index == "" ? 0 : 35
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return dataSource?[section].languages.count ?? 0
+        return dataSource[section].languages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
     
-        cell.textLabel?.text = dataSource?[indexPath.section].languages[indexPath.row].name
+        cell.textLabel?.text = dataSource[indexPath.section].languages[indexPath.row].name
         cell.textLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let language = dataSource?[indexPath.section].languages[indexPath.row] else { return }
+        let language = dataSource[indexPath.section].languages[indexPath.row]
         navigationController?.popViewController(animated: true)
-        delegate.passLanguage(language, for: buttonId)
+        delegate.passLanguage(language)
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexTitle = [String]()
         
-        if let data = dataSource {
-            for index in data {
-                indexTitle.append(index.index)
-            }
+        for index in dataSource {
+            indexTitle.append(index.index)
         }
         
         return indexTitle

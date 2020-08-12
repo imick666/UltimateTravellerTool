@@ -481,11 +481,6 @@
                         <viewLayoutGuide key="safeArea" id="hN5-J8-Cqc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Translate" id="EDo-0y-BUC">
-                        <barButtonItem key="leftBarButtonItem" title="English" id="Bjk-WN-EMz" customClass="SelectLaguagesButtons" customModule="UltimateTravellerTool" customModuleProvider="target">
-                            <connections>
-                                <action selector="SelectLanguagesButtonTapped:" destination="pXn-8j-odH" id="jH8-G6-ep1"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" tag="1" title="French" id="A6T-cW-0Di" customClass="SelectLaguagesButtons" customModule="UltimateTravellerTool" customModuleProvider="target">
                             <connections>
                                 <action selector="SelectLanguagesButtonTapped:" destination="pXn-8j-odH" id="01D-kb-yJe"/>
@@ -493,9 +488,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="languageButton" destination="A6T-cW-0Di" id="GJd-uN-xKI"/>
                         <outlet property="tableView" destination="apv-L5-kvC" id="ciH-BH-hka"/>
                         <outlet property="textField" destination="8iD-Gr-wSx" id="9sa-ny-w6S"/>
-                        <outletCollection property="languageButton" destination="Bjk-WN-EMz" collectionClass="NSMutableArray" id="8VR-BL-A8g"/>
                         <outletCollection property="languageButton" destination="A6T-cW-0Di" collectionClass="NSMutableArray" id="4u2-bS-kZ4"/>
                         <segue destination="LfJ-G6-zqJ" kind="show" identifier="SelectLanguageSegue" id="16I-Ry-d92"/>
                     </connections>
