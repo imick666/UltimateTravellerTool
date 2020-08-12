@@ -50,6 +50,10 @@
 		E03CC1C424CDC61D006124B9 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
 		E07D87F624E41A5D00CE4724 /* TranslationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */; };
+		E07D87F824E41C5400CE4724 /* GoogleTranslateDetectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87F724E41C5400CE4724 /* GoogleTranslateDetectResult.swift */; };
+		E07D87FB24E41DE900CE4724 /* GoogleTranslateDetectResult.json in Resources */ = {isa = PBXBuildFile; fileRef = E07D87FA24E41DE900CE4724 /* GoogleTranslateDetectResult.json */; };
+		E07D87FD24E41E0300CE4724 /* GoogleDetectFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87FC24E41E0300CE4724 /* GoogleDetectFakeResponse.swift */; };
+		E07D87FF24E41F7C00CE4724 /* GoogleTranslateDetectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87FE24E41F7C00CE4724 /* GoogleTranslateDetectTest.swift */; };
 		E089E0F324AEFC740023909A /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F224AEFC740023909A /* ApiConfig.swift */; };
 		E089E0F924B09B240023909A /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0F824B09B240023909A /* CurrencyButton.swift */; };
 		E089E0FB24B09E7B0023909A /* SelectCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */; };
@@ -133,6 +137,10 @@
 		E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
 		E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationMessages.swift; sourceTree = "<group>"; };
+		E07D87F724E41C5400CE4724 /* GoogleTranslateDetectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslateDetectResult.swift; sourceTree = "<group>"; };
+		E07D87FA24E41DE900CE4724 /* GoogleTranslateDetectResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleTranslateDetectResult.json; sourceTree = "<group>"; };
+		E07D87FC24E41E0300CE4724 /* GoogleDetectFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDetectFakeResponse.swift; sourceTree = "<group>"; };
+		E07D87FE24E41F7C00CE4724 /* GoogleTranslateDetectTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslateDetectTest.swift; sourceTree = "<group>"; };
 		E089E0F224AEFC740023909A /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E089E0F824B09B240023909A /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		E089E0FA24B09E7B0023909A /* SelectCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyTableViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +256,7 @@
 				08C00F0B24DEB71400849C5A /* GoogleTranslateResult.swift */,
 				08C00F0D24DEBE1200849C5A /* GoogleTranslateListResult.swift */,
 				E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */,
+				E07D87F724E41C5400CE4724 /* GoogleTranslateDetectResult.swift */,
 			);
 			path = GoogleTranslate;
 			sourceTree = "<group>";
@@ -255,6 +264,7 @@
 		08C00F0F24DEF2AC00849C5A /* TranslateApi */ = {
 			isa = PBXGroup;
 			children = (
+				E07D87F924E41D6700CE4724 /* Detect */,
 				08C00F1824DEF55200849C5A /* TranslateList */,
 				08C00F1724DEF54300849C5A /* Translate */,
 			);
@@ -413,6 +423,16 @@
 				E02D5AD524C848BC002BE9D5 /* WeatherDetailViewController.swift */,
 			);
 			path = WeatherDeatil;
+			sourceTree = "<group>";
+		};
+		E07D87F924E41D6700CE4724 /* Detect */ = {
+			isa = PBXGroup;
+			children = (
+				E07D87FA24E41DE900CE4724 /* GoogleTranslateDetectResult.json */,
+				E07D87FC24E41E0300CE4724 /* GoogleDetectFakeResponse.swift */,
+				E07D87FE24E41F7C00CE4724 /* GoogleTranslateDetectTest.swift */,
+			);
+			path = Detect;
 			sourceTree = "<group>";
 		};
 		E089E0F424B077DF0023909A /* CurrencyChange */ = {
@@ -664,6 +684,7 @@
 				E02D5AF424C8A4AC002BE9D5 /* ForecastWeather.json in Resources */,
 				E0A8A54E24AA55D800DA145C /* CurrenciesFakeData.json in Resources */,
 				08C00F1524DEF48000849C5A /* TranslateApiResult.json in Resources */,
+				E07D87FB24E41DE900CE4724 /* GoogleTranslateDetectResult.json in Resources */,
 				0869F4E924D36E95005558E4 /* GooglePlaces.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +706,7 @@
 				E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */,
 				E02D5ADB24C8494A002BE9D5 /* WeatherIcon.swift in Sources */,
 				E02D5AD424C848AA002BE9D5 /* WeatherTableViewController.swift in Sources */,
+				E07D87F824E41C5400CE4724 /* GoogleTranslateDetectResult.swift in Sources */,
 				E08B0FE724E17F4E00886B4C /* UIViewController+KeyboardManager.swift in Sources */,
 				0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */,
 				E037338624CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift in Sources */,
@@ -726,10 +748,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07D87FF24E41F7C00CE4724 /* GoogleTranslateDetectTest.swift in Sources */,
 				E02D5AE724C8527E002BE9D5 /* CurrentWeatherFakeResponse.swift in Sources */,
 				E0A8A52A24AA41F500DA145C /* UltimateTravellerToolTests.swift in Sources */,
 				08C00F1D24DEF5B400849C5A /* TranslateTest.swift in Sources */,
 				08B9314324DEF9E2001F2F99 /* TranslateListApiFakeResponse.swift in Sources */,
+				E07D87FD24E41E0300CE4724 /* GoogleDetectFakeResponse.swift in Sources */,
 				E0A8A55024AA562200DA145C /* CurrenciesFakeResponse.swift in Sources */,
 				E02D5AF624C8A4D1002BE9D5 /* ForecastWeatherFakeResponse.swift in Sources */,
 				E0A8A55224AA58D000DA145C /* CurrenciesTest.swift in Sources */,

@@ -38,4 +38,16 @@ final class GoogleTranslateService {
         }
     }
     
+    func detectLanguage(query: [(String, Any)], callback: @escaping ((Result<GoogleTranslateDetectResult, NetworkError>) -> Void)) {
+        guard let url = URL(string: baseUrl + "detect") else { return }
+        
+        var parameters = query
+        parameters.append(("key", ApiConfig.googleTranslateApiKey))
+        
+        client.requestJson(baseUrl: url, parameters: parameters) { (result: Result<GoogleTranslateDetectResult, NetworkError>) in
+            callback(result)
+        }
+        
+    }
+    
 }
