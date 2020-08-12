@@ -71,20 +71,63 @@ class TranslationViewController: UIViewController {
     
     // MARK: - Methodes
     
-    private func getTranslationTo(_ language: String, message: String) {
+    private func detectLanguageAndTranslateText(text: String) {
+        guard let destinationLanguage = languageButton.language?.language else {
+            showAlert(title: "Error", message: "Please Select a language")
+            return
+        }
+        
+        DetectSourceLanguage(message: text) { (language) in
+            self.createMessage(message: text, isIncomming: false, sourceLanguage: language)
+            
+            self.getTranslationTo(destinationLanguage, message: text) { (text) in
+                guard let translatedText = text else {
+                    self.createMessage(message: "Sorry I can't hellp you for the moment.../nPlease try again later...", isIncomming: true, sourceLanguage: nil)
+                    return
+                }
+                self.createMessage(message: translatedText, isIncomming: true, sourceLanguage: nil)
+            }
+        }
+        
+        
+        
+    }
+    
+    private func getTranslationTo(_ language: String, message: String, callback: @escaping ((_ translatedText: String?) -> Void)) {
         let parameters = [("q", message), ("target", language)]
         googleTranslate.translateText(parameters: parameters) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .failure(let error):
-                    self.showAlert(title: "Error", message: error.description)
+                case .failure(_):
+                    callback(nil)
                 case .success(let data):
-                    let translation = data.data.translations[0]
-                    let translate = TranslationMessages(message: translation.translatedText, isIncomming: true)
-                    self.dataSource.append(translate)
+                    let translation = data.data.translations[0].translatedText
+                    callback(translation)
                 }
             }
         }
+    }
+    
+    private func DetectSourceLanguage(message: String, callback: @escaping ((_ sourceLanguage: Language?) -> Void)) {
+        googleTranslate.detectLanguage(query: [("q", message)]) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(_):
+                    callback(nil)
+                case .success(let data):
+                    let sourceLanguageCode = data.data.detections[0][0].language
+                    var sourceLanguage: Language? {
+                        return self.languagesList?.first(where: { $0.language == sourceLanguageCode })
+                    }
+                    callback(sourceLanguage)
+                }
+            }
+        }
+    }
+    
+    private func createMessage(message: String, isIncomming: Bool, sourceLanguage: Language?) {
+        let message = TranslationMessages(message: message, isIncomming: isIncomming, date: Date(), sourceLanguage: sourceLanguage)
+        dataSource.append(message)
     }
     
     private func getLanguagesList() {
@@ -121,22 +164,12 @@ class TranslationViewController: UIViewController {
     }
     
     @IBAction func sendMessageButtonTapped(_ sender: Any) {
-        guard let selectedLanguage = languageButton.language else {
-            showAlert(title: "Error", message: "Please select a language")
-            textField.resignFirstResponder()
-            textField.text = nil
-            return
-        }
-        guard let messageText = textField.text else { return }
-
-        guard !messageText.isEmpty else {
+        guard let messageText = textField.text, !messageText.isEmpty else {
             showAlert(title: "Error", message: "Pease type a text to translate")
             textField.resignFirstResponder()
             return
         }
-        getTranslationTo(selectedLanguage.language, message: messageText)
-        let myMessage = TranslationMessages(message: messageText, isIncomming: false)
-        dataSource.append(myMessage)
+        detectLanguageAndTranslateText(text: messageText)
         textField.text = nil
         textField.resignFirstResponder()
     }
@@ -160,6 +193,8 @@ extension TranslationViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             outgoingCell.setUp()
             outgoingCell.messageLabel.text = dataSource[indexPath.row].message
+            let sourceLanguageName = dataSource[indexPath.row].sourceLanguage?.name
+            outgoingCell.sourceLanguageLabel.text = "Language detected : \(sourceLanguageName ?? "Unknown")"
             return outgoingCell
         }
     }

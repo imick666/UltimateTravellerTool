@@ -11,4 +11,6 @@ import Foundation
 struct TranslationMessages {
     var message: String
     var isIncomming: Bool
+    var date: Date
+    var sourceLanguage: GoogleTranslateListResult.GoogleData.Languages?
 }

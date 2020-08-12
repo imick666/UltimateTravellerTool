@@ -255,7 +255,6 @@
 				08C00F0924DEB70700849C5A /* GoogleTranslateService.swift */,
 				08C00F0B24DEB71400849C5A /* GoogleTranslateResult.swift */,
 				08C00F0D24DEBE1200849C5A /* GoogleTranslateListResult.swift */,
-				E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */,
 				E07D87F724E41C5400CE4724 /* GoogleTranslateDetectResult.swift */,
 			);
 			path = GoogleTranslate;
@@ -435,6 +434,14 @@
 			path = Detect;
 			sourceTree = "<group>";
 		};
+		E07D880024E4225100CE4724 /* TranslationTab */ = {
+			isa = PBXGroup;
+			children = (
+				E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */,
+			);
+			path = TranslationTab;
+			sourceTree = "<group>";
+		};
 		E089E0F424B077DF0023909A /* CurrencyChange */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +529,7 @@
 		E0A8A53624AA428600DA145C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E07D880024E4225100CE4724 /* TranslationTab */,
 				E0A8A53724AA428E00DA145C /* Network */,
 			);
 			path = Model;
