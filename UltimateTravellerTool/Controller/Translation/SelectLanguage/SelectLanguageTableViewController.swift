@@ -19,7 +19,6 @@ class SelectLanguageTableViewController: UITableViewController {
     
     let googleTranslateService = GoogleTranslateService()
     var delegate: passLanguageDelegate!
-    var alertController: UIAlertController?
     
     var dataSource = [IndexedLanguages]() {
         didSet {
@@ -114,7 +113,6 @@ class SelectLanguageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let language = dataSource[indexPath.section].languages[indexPath.row]
         navigationController?.popViewController(animated: true)
-        alertController?.dismiss(animated: true, completion: nil)
         delegate.passLanguage(language)
     }
     

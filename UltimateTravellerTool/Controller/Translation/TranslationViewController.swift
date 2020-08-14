@@ -162,32 +162,7 @@ class TranslationViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func SelectLanguagesButtonTapped(_ sender: UIBarButtonItem) {
-        guard let list = languagesList else {
-            showAlert(title: "Error", message: "Languages list couldn't be loaded, Please try later")
-            return
-        }
-        
-        let alert = UIAlertController(title: "Select destination Language", message: nil, preferredStyle: .actionSheet)
-        
-        let storyoard = UIStoryboard(name: "Main", bundle: .main)
-        let vc = storyoard.instantiateViewController(withIdentifier: "SelectLanguageSbId") as! SelectLanguageTableViewController
-        vc.delegate = self
-        vc.sortLangueInSection(list)
-        vc.alertController = alert
-        vc.preferredContentSize.height = 300
-        
-        let fullScreen = UIAlertAction(title: "Show in fullscreen", style: .default) { (action) in
-            self.performSegue(withIdentifier: "SelectLanguageSegue", sender: nil)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        alert.addAction(fullScreen)
-        alert.setValue(vc, forKeyPath: "contentViewController")
-        alert.addAction(cancel)
-        
-        present(alert, animated: true, completion: nil)
-        
-        
+        performSegue(withIdentifier: "SelectLanguageSegue", sender: nil)
     }
     
     @IBAction func sendMessageButtonTapped(_ sender: Any) {
