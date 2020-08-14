@@ -12,7 +12,7 @@ class CurrencyButton: UIButton {
     
     var currency: (code: String, rate: Double)? {
         didSet {
-            let title = currency?.code ?? "Select a currency"
+            let title = currency?.code
             self.setTitle(title, for: .normal)
         }
     }
@@ -21,5 +21,8 @@ class CurrencyButton: UIButton {
         self.layer.cornerRadius = self.bounds.height / 2
         titleLabel?.adjustsFontSizeToFitWidth = true
         titleLabel?.baselineAdjustment = .alignCenters
+        self.layer.shadowOffset = CGSize(width: 0, height: 5)
+        self.layer.shadowRadius = 8
+        self.layer.shadowOpacity = 0.3
     }
 }
