@@ -168,7 +168,20 @@ class WeatherTableViewController: UITableViewController {
     // MARK: Actions
     
     @IBAction func addCityButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "SearchCitySegue", sender: nil)
+        let alert = UIAlertController(title: "Search city name", message: nil, preferredStyle: .actionSheet)
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchCitySbId") as! SearchCityNameTableViewController
+        vc.delegate = self
+        vc.alertController = alert
+        vc.preferredContentSize.height = 270
+        
+        alert.setValue(vc, forKey: "contentViewController")
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+        
     }
 }
 

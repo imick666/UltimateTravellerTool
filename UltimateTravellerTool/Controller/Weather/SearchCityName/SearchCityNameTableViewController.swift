@@ -22,6 +22,7 @@ class SearchCityNameTableViewController: UITableViewController {
     
     let googlePlaces = GooglePlacesService()
     var delegate: SelectCityDelegate?
+    var alertController: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +53,12 @@ class SearchCityNameTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Table view delegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cityName = dataSource[indexPath.row].terms[0].value
         delegate?.cityDidSelect(city: cityName)
+        alertController?.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -68,7 +72,6 @@ extension SearchCityNameTableViewController: UISearchBarDelegate {
                 case .failure(let error):
                     self.showAlert(title: "ERROR", message: error.description)
                 case .success(let data):
-                    print(data)
                     self.dataSource = data.predictions
                 }
             }
