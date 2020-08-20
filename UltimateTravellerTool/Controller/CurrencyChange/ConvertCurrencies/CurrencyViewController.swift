@@ -45,6 +45,11 @@ class CurrencyViewController: UIViewController {
         super.viewDidLoad()
         setpUp()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
 
     // MARK: - Methodes
     

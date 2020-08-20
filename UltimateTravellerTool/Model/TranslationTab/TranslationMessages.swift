@@ -13,4 +13,5 @@ struct TranslationMessages {
     var isIncomming: Bool
     var date: Date
     var sourceLanguage: GoogleTranslateListResult.GoogleData.Languages?
+    var destinationLanguage: GoogleTranslateListResult.GoogleData.Languages?
 }

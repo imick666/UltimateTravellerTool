@@ -12,16 +12,30 @@ import XCTest
 class GooglePlacesTest: XCTestCase {
     let expectation = XCTestExpectation(description: "wait for queue")
     
-    func CreateGooglePlace(session: FakeUrlSession) -> GooglePlacesService {
+    func createGooglePlace(session: FakeUrlSession) -> GooglePlacesService {
         let request = HTTPRequest(session: session)
         let client = HTTPClient(httpRequest: request)
         let place = GooglePlacesService(client: client)
         return place
     }
 
+    func testNoResponse() {
+        let session = FakeUrlSession(fakeData: nil, fakeResponse: nil, fakeError: nil)
+        let places = createGooglePlace(session: session)
+        
+        places.getCitiesName(q: "") { (result) in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            self.expectation.fulfill()
+            XCTAssertEqual(error, NetworkError.noConnection)
+        }
+    }
+    
     func testBadResponse() {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: GooglePlacesFakeResponse.badResponse, fakeError: nil)
-        let places = CreateGooglePlace(session: session)
+        let places = createGooglePlace(session: session)
         
         places.getCitiesName(q: "") { (result) in
             guard case .failure(let error) = result else {
@@ -37,7 +51,7 @@ class GooglePlacesTest: XCTestCase {
     
     func tesGoodResponseWithError() {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: GooglePlacesFakeResponse.goodResponse, fakeError: GooglePlacesFakeResponse.fakeError)
-        let places = CreateGooglePlace(session: session)
+        let places = createGooglePlace(session: session)
         
         places.getCitiesName(q: "") { (result) in
             guard case .failure(let error) = result else {
@@ -53,7 +67,7 @@ class GooglePlacesTest: XCTestCase {
     
     func testNoData() {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: GooglePlacesFakeResponse.goodResponse, fakeError: nil)
-        let places = CreateGooglePlace(session: session)
+        let places = createGooglePlace(session: session)
         
         places.getCitiesName(q: "") { (result) in
             guard case .failure(let error) = result else {
@@ -69,7 +83,7 @@ class GooglePlacesTest: XCTestCase {
     
     func testDataIncorrect() {
         let session = FakeUrlSession(fakeData: GooglePlacesFakeResponse.incorrectData, fakeResponse: GooglePlacesFakeResponse.goodResponse, fakeError: nil)
-        let places = CreateGooglePlace(session: session)
+        let places = createGooglePlace(session: session)
         
         places.getCitiesName(q: "") { (result) in
             guard case .failure(let error) = result else {
@@ -85,7 +99,7 @@ class GooglePlacesTest: XCTestCase {
     
     func testDataCorrect() {
         let session = FakeUrlSession(fakeData: GooglePlacesFakeResponse.correctData, fakeResponse: GooglePlacesFakeResponse.goodResponse, fakeError: nil)
-        let places = CreateGooglePlace(session: session)
+        let places = createGooglePlace(session: session)
         
         places.getCitiesName(q: "") { (result) in
             guard case .success(let data) = result else {

@@ -18,7 +18,7 @@ class SelectLanguageTableViewController: UITableViewController {
     // MARK: - Properties
     
     let googleTranslateService = GoogleTranslateService()
-    var delegate: passLanguageDelegate!
+    weak var delegate: PassLanguageDelegate!
     
     var dataSource = [IndexedLanguages]() {
         didSet {
@@ -41,22 +41,27 @@ class SelectLanguageTableViewController: UITableViewController {
 
     // MARK: - Methodes
     
+    /**
+     Sort the languages list in section
+     - parameter list: An array of languages to sort
+     - warning: This function create an array of tuple (indexTitle: String, languages: [Language]), and add it to dataSource property
+     */
     func sortLangueInSection(_ list: [Language]) {
         var sorted = [IndexedLanguages]()
         
         for language in list {
-            if sorted.contains(where: { $0.index == language.name.first?.uppercased()}) {
-                guard let index = sorted.lastIndex(where: { $0.index == language.name.first?.uppercased() }) else { continue }
+            if sorted.contains(where: { $0.index == language.name?.first?.uppercased()}) {
+                guard let index = sorted.lastIndex(where: { $0.index == language.name?.first?.uppercased() }) else { continue }
                 sorted[index].languages.append(language)
             } else {
-                guard let newIndexLette = language.name.first?.uppercased() else { continue }
+                guard let newIndexLette = language.name?.first?.uppercased() else { continue }
                 let newElement = (newIndexLette, [language])
                 sorted.append(newElement)
             }
         }
         
         for (index, _) in sorted.enumerated() {
-            sorted[index].languages.sort { $0.name < $1.name }
+            sorted[index].languages.sort { $0.name ?? "NC" < $1.name ?? "NC" }
         }
         
         sorted.sort { $0.index < $1.index }

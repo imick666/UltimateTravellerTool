@@ -24,7 +24,7 @@ class CurrentWeatherTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrentWeatherFakeResponse.badUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
-        currentWeather.getCurrentWeather(parameters: [("lat", "3.10"), ("lon", "-100")]) { (result) in
+        currentWeather.getCoordForCity(parameters: [("lat", "3.10"), ("lon", "-100")]) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail("testBadUrlResponseFailed")
                 return
@@ -40,7 +40,7 @@ class CurrentWeatherTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: CurrentWeatherFakeResponse.fakeError)
         let currentWeather = createWeatherService(session: session)
         
-        currentWeather.getCurrentWeather(parameters: [("lon", "3.10"), ("lat", "-100")]) { (result) in
+        currentWeather.getCoordForCity(parameters: [("lon", "3.10"), ("lat", "-100")]) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail("testGoodUrlResponseWithError Failed")
                 return
@@ -57,7 +57,7 @@ class CurrentWeatherTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
-        currentWeather.getCurrentWeather(parameters: []) { (result) in
+        currentWeather.getCoordForCity(parameters: []) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -73,7 +73,7 @@ class CurrentWeatherTest: XCTestCase {
         let session = FakeUrlSession(fakeData: CurrentWeatherFakeResponse.incorrectData, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
-        currentWeather.getCurrentWeather(parameters: []) { (result) in
+        currentWeather.getCoordForCity(parameters: []) { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -89,7 +89,7 @@ class CurrentWeatherTest: XCTestCase {
         let session = FakeUrlSession(fakeData: CurrentWeatherFakeResponse.correctData, fakeResponse: CurrentWeatherFakeResponse.goodUrlResponse, fakeError: nil)
         let currentWeather = createWeatherService(session: session)
         
-        currentWeather.getCurrentWeather(parameters: []) { (result) in
+        currentWeather.getCoordForCity(parameters: []) { (result) in
             guard case .success(let data) = result else {
                 XCTFail()
                 return

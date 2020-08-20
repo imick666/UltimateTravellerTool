@@ -14,7 +14,7 @@ struct GoogleTranslateListResult: Decodable {
         var languages: [Languages]
         struct Languages: Decodable {
             var language: String
-            var name: String
+            var name: String?
         }
     }
 }

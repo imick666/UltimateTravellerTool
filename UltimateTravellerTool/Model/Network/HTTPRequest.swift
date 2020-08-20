@@ -25,10 +25,10 @@ final class HTTPRequest {
     // MARK : - Methodes
 
     /**
-    - Parameters:
-        - baseUrl: Base URL without query items.
-        - parameters: Query items in tuple with (key, value).
-        - callback: A CALLBACK.
+     Create and lunch HTTPRequest
+    - parameter  baseUrl: Base URL without query items.
+    - parameter parameters: Query items in tuple with (key, value).
+    - parameter callback: A callback containning the data, response and error
      */
     func request(baseUrl: URL, parameters: [(String, Any)]?, callback: @escaping httpResponse) {
         

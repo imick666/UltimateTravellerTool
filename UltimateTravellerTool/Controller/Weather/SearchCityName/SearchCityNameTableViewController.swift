@@ -21,7 +21,7 @@ class SearchCityNameTableViewController: UITableViewController {
     // MARK: - Properties
     
     let googlePlaces = GooglePlacesService()
-    var delegate: SelectCityDelegate?
+    var selectCityDelegate: SelectCityDelegate?
     var alertController: UIAlertController?
     
     override func viewDidLoad() {
@@ -57,9 +57,8 @@ class SearchCityNameTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cityName = dataSource[indexPath.row].terms[0].value
-        delegate?.cityDidSelect(city: cityName)
+        selectCityDelegate?.cityDidSelect(city: cityName)
         alertController?.dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
     }
 }
 

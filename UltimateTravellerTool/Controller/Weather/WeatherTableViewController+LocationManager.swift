@@ -21,7 +21,7 @@ extension WeatherTableViewController: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         locationManager.stopUpdatingLocation()
         let parameters = [("lat", location.coordinate.latitude), ("lon", location.coordinate.longitude)]
-        getWeather(for: parameters) { (result) in
+        getWeatherfor(city: parameters) { (result) in
             switch result {
             case .failure(let error):
                 print(error.description)

@@ -66,6 +66,11 @@ class SelectCurrencyTableViewController: UITableViewController {
         
         tableView.sectionIndexColor = .systemGray
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
 
     // MARK: - Methodes
     

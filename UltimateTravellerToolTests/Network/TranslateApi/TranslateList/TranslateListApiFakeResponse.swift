@@ -16,8 +16,8 @@ class TranslateListApiFakeResponse {
     static let fakeError = FakeError()
     
     private var goodData: Data? {
-        let bundle = Bundle(for: TranslateApiFakeResponse.self)
-        let url = bundle.url(forResource: "TranslateApiResult", withExtension: "json")
+        let bundle = Bundle(for: TranslateListApiFakeResponse.self)
+        let url = bundle.url(forResource: "TranslateListApiResult", withExtension: "json")
         return try? Data(contentsOf: url!)
     }
     

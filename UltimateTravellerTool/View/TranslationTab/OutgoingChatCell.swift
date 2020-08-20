@@ -12,7 +12,7 @@ class OutgoingChatCell: UITableViewCell {
     @IBOutlet weak var bubbleView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var sourceLanguageLabel: UILabel!
-    
+        
     func setUp() {
         bubbleView.layer.cornerRadius = messageLabel.frame.height / 5
         bubbleView.backgroundColor = .systemBlue

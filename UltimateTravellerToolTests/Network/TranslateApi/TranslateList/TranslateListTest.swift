@@ -20,10 +20,26 @@ class TranslateListTest: XCTestCase {
         return api
     }
     
+    func testNoConnection() {
+        let session = FakeUrlSession(fakeData: nil, fakeResponse: nil, fakeError: nil)
+        let api = createClient(with: session)
+        
+        api.getLinguageList { (result) in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            self.expectation.fulfill()
+            XCTAssertEqual(error, NetworkError.noConnection)
+        }
+        
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
     func testBadResponse() {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: TranslateListApiFakeResponse.badResponse, fakeError: nil)
         let api = createClient(with: session)
-        api.translateText(parameters: nil) { (result) in
+        api.getLinguageList { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -39,7 +55,7 @@ class TranslateListTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: TranslateListApiFakeResponse.goodResponse, fakeError: TranslateListApiFakeResponse.fakeError)
         let api = createClient(with: session)
         
-        api.translateText(parameters: nil) { (result) in
+        api.getLinguageList { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -55,7 +71,7 @@ class TranslateListTest: XCTestCase {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: TranslateListApiFakeResponse.goodResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(parameters: nil) { (result) in
+        api.getLinguageList { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -71,7 +87,7 @@ class TranslateListTest: XCTestCase {
         let session = FakeUrlSession(fakeData: TranslateListApiFakeResponse.incorrectData, fakeResponse: TranslateListApiFakeResponse.goodResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(parameters: nil) { (result) in
+        api.getLinguageList { (result) in
             guard case .failure(let error) = result else {
                 XCTFail()
                 return
@@ -87,7 +103,7 @@ class TranslateListTest: XCTestCase {
         let session = FakeUrlSession(fakeData: TranslateListApiFakeResponse.correctData, fakeResponse: TranslateListApiFakeResponse.goodResponse, fakeError: nil)
         let api = createClient(with: session)
         
-        api.translateText(parameters: nil) { (result) in
+        api.getLinguageList { (result) in
             guard case .success(let data) = result else {
                 if case .failure(let error) = result {
                     XCTFail(error.description)

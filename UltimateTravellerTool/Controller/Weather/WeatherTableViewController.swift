@@ -10,6 +10,10 @@ import UIKit
 import CoreLocation
 
 protocol SelectCityDelegate {
+    /**
+     Pass the selected city name
+     - parameter city: The name of the city
+     */
     func cityDidSelect(city: String)
 }
 
@@ -27,7 +31,7 @@ class WeatherTableViewController: UITableViewController {
     var dataSource = [WeatherResult]()
     var selectCityDelegate: SelectCityDelegate?
     
-    // FakeData for test
+    /// FakeData for test
     let fakeCoord: [[(String, Any)]] = [
         [("lat", 39.90), ("lon", 116.39)],
         [("q", "montpellier")],
@@ -38,12 +42,12 @@ class WeatherTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get porsition and add it to "localWeateher"
+        // Get position and add it to "localWeateher"
         locationSetUp()
         
         // Create FakeData
         fakeCoord.forEach { (coord) in
-            getWeather(for: coord) { (result) in
+            getWeatherfor(city: coord) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
@@ -72,7 +76,14 @@ class WeatherTableViewController: UITableViewController {
     
     // MARK: - Methodes
     
-    func getWeather(for param: [(String, Any)], callback: @escaping ((Result<WeatherResult, NetworkError>) -> Void)) {
+    /**
+     Get weather for a city
+     - parameter param:
+     if shearch with name : [("q", cityName)] || if shearch with coord : [("lon", Longitude), ("lat", latitude)]
+     
+     */
+    
+    func getWeatherfor(city param: [(String, Any)], callback: @escaping ((Result<WeatherResult, NetworkError>) -> Void)) {
         dispatchGroup.enter()
         weatherService.getGlobalWeather(parameters: param) { (result) in
             callback(result)
@@ -86,18 +97,24 @@ class WeatherTableViewController: UITableViewController {
     }
     
     private func updateWeather() {
+        var weatherList = dataSource
+        dataSource = [WeatherResult]()
+        localWeatehr = nil
+        tableView.reloadData()
+        
         // update local Weather
         locationSetUp()
         
         // update other Weather
-        for (index, weather) in dataSource.enumerated() {
+        for (index, weather) in weatherList.enumerated() {
             let coord = [("lat", weather.lat), ("lon", weather.lon)]
-            getWeather(for: coord) { (result) in
+            getWeatherfor(city: coord) { (result) in
                 switch result {
                 case .failure(_):
                     return
                 case .success(let data):
-                    self.dataSource[index] = data
+                    weatherList[index] = data
+                    self.dataSource = weatherList
                 }
             }
         }
@@ -160,9 +177,6 @@ class WeatherTableViewController: UITableViewController {
         if let destination = segue.destination as? WeatherDetailViewController {
             destination.dataSource = sender as? WeatherResult
         }
-        if let destination = segue.destination as? SearchCityNameTableViewController {
-            destination.delegate = self
-        }
     }
     
     // MARK: Actions
@@ -171,7 +185,7 @@ class WeatherTableViewController: UITableViewController {
         let alert = UIAlertController(title: "Search city name", message: nil, preferredStyle: .actionSheet)
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         let vc = storyboard.instantiateViewController(withIdentifier: "SearchCitySbId") as! SearchCityNameTableViewController
-        vc.delegate = self
+        vc.selectCityDelegate = self
         vc.alertController = alert
         vc.preferredContentSize.height = 270
         
@@ -187,7 +201,7 @@ class WeatherTableViewController: UITableViewController {
 
 extension WeatherTableViewController: SelectCityDelegate {
     func cityDidSelect(city: String) {
-        getWeather(for: [("q", city)]) { (result) in
+        getWeatherfor(city: [("q", city)]) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
