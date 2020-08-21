@@ -15,6 +15,9 @@ class CurrenciesService {
     private let formatter = NumberFormatter()
     private var httpClient: HTTPClient
     private let baseUrl = URL(string: "http://data.fixer.io/api/latest")
+    private var localeLanguage: String {
+        return Locale.current.languageCode ?? "en"
+    }
     
     //MARK : - Initalizer
     

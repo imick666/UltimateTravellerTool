@@ -12,9 +12,11 @@ final class GoogleTranslateService {
     
     // MARK: - Properties
     
-    let baseUrl = "https://translation.googleapis.com/language/translate/v2/"
-    let client: HTTPClient
-    let localeLanguage = Locale.current.languageCode ?? "en"
+    private let baseUrl = "https://translation.googleapis.com/language/translate/v2/"
+    private let client: HTTPClient
+    private var localeLanguage: String {
+        return Locale.current.languageCode ?? "en"
+    }
     
     // MARK: - Init
     

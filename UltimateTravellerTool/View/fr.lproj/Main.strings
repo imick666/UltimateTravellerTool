@@ -1,0 +1,108 @@
+
+/* Class = "UISearchBar"; 0U1-bk-gV3.scopeButtonTitles[0] = "Name"; ObjectID = "0U1-bk-gV3"; */
+"0U1-bk-gV3.scopeButtonTitles[0]" = "Name";
+
+/* Class = "UISearchBar"; 0U1-bk-gV3.scopeButtonTitles[1] = "ISO"; ObjectID = "0U1-bk-gV3"; */
+"0U1-bk-gV3.scopeButtonTitles[1]" = "ISO";
+
+/* Class = "UILabel"; text = "20.3°C"; ObjectID = "2J1-eI-HBy"; */
+"2J1-eI-HBy.text" = "20.3°C";
+
+/* Class = "UIBarButtonItem"; title = "Select a language"; ObjectID = "A6T-cW-0Di"; */
+"A6T-cW-0Di.title" = "Select a language";
+
+/* Class = "UITabBarItem"; title = "Weather"; ObjectID = "AG1-bf-OIG"; */
+"AG1-bf-OIG.title" = "Weather";
+
+/* Class = "UIButton"; normalTitle = "Currency"; ObjectID = "CGd-T8-5XI"; */
+"CGd-T8-5XI.normalTitle" = "Currency";
+
+/* Class = "UITabBarItem"; title = "Translate"; ObjectID = "CuA-ak-m1r"; */
+"CuA-ak-m1r.title" = "Translate";
+
+/* Class = "UILabel"; text = "Montpellier"; ObjectID = "DpU-cB-oFa"; */
+"DpU-cB-oFa.text" = "Montpellier";
+
+/* Class = "UINavigationItem"; title = "Translate"; ObjectID = "EDo-0y-BUC"; */
+"EDo-0y-BUC.title" = "Translate";
+
+/* Class = "UILabel"; text = "31°C"; ObjectID = "JuL-hl-3jL"; */
+"JuL-hl-3jL.text" = "31°C";
+
+/* Class = "UITextField"; placeholder = "0,00"; ObjectID = "N6r-oO-CTw"; */
+"N6r-oO-CTw.placeholder" = "0,00";
+
+/* Class = "UILabel"; text = "Currency Name"; ObjectID = "Ovk-tM-Fvb"; */
+"Ovk-tM-Fvb.text" = "Currency Name";
+
+/* Class = "UILabel"; text = "23°C"; ObjectID = "P5B-eR-yCh"; */
+"P5B-eR-yCh.text" = "23°C";
+
+/* Class = "UILabel"; text = "Weather Detail"; ObjectID = "SUL-6D-yoZ"; */
+"SUL-6D-yoZ.text" = "Weather Detail";
+
+/* Class = "UIButton"; normalTitle = "Currency"; ObjectID = "UVM-g2-RpT"; */
+"UVM-g2-RpT.normalTitle" = "Currency";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "V4V-xT-R5W"; */
+"V4V-xT-R5W.normalTitle" = "Close";
+
+/* Class = "UILabel"; text = "Last update : <Date>"; ObjectID = "W0S-Gh-JJ9"; */
+"W0S-Gh-JJ9.text" = "Last update : <Date>";
+
+/* Class = "UILabel"; text = "21°C"; ObjectID = "WZ7-WR-KTX"; */
+"WZ7-WR-KTX.text" = "21°C";
+
+/* Class = "UILabel"; text = "14H"; ObjectID = "WlB-eE-i7G"; */
+"WlB-eE-i7G.text" = "14H";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "X7s-Hl-Nyn"; */
+"X7s-Hl-Nyn.text" = "City";
+
+/* Class = "UILabel"; text = "Lundi"; ObjectID = "Z1f-D1-kVP"; */
+"Z1f-D1-kVP.text" = "Lundi";
+
+/* Class = "UILabel"; text = "Destination Language : Français"; ObjectID = "Zit-pB-XIi"; */
+"Zit-pB-XIi.text" = "Destination Language : Français";
+
+/* Class = "UILabel"; text = "30°C"; ObjectID = "apt-nW-cna"; */
+"apt-nW-cna.text" = "30°C";
+
+/* Class = "UILabel"; text = "19°C"; ObjectID = "ayX-Dk-o0X"; */
+"ayX-Dk-o0X.text" = "19°C";
+
+/* Class = "UILabel"; text = "31 °C"; ObjectID = "dEM-NH-Afg"; */
+"dEM-NH-Afg.text" = "31 °C";
+
+/* Class = "UITabBarItem"; title = "Exchange"; ObjectID = "fjB-AM-c1A"; */
+"fjB-AM-c1A.title" = "Exchange";
+
+/* Class = "UINavigationItem"; title = "Currencies Converter"; ObjectID = "fra-Md-gxa"; */
+"fra-Md-gxa.title" = "Currencies Converter";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hR6-2H-pG0"; */
+"hR6-2H-pG0.text" = "Label";
+
+/* Class = "UILabel"; text = "Ajourd'hui Dimanche"; ObjectID = "iUW-ae-XJT"; */
+"iUW-ae-XJT.text" = "Ajourd'hui Dimanche";
+
+/* Class = "UITextField"; placeholder = "0,00"; ObjectID = "lss-UF-tbp"; */
+"lss-UF-tbp.placeholder" = "0,00";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ncm-3V-er1"; */
+"ncm-3V-er1.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "qG4-OM-Gs0"; */
+"qG4-OM-Gs0.normalTitle" = "Send";
+
+/* Class = "UINavigationItem"; title = "Weather"; ObjectID = "rpV-k9-cuO"; */
+"rpV-k9-cuO.title" = "Weather";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rtq-Xh-nCm"; */
+"rtq-Xh-nCm.text" = "Label";
+
+/* Class = "UILabel"; text = "Currency Code"; ObjectID = "v0e-vS-OlJ"; */
+"v0e-vS-OlJ.text" = "Currency Code";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "zuB-nL-4SJ"; */
+"zuB-nL-4SJ.text" = "Description";

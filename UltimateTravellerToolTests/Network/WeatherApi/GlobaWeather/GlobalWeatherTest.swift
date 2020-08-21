@@ -262,6 +262,22 @@ class GlobalWeatherTest: XCTestCase {
     
     // MARK: - Get Icon Test
     
+    func testGetIconNoResponse() {
+        let session = FakeUrlSession(fakeData: nil, fakeResponse: nil, fakeError: nil)
+        let globalWeather = createGlobalClientForIcon(globalSession: session)
+        
+        globalWeather.getIcon(id: "") { (result) in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            self.expactation.fulfill()
+            XCTAssertEqual(error, NetworkError.noConnection)
+        }
+        
+        wait(for: [expactation], timeout: 0.01)
+    }
+    
     func testGetIconBadResponse() {
         let session = FakeUrlSession(fakeData: nil, fakeResponse: GlobalWeatherFakeResponse.basResponse, fakeError: nil)
         let globalWeather = createGlobalClientForIcon(globalSession: session)

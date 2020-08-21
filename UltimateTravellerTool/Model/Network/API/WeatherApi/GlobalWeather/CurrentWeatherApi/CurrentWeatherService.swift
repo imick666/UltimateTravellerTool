@@ -14,6 +14,9 @@ final class CurrentWeatherService {
     
     private let baseURL = "https://api.openweathermap.org/data/2.5/weather"
     private let httpClient: HTTPClient
+    private var localLanguage: String {
+        return Locale.current.languageCode ?? "en"
+    }
     
     // MARK: - Init
     
@@ -41,6 +44,7 @@ final class CurrentWeatherService {
         var parameters = parameters
         parameters.append(("units", "metric"))
         parameters.append(("appid", ApiConfig.weatherApiKey))
+        parameters.append(("lang", localLanguage))
         
         httpClient.requestJson(baseUrl: url, parameters: parameters) { (result: Result<CurrentWeatherResult, NetworkError>) in
             callback(result)

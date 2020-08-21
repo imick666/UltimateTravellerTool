@@ -14,6 +14,9 @@ final class GooglePlacesService {
     
     private let baseUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     private let client: HTTPClient
+    private var localeLanguage: String {
+        return Locale.current.languageCode ?? "en"
+    }
     
     // MARK: - Init
     
@@ -34,6 +37,7 @@ final class GooglePlacesService {
         var param = [(String, Any)]()
         param.append(("input", q))
         param.append(("types", "(cities)"))
+        param.append(("language", localeLanguage))
         param.append(("key", ApiConfig.googlePlacesApiKey))
         
         client.requestJson(baseUrl: url, parameters: param) { (result: Result<GooglePlacesResult, NetworkError>) in
