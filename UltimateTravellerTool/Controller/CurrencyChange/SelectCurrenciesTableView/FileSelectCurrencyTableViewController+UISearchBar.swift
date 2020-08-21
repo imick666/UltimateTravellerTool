@@ -24,12 +24,28 @@ extension SelectCurrencyTableViewController: UISearchBarDelegate {
             for index in result {
                 var indexTitle = String()
                 var currencies = [(name: String, code: String)]()
-                for currency in index.currencies where currency.name.lowercased().contains(searchText.lowercased()) {
-                    indexTitle = index.indexTitle
-                    currencies.append(currency)
+                for currency in index.currencies {
+                    switch sortBy {
+                    case .name:
+                        if currency.name.lowercased().contains(searchText.lowercased()) {
+                            indexTitle = index.indexTitle
+                            currencies.append(currency)
+                        }
+                    case .iso:
+                        if currency.code.lowercased().contains(searchText.lowercased()) {
+                            indexTitle = index.indexTitle
+                            currencies.append(currency)
+                        }
+                    }
                 }
                 
-                currencies.sort { $0.name < $1.name }
+                switch sortBy {
+                case .name:
+                    currencies.sort { $0.name < $1.name }
+                case .iso:
+                    currencies.sort { $0.code < $1.code }
+                }
+                
                 if indexTitle != "" {
                     let indexToAdd = (indexTitle, currencies)
                     newIndex.append(indexToAdd)

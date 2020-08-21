@@ -119,7 +119,7 @@ class SelectCurrencyTableViewController: UITableViewController {
         // Create tuple with Name and ISO Code
         for (key, _) in list {
             guard let name = Locale.current.localizedString(forCurrencyCode: key) else { continue }
-            let currency = (name: name, code: key)
+            let currency = (name: name.capitalized, code: key)
             currencies.append(currency)
         }
         
@@ -133,7 +133,7 @@ class SelectCurrencyTableViewController: UITableViewController {
         //create tuple with Name and ISO Code
         for (key, _) in list {
             guard let name = Locale.current.localizedString(forCurrencyCode: key) else { continue }
-            let currency = (name: name, code: key)
+            let currency = (name: name.capitalized, code: key)
             currencies.append(currency)
         }
         
