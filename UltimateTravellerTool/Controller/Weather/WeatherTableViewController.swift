@@ -140,6 +140,7 @@ class WeatherTableViewController: UITableViewController {
         }
         
         cell.weather = indexPath.row == 0 ? localWeatehr : dataSource[indexPath.row - 1]
+        cell.locationIcon.isHidden = indexPath.row != 0
 
         return cell
     }

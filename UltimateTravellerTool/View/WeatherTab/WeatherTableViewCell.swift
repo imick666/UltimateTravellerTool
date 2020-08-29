@@ -17,12 +17,16 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var iconImageView: WeatherIcon!
     @IBOutlet weak var backGroundImageView: UIImageView!
+    @IBOutlet weak var locationIcon: UIImageView!
     
     // MARK: - Properties
+    
+    let locationShortcutIcon = UIApplicationShortcutIcon(type: .location)
     
     var weather: WeatherResult! {
         didSet {
             cityNameLabel.text = weather.name
+            
             weatherDetailLabel.text = weather.current.weather[0].description
             tempLabel.text = String(weather.current.temp.int) + "°C"
             iconImageView.getIcon(id: weather.current.weather[0].icon)

@@ -208,12 +208,24 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-93-FZB">
                                                     <rect key="frame" x="0.0" y="0.0" width="113" height="56"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7s-Hl-Nyn">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vSL-mr-vZw">
                                                             <rect key="frame" x="0.0" y="0.0" width="113" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="tzP-dU-AL8">
+                                                                    <rect key="frame" x="0.0" y="4.5" width="15" height="15"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="tzP-dU-AL8" secondAttribute="height" multiplier="1:1" id="Aqq-uG-dd5"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="h7j-9m-fLt"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7s-Hl-Nyn">
+                                                                    <rect key="frame" x="23" y="0.0" width="90" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUL-6D-yoZ">
                                                             <rect key="frame" x="0.0" y="32" width="113" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -263,6 +275,7 @@
                                     <outlet property="backGroundImageView" destination="pSg-8C-8Ae" id="gfa-Ou-cFo"/>
                                     <outlet property="cityNameLabel" destination="X7s-Hl-Nyn" id="vrs-YS-7Tk"/>
                                     <outlet property="iconImageView" destination="OP8-eV-bAz" id="6RV-Hm-eBv"/>
+                                    <outlet property="locationIcon" destination="tzP-dU-AL8" id="c9H-L7-YhW"/>
                                     <outlet property="tempLabel" destination="P5B-eR-yCh" id="m0y-Vm-bKX"/>
                                     <outlet property="weatherDetailLabel" destination="SUL-6D-yoZ" id="Xc4-P9-biy"/>
                                 </connections>
@@ -908,6 +921,7 @@
         <image name="Clear" width="302" height="800"/>
         <image name="ClearCloud" width="290" height="800"/>
         <image name="Exchange-Regular" width="31" height="28"/>
+        <image name="Location_Icon" width="512" height="512"/>
         <image name="Translate_Icon-Regular" width="31" height="28"/>
         <image name="Weather_Icon-Regular" width="31" height="28"/>
         <image name="cloudtemoin" width="100" height="100"/>
