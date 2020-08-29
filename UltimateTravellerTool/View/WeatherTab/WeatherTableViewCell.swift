@@ -25,8 +25,8 @@ class WeatherTableViewCell: UITableViewCell {
     
     var weather: WeatherResult! {
         didSet {
+            locationIcon.isHidden = !(weather.geolocalized ?? false)
             cityNameLabel.text = weather.name
-            
             weatherDetailLabel.text = weather.current.weather[0].description
             tempLabel.text = String(weather.current.temp.int) + "°C"
             iconImageView.getIcon(id: weather.current.weather[0].icon)

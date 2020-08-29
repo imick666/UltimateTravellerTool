@@ -27,7 +27,11 @@ class WeatherTableViewController: UITableViewController {
     
     // MARK: - DataSources
     
-    var localWeatehr: WeatherResult?
+    var localWeatehr: WeatherResult? {
+        didSet {
+            localWeatehr?.geolocalized = true
+        }
+    }
     var dataSource = [WeatherResult]()
     var selectCityDelegate: SelectCityDelegate?
     
@@ -140,7 +144,6 @@ class WeatherTableViewController: UITableViewController {
         }
         
         cell.weather = indexPath.row == 0 ? localWeatehr : dataSource[indexPath.row - 1]
-        cell.locationIcon.isHidden = indexPath.row != 0
 
         return cell
     }

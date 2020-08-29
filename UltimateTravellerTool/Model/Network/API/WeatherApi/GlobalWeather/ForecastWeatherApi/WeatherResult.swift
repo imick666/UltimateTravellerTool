@@ -9,6 +9,7 @@
 import Foundation
 
 struct WeatherResult: Decodable {
+    var geolocalized: Bool? = false
     var name: String?
     var lat: Double
     var lon: Double
