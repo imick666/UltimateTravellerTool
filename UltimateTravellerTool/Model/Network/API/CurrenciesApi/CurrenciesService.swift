@@ -32,7 +32,7 @@ class CurrenciesService {
      */
     func getCurrencies(callback: @escaping (Result<CurrenciesResult, NetworkError>) -> Void) {
         guard let url = baseUrl else { return }
-        httpClient.requestJson(baseUrl: url, parameters: [("access_key", ApiConfig.currecniesApiKey)]) { (result: Result<CurrenciesResult, NetworkError>) in
+        httpClient.requestJson(baseUrl: url, parameters: [("access_key", ApiConfig.fixerApiKey)]) { (result: Result<CurrenciesResult, NetworkError>) in
             callback(result)
         }
     }
@@ -52,7 +52,7 @@ class CurrenciesService {
         formatter.numberStyle = .currency
         formatter.currencySymbol = ""
         formatter.groupingSeparator = ""
-        let result = formatter.string(for: converted)
+        let result = formatter.string(for: converted)?.trimmingCharacters(in: .whitespacesAndNewlines)
         return result
     }
 }

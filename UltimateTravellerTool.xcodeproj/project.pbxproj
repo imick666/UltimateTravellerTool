@@ -29,7 +29,6 @@
 		08C00F1F24DEF84000849C5A /* TranslateListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C00F1E24DEF84000849C5A /* TranslateListTest.swift */; };
 		E014831E24D04D8500E5E0F8 /* GlobalWeatherFakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014831D24D04D8500E5E0F8 /* GlobalWeatherFakeResponse.swift */; };
 		E014832024D04EA500E5E0F8 /* rain.png in Resources */ = {isa = PBXBuildFile; fileRef = E014831F24D04EA500E5E0F8 /* rain.png */; };
-		E029C4D0251A388400FE7752 /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029C4CF251A388400FE7752 /* ApiConfig.swift */; };
 		E02D5AD424C848AA002BE9D5 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AD324C848AA002BE9D5 /* WeatherTableViewController.swift */; };
 		E02D5AD624C848BC002BE9D5 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AD524C848BC002BE9D5 /* WeatherDetailViewController.swift */; };
 		E02D5AD924C84915002BE9D5 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D5AD824C84915002BE9D5 /* WeatherTableViewCell.swift */; };
@@ -49,6 +48,7 @@
 		E02F994224CED39500F90E44 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F994124CED39500F90E44 /* HourlyForecastCollectionViewCell.swift */; };
 		E037338624CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E037338524CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift */; };
 		E03CC1C424CDC61D006124B9 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */; };
+		E065E1FF2787C0C800EAB708 /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E1FE2787C0C800EAB708 /* ApiConfig.swift */; };
 		E07D7F6624C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */; };
 		E07D87F624E41A5D00CE4724 /* TranslationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */; };
 		E07D87F824E41C5400CE4724 /* GoogleTranslateDetectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07D87F724E41C5400CE4724 /* GoogleTranslateDetectResult.swift */; };
@@ -98,8 +98,8 @@
 		0869F4DA24D300E5005558E4 /* Int+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Date.swift"; sourceTree = "<group>"; };
 		0869F4DC24D30632005558E4 /* Double+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Int.swift"; sourceTree = "<group>"; };
 		0869F4DF24D36757005558E4 /* SearchCityNameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityNameTableViewController.swift; sourceTree = "<group>"; };
-		0869F4E124D36782005558E4 /* GooglePlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GooglePlacesService.swift; path = UltimateTravellerTool/Controller/Weather/SearchCityName/GooglePlacesService.swift; sourceTree = SOURCE_ROOT; };
-		0869F4E324D3678B005558E4 /* GooglePlacesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GooglePlacesResult.swift; path = UltimateTravellerTool/Controller/Weather/SearchCityName/GooglePlacesResult.swift; sourceTree = SOURCE_ROOT; };
+		0869F4E124D36782005558E4 /* GooglePlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GooglePlacesService.swift; path = UltimateTravellerTool/Model/Network/API/WeatherApi/LocationSearchApi/GooglePlacesService.swift; sourceTree = SOURCE_ROOT; };
+		0869F4E324D3678B005558E4 /* GooglePlacesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GooglePlacesResult.swift; path = UltimateTravellerTool/Model/Network/API/WeatherApi/LocationSearchApi/GooglePlacesResult.swift; sourceTree = SOURCE_ROOT; };
 		0869F4E624D36D8A005558E4 /* GooglePlacesFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesFakeResponse.swift; sourceTree = "<group>"; };
 		0869F4E824D36E95005558E4 /* GooglePlaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GooglePlaces.json; sourceTree = "<group>"; };
 		0869F4EA24D36F19005558E4 /* GooglePlacesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesTest.swift; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 		08C00F1E24DEF84000849C5A /* TranslateListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateListTest.swift; sourceTree = "<group>"; };
 		E014831D24D04D8500E5E0F8 /* GlobalWeatherFakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWeatherFakeResponse.swift; sourceTree = "<group>"; };
 		E014831F24D04EA500E5E0F8 /* rain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rain.png; sourceTree = "<group>"; };
-		E029C4CF251A388400FE7752 /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E02D5AD324C848AA002BE9D5 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		E02D5AD524C848BC002BE9D5 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		E02D5AD824C84915002BE9D5 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		E02F994124CED39500F90E44 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		E037338524CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherTableViewController+LocationManager.swift"; sourceTree = "<group>"; };
 		E03CC1C324CDC61D006124B9 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
+		E065E1FE2787C0C800EAB708 /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		E07D7F6524C247FE00ECBD7C /* FileSelectCurrencyTableViewController+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileSelectCurrencyTableViewController+UISearchBar.swift"; sourceTree = "<group>"; };
 		E07D87F524E41A5D00CE4724 /* TranslationMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationMessages.swift; sourceTree = "<group>"; };
 		E07D87F724E41C5400CE4724 /* GoogleTranslateDetectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslateDetectResult.swift; sourceTree = "<group>"; };
@@ -555,7 +555,7 @@
 				08C00F0824DEB6E700849C5A /* GoogleTranslate */,
 				E02D5ADD24C84BDB002BE9D5 /* WeatherApi */,
 				E0A8A54124AA4BDB00DA145C /* CurrenciesApi */,
-				E029C4CF251A388400FE7752 /* ApiConfig.swift */,
+				E065E1FE2787C0C800EAB708 /* ApiConfig.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -721,6 +721,7 @@
 				E08B0FE724E17F4E00886B4C /* UIViewController+KeyboardManager.swift in Sources */,
 				0864914D24C0AC6D0063286D /* UIViewController+Alert.swift in Sources */,
 				E037338624CF06B800DB9929 /* WeatherTableViewController+LocationManager.swift in Sources */,
+				E065E1FF2787C0C800EAB708 /* ApiConfig.swift in Sources */,
 				0869F4DB24D300E5005558E4 /* Int+Date.swift in Sources */,
 				08C00F0A24DEB70700849C5A /* GoogleTranslateService.swift in Sources */,
 				E0D97C9724DFE71F0062DE61 /* SelectLaguagesButtons.swift in Sources */,
@@ -742,7 +743,6 @@
 				E099FFEF24BDFC3900422CBB /* CurrencyTableViewCell.swift in Sources */,
 				E02D5AD624C848BC002BE9D5 /* WeatherDetailViewController.swift in Sources */,
 				08C00F0E24DEBE1200849C5A /* GoogleTranslateListResult.swift in Sources */,
-				E029C4D0251A388400FE7752 /* ApiConfig.swift in Sources */,
 				E07D87F624E41A5D00CE4724 /* TranslationMessages.swift in Sources */,
 				E02D5AE224C84C14002BE9D5 /* CurrentWeatherResult.swift in Sources */,
 				0869F4E424D3678B005558E4 /* GooglePlacesResult.swift in Sources */,
