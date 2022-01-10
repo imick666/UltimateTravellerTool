@@ -639,7 +639,7 @@
 				KnownAssetTags = (
 					0,
 				);
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "mickael ruzel";
 				TargetAttributes = {

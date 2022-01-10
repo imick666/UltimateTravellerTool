@@ -39,6 +39,16 @@
                ReferencedContainer = "container:UltimateTravellerTool.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E0132CD6278C6DAC006BE39D"
+               BuildableName = "FastlaneSnapshotTests.xctest"
+               BlueprintName = "FastlaneSnapshotTests"
+               ReferencedContainer = "container:UltimateTravellerTool.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
