@@ -20,7 +20,7 @@
 Ultimate Traveller Tool is a travel backpack with imposed features :
 
 - Get the exchange rate between dollar and euros (I decided to change any currency to any other).
-- Translate from your favorite language into English (I decided to detect the origin language, and translate intro any other)
+- Translate from your favorite language into English (I decided to detect the origin language, translate to any other, and have the translation spoken on the phone)
 - Compare the local weather with that of your home (I decided make an Apple Weather app "clone")
 
 ## What I learned
@@ -31,6 +31,7 @@ Ultimate Traveller Tool is a travel backpack with imposed features :
 - Make network calls and process responses
 - Moke URLSeesion for test network calls
 - Use APIs documentations
+- Speech Synthesis
 
 ## How to use
 
@@ -50,9 +51,9 @@ This project use 4 api keys (that I don't share, they are mine ^^).
         - [Google Places Autocomplete](https://developers.google.com/maps/documentation/places/web-service/autocomplete)
     - Cloud Translation
 
-        - [discovering supported languages](https://cloud.google.com/translate/docs/basic/discovering-supported-languages)
-        - [detecting language](https://cloud.google.com/translate/docs/basic/detecting-language)
-        - [translating text](https://cloud.google.com/translate/docs/basic/translating-text)
+        - [Discovering supported languages](https://cloud.google.com/translate/docs/basic/discovering-supported-languages)
+        - [Detecting language](https://cloud.google.com/translate/docs/basic/detecting-language)
+        - [Translating text](https://cloud.google.com/translate/docs/basic/translating-text)
 
 
 Anywhere you want, create a file called "ApiConfig.swift". Don't forget to add it to the target "UltimateTravellerTool".
